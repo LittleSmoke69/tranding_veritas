@@ -1,0 +1,26 @@
+{
+  "name": "veritastrader",
+  "private": true,
+  "version": "0.1.0",
+  "description": "VeritasTrader — plataforma de trading multiproduto em SIMULAÇÃO",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @veritas/shared && npm run build -w @veritas/db && npm run build -w @veritas/api && npm run build -w @veritas/web",
+    "dev": "concurrently -n api,web -c orange,cyan \"npm run dev -w @veritas/api\" \"npm run dev -w @veritas/web\"",
+    "dev:api": "npm run dev -w @veritas/api",
+    "dev:web": "npm run dev -w @veritas/web",
+    "test": "npm run test -w @veritas/shared",
+    "typecheck": "npm run typecheck -w @veritas/shared && npm run typecheck -w @veritas/api && npm run typecheck -w @veritas/web",
+    "lint:money": "node scripts/assert-no-float-money.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.2"
+  }
+}
