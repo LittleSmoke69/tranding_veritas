@@ -16,7 +16,7 @@ Plataforma de trading multiproduto (**SPOT / MARGEM / BINÁRIA**) sobre **uma co
 
 - Mesmo Supabase do ZaplotoV3 (`profiles` + `password_hash`)
 - Schema isolado `veritas`
-- Coluna `public.profiles.login_target` ∈ `crm` | `trading` | `both`
+- Coluna `public.profiles.login_target` ∈ `crm` | `trading` | `both` (padrão **`both`**: CRM + Veritas)
 - Env: symlink para `../ZaplotoV3/.env` (não versionar secrets)
 
 ## Setup

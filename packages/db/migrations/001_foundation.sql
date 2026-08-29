@@ -5,7 +5,7 @@ BEGIN;
 
 -- ── Gate de acesso nas contas Zaploto ───────────────────────────────────────
 ALTER TABLE public.profiles
-  ADD COLUMN IF NOT EXISTS login_target TEXT NOT NULL DEFAULT 'crm';
+  ADD COLUMN IF NOT EXISTS login_target TEXT NOT NULL DEFAULT 'both';
 
 ALTER TABLE public.profiles
   DROP CONSTRAINT IF EXISTS profiles_login_target_check;
@@ -15,12 +15,12 @@ ALTER TABLE public.profiles
   CHECK (login_target IN ('crm', 'trading', 'both'));
 
 COMMENT ON COLUMN public.profiles.login_target IS
-  'crm = só Zaploto; trading = só Veritas; both = ambos';
+  'crm = só Zaploto; trading = só Veritas; both = CRM + Veritas (padrão)';
 
--- Contas existentes permanecem no CRM
+-- Contas existentes: CRM + trading
 UPDATE public.profiles
-SET login_target = 'crm'
-WHERE login_target IS NULL OR login_target = '';
+SET login_target = 'both'
+WHERE login_target IS NULL OR login_target = '' OR login_target = 'crm';
 
 -- ── Schema Veritas ──────────────────────────────────────────────────────────
 CREATE SCHEMA IF NOT EXISTS veritas;

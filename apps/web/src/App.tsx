@@ -93,8 +93,8 @@ export function App() {
         {!session ? (
           <form onSubmit={onLogin} className="space-y-4 rounded-2xl border border-stone-800 bg-stone-900/60 p-6 shadow-2xl">
             <p className="text-sm text-stone-400">
-              Login próprio Validando <code className="text-stone-300">profiles</code> do Zaploto.
-              Requer <code className="text-stone-300">login_target = trading | both</code>.
+              Login com a mesma conta do CRM Zaploto (<code className="text-stone-300">profiles</code>).
+              Contas CRM mantêm acesso ao CRM e entram aqui com crédito de simulação.
             </p>
             <label className="block text-sm">
               <span className="text-stone-400">Usuário ou e-mail</span>

@@ -104,11 +104,13 @@ export async function registerAuthRoutes(app: FastifyInstance) {
       return reply.code(401).send({ success: false, error: 'Credenciais inválidas.' });
     }
 
-    const target = (profile.login_target || 'crm').toLowerCase();
-    if (target !== 'trading' && target !== 'both') {
+    const target = (profile.login_target || 'both').toLowerCase();
+    // CRM (crm|both) e trading (trading|both) entram na Veritas.
+    // Só bloqueia se no futuro houver valor desconhecido.
+    if (target !== 'crm' && target !== 'trading' && target !== 'both') {
       return reply.code(403).send({
         success: false,
-        error: 'Esta conta não tem acesso à plataforma de trading. Solicite login_target=trading|both.',
+        error: 'Esta conta não tem acesso à plataforma de trading.',
       });
     }
 
