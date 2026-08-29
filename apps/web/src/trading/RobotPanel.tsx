@@ -157,7 +157,7 @@ export function RobotPanel({ asset, positions, livePrice }: RobotPanelProps) {
               <Icon name="aiAgent" size={52} strokeWidth={1.25} />
             </div>
           </div>
-          <div className="relative mt-6 grid grid-cols-3 gap-px overflow-hidden rounded-ctl border border-line bg-line text-center">
+          <div className="relative mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-ctl border border-line bg-line text-center sm:grid-cols-3">
             {['Operação 24/7', 'Risco controlado', '3 estratégias'].map((benefit) => (
               <span key={benefit} className="bg-app/80 px-2 py-3 text-xs font-medium text-ink">{benefit}</span>
             ))}

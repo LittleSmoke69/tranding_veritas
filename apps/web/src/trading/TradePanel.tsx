@@ -180,9 +180,9 @@ export function TradePanel({
           <span className="u-caps">Payout</span>
           <HelpTip text="Percentual de lucro sobre o investimento caso a direção se confirme." />
         </div>
-        <p className="u-num mt-1 text-[48px] font-semibold leading-none tracking-tight text-bull-text">
+        <p className="u-num mt-1 text-[32px] font-semibold leading-none tracking-tight text-bull-text sm:text-[40px] lg:text-[48px]">
           +{profitPct}
-          <span className="text-[24px] font-medium">%</span>
+          <span className="text-[18px] font-medium sm:text-[22px] lg:text-[24px]">%</span>
         </p>
         <p className="u-num mt-1.5 text-[15px] font-semibold text-bull-text">+${brl(payout)}</p>
         <p className="u-num mt-0.5 text-[11px] text-muted">Retorno total ${brl(invest + payout)}</p>
@@ -194,7 +194,7 @@ export function TradePanel({
           type="button"
           disabled={busy}
           onClick={() => void fire('up')}
-          className="u-focus u-lift flex h-[88px] w-full flex-col items-center justify-center gap-1.5 rounded-btn bg-bull font-semibold text-on-bull disabled:opacity-60"
+          className="u-focus u-lift flex h-[72px] w-full flex-col items-center justify-center gap-1.5 rounded-btn bg-bull font-semibold text-on-bull disabled:opacity-60 sm:h-[88px]"
         >
           <Icon name="trendUp" size={26} strokeWidth={2} />
           <span className="font-cond text-[15px] uppercase tracking-[0.06em]">Acima</span>
@@ -203,7 +203,7 @@ export function TradePanel({
           type="button"
           disabled={busy}
           onClick={() => void fire('down')}
-          className="u-focus u-lift flex h-[88px] w-full flex-col items-center justify-center gap-1.5 rounded-btn bg-bear-fill font-semibold text-white disabled:opacity-60"
+          className="u-focus u-lift flex h-[72px] w-full flex-col items-center justify-center gap-1.5 rounded-btn bg-bear-fill font-semibold text-white disabled:opacity-60 sm:h-[88px]"
         >
           <Icon name="trendDown" size={26} strokeWidth={2} />
           <span className="font-cond text-[15px] uppercase tracking-[0.06em]">Abaixo</span>

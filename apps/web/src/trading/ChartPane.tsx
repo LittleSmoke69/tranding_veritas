@@ -22,9 +22,14 @@ import type { BinaryPosition } from './PositionsBar';
 
 echarts.use([CandlestickChart, LineChart, GridComponent, TooltipComponent, DataZoomComponent, CanvasRenderer]);
 
-/** Moldura do plot. O eixo de preço fica à direita; a esquerda é folga
- *  para a barra de ferramentas flutuante e o termômetro de sentimento. */
-const GRID = { left: 64, right: 84, top: 56, bottom: 34 };
+/** Moldura do plot. Valores base; ajustados por largura em telas menores. */
+const DEFAULT_GRID = { left: 64, right: 84, top: 56, bottom: 34 };
+
+function chartGridForWidth(width: number) {
+  if (width < 480) return { left: 40, right: 54, top: 48, bottom: 42 };
+  if (width < 768) return { left: 48, right: 62, top: 52, bottom: 36 };
+  return DEFAULT_GRID;
+}
 
 const INTERVALS: { id: ChartInterval; label: string }[] = [
   { id: 15, label: '15s' },
@@ -47,6 +52,7 @@ type OverlayGeom = {
   tipY: number;
   width: number;
   height: number;
+  grid: typeof DEFAULT_GRID;
   positions: {
     id: string;
     color: string;
@@ -168,6 +174,7 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
   const intervalRef = useRef<ChartInterval>(15);
   const kindRef = useRef<ChartKind>('candle');
   const tokensRef = useRef<Tokens>({});
+  const gridRef = useRef(DEFAULT_GRID);
 
   const [livePrice, setLivePrice] = useState(asset.price);
   const [intervalSec, setIntervalSec] = useState<ChartInterval>(15);
@@ -234,6 +241,7 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
 
     const t = readTokens();
     tokensRef.current = t;
+    gridRef.current = chartGridForWidth(el.clientWidth);
 
     const chart = echarts.init(el, undefined, { renderer: 'canvas' });
     chartRef.current = chart;
@@ -261,7 +269,12 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
         borderColor: t.border,
         textStyle: { color: t.ink, fontSize: 12 },
       },
-      grid: { left: GRID.left, right: GRID.right, top: GRID.top, bottom: GRID.bottom },
+      grid: {
+        left: gridRef.current.left,
+        right: gridRef.current.right,
+        top: gridRef.current.top,
+        bottom: gridRef.current.bottom,
+      },
       xAxis: {
         type: 'category',
         data: timesRef.current.map((x) => formatBarLabel(x, intervalSec)),
@@ -322,7 +335,8 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
         const priceY = typeof pricePt === 'number' ? pricePt : tipY;
         const w = el.clientWidth;
         const h = el.clientHeight;
-        const gridRight = w - GRID.right;
+        const grid = gridRef.current;
+        const gridRight = w - grid.right;
         const now = Date.now();
         const iv = intervalRef.current;
 
@@ -342,7 +356,7 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
               id: p.id,
               color: p.side === 'up' ? tokensRef.current.bull : tokensRef.current.bear,
               entryY: c.convertToPixel({ yAxisIndex: 0 }, p.entry_price) as number,
-              entryX: Math.max(GRID.left + 8, Number.isFinite(entryX) ? entryX : tipX - 40),
+              entryX: Math.max(grid.left + 8, Number.isFinite(entryX) ? entryX : tipX - 40),
               expX: Math.min(gridRight - 8, Number.isFinite(expX) ? expX : tipX + 80),
               stake: p.stake_display,
               side: p.side,
@@ -350,7 +364,7 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
             };
           });
 
-        setOverlay({ priceY, tipX, tipY, width: w, height: h, positions: posGeom });
+        setOverlay({ priceY, tipX, tipY, width: w, height: h, grid, positions: posGeom });
       } catch {
         /* gráfico ainda não pronto */
       }
@@ -408,6 +422,16 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
     raf = requestAnimationFrame(loop);
 
     const ro = new ResizeObserver(() => {
+      const nextGrid = chartGridForWidth(el.clientWidth);
+      gridRef.current = nextGrid;
+      chart.setOption({
+        grid: {
+          left: nextGrid.left,
+          right: nextGrid.right,
+          top: nextGrid.top,
+          bottom: nextGrid.bottom,
+        },
+      });
       chart.resize();
       syncOverlay();
     });
@@ -431,7 +455,7 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
       <WorldWatermark className="pointer-events-none absolute inset-x-[12%] inset-y-[14%] h-[72%] w-[76%]" />
 
       {/* Cabeçalho flutuante */}
-      <div className="absolute left-3 top-3 z-[var(--z-chart-ui)] flex items-center gap-1 rounded-btn border border-line bg-panel/85 py-1 pl-1.5 pr-1 backdrop-blur">
+      <div className="absolute left-2 top-2 z-[var(--z-chart-ui)] flex max-w-[calc(100%-5.5rem)] items-center gap-1 rounded-btn border border-line bg-panel/85 py-1 pl-1.5 pr-1 backdrop-blur sm:left-3 sm:top-3 sm:max-w-none">
         <button
           type="button"
           onClick={onOpenPicker}
@@ -444,17 +468,17 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
               {asset.name}
               <Icon name="chevronDown" size={13} className="text-muted" />
             </span>
-            <span className="u-caps mt-1 block">{categoryLabel(asset.category)}</span>
+            <span className="u-caps mt-1 hidden sm:block">{categoryLabel(asset.category)}</span>
           </span>
         </button>
 
-        <span className="mx-0.5 h-6 w-px bg-line" aria-hidden="true" />
+        <span className="mx-0.5 hidden h-6 w-px bg-line sm:block" aria-hidden="true" />
 
-        <span className="u-num px-1 text-[13px] font-semibold text-ink">{priceText}</span>
+        <span className="u-num px-1 text-[12px] font-semibold text-ink sm:text-[13px]">{priceText}</span>
 
-        <span className="mx-0.5 h-6 w-px bg-line" aria-hidden="true" />
+        <span className="mx-0.5 hidden h-6 w-px bg-line sm:block" aria-hidden="true" />
 
-        <span className="flex items-center gap-0.5">
+        <span className="hidden items-center gap-0.5 sm:flex">
           <button type="button" aria-label="Informações do ativo" className="u-focus flex h-7 w-7 items-center justify-center rounded-ctl text-muted transition hover:bg-elevated hover:text-ink">
             <Icon name="info" size={15} />
           </button>
@@ -476,7 +500,7 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
       </div>
 
       {/* Barra de ferramentas flutuante */}
-      <div className="absolute left-3 top-[68px] z-[var(--z-chart-ui)] flex flex-col gap-1.5">
+      <div className="absolute left-2 top-[56px] z-[var(--z-chart-ui)] flex flex-col gap-1 sm:left-3 sm:top-[68px] sm:gap-1.5">
         <ToolButton
           icon="candles"
           label={kind === 'candle' ? 'Tipo de gráfico: velas' : 'Tipo de gráfico: linha'}
@@ -494,7 +518,7 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
             <div
               role="radiogroup"
               aria-label="Timeframe"
-              className="absolute left-12 top-0 flex gap-1 rounded-ctl border border-line bg-panel p-1 shadow-[var(--shadow-float)]"
+              className="absolute left-0 top-11 flex max-w-[calc(100vw-2rem)] flex-wrap gap-1 rounded-ctl border border-line bg-panel p-1 shadow-[var(--shadow-float)] sm:left-12 sm:top-0 sm:max-w-none sm:flex-nowrap"
             >
               {INTERVALS.map((i) => (
                 <button
@@ -552,9 +576,9 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
         >
           {overlay.positions.map((p) => (
             <g key={p.id}>
-              <line x1={GRID.left} x2={p.expX} y1={p.entryY} y2={p.entryY} stroke={p.color} strokeWidth={1.5} />
+              <line x1={overlay.grid.left} x2={p.expX} y1={p.entryY} y2={p.entryY} stroke={p.color} strokeWidth={1.5} />
               <rect
-                x={Math.max(GRID.left + 4, p.entryX - 28)}
+                x={Math.max(overlay.grid.left + 4, p.entryX - 28)}
                 y={p.entryY - 10}
                 width={56}
                 height={20}
@@ -562,7 +586,7 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
                 fill={p.color}
               />
               <text
-                x={Math.max(GRID.left + 32, p.entryX)}
+                x={Math.max(overlay.grid.left + 32, p.entryX)}
                 y={p.entryY + 4}
                 textAnchor="middle"
                 fill={p.side === 'up' ? 'var(--on-bull)' : '#fff'}
@@ -574,16 +598,16 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
               <line
                 x1={p.expX}
                 x2={p.expX}
-                y1={GRID.top}
-                y2={overlay.height - GRID.bottom}
+                y1={overlay.grid.top}
+                y2={overlay.height - overlay.grid.bottom}
                 stroke="rgba(255,255,255,0.5)"
                 strokeWidth={1}
                 strokeDasharray="4 4"
               />
-              <text x={p.expX} y={GRID.top + 14} textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontWeight="600">
+              <text x={p.expX} y={overlay.grid.top + 14} textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontWeight="600">
                 {fmtCountdown(p.remainSec)}
               </text>
-              <text x={p.expX} y={GRID.top + 26} textAnchor="middle" fill="var(--text-muted)" fontSize="8">
+              <text x={p.expX} y={overlay.grid.top + 26} textAnchor="middle" fill="var(--text-muted)" fontSize="8">
                 EXPIRAÇÃO
               </text>
               <circle cx={p.expX} cy={p.entryY} r={4.5} fill={p.color} />
@@ -592,8 +616,8 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
 
           {/* Linha de preço atual — tracejada, branca a 60% */}
           <line
-            x1={GRID.left}
-            x2={overlay.width - GRID.right}
+            x1={overlay.grid.left}
+            x2={overlay.width - overlay.grid.right}
             y1={overlay.priceY}
             y2={overlay.priceY}
             stroke="rgba(255,255,255,0.6)"
@@ -613,9 +637,9 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
           />
 
           {/* Badge pentagonal no eixo de preço */}
-          <g transform={`translate(${overlay.width - GRID.right}, ${overlay.priceY})`}>
+          <g transform={`translate(${overlay.width - overlay.grid.right}, ${overlay.priceY})`}>
             <path
-              d={`M0 0 L9 -11 L${GRID.right - 4} -11 L${GRID.right - 4} 11 L9 11 Z`}
+              d={`M0 0 L9 -11 L${overlay.grid.right - 4} -11 L${overlay.grid.right - 4} 11 L9 11 Z`}
               fill="var(--surface-bright)"
             />
             <text x={14} y={4} fontSize="11" fontWeight="700" style={{ fontVariantNumeric: 'tabular-nums' }}>
@@ -626,8 +650,8 @@ export function ChartPane({ asset, positions, onPrice, onOpenPicker }: ChartPane
         </svg>
       )}
 
-      {/* Cronômetro da vela */}
-      <div className="pointer-events-none absolute bottom-3 right-3 z-[var(--z-chart-ui)] flex items-center gap-2 rounded-ctl border border-line bg-panel/85 px-2 py-1 backdrop-blur">
+      {/* Cronômetro da vela — deslocado no mobile para não cobrir o botão Ordem */}
+      <div className="pointer-events-none absolute bottom-14 right-3 z-[var(--z-chart-ui)] flex max-w-[calc(100%-6rem)] items-center gap-2 rounded-ctl border border-line bg-panel/85 px-2 py-1 backdrop-blur lg:bottom-3 lg:max-w-none">
         <span className="u-caps">Vela {intervalLabel(intervalSec)}</span>
         <span className="u-num text-[12px] font-semibold text-ink">{fmtCountdown(barRemain)}</span>
         {openOnAsset.length > 0 && (

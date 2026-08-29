@@ -46,8 +46,8 @@ export function HistoryPanel({
   const selected = positions.find((position) => position.id === selectedId) ?? null;
 
   return (
-    <section className="grid h-full min-h-0 bg-chart md:grid-cols-[310px_minmax(0,1fr)]" aria-label="Histórico de operações">
-      <div className={`${selected ? 'hidden md:flex' : 'flex'} min-h-0 flex-col border-r border-line bg-panel`}>
+    <section className="grid h-full min-h-0 bg-chart lg:grid-cols-[310px_minmax(0,1fr)]" aria-label="Histórico de operações">
+      <div className={`${selected ? 'hidden lg:flex' : 'flex'} min-h-0 flex-col border-r border-line bg-panel`}>
         <header className="border-b border-line p-4">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -98,7 +98,7 @@ export function HistoryPanel({
         </div>
       </div>
 
-      <div className={`${selected ? 'flex' : 'hidden md:flex'} min-h-0 flex-col bg-chart`}>
+      <div className={`${selected ? 'flex' : 'hidden lg:flex'} min-h-0 flex-col bg-chart`}>
         {selected ? (
           <>
             <header className="flex items-center justify-between border-b border-line px-5 py-4">

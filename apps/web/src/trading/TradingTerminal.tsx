@@ -244,6 +244,15 @@ export function TradingTerminal({ session, onLogout, onBalance, onAdmin }: Tradi
         )}
       </main>
 
+      {!hasDedicatedPanel && orderSheetOpen && (
+        <button
+          type="button"
+          aria-label="Fechar painel de ordem"
+          className="order-sheet-backdrop is-open lg:hidden"
+          onClick={() => setOrderSheetOpen(false)}
+        />
+      )}
+
       {!hasDedicatedPanel && (
         <div className={`area-order ${orderSheetOpen ? 'is-open' : ''}`}>
           <button
@@ -277,15 +286,18 @@ export function TradingTerminal({ session, onLogout, onBalance, onAdmin }: Tradi
         />
       </div>
 
-      <footer className="area-stat flex h-full items-center justify-between border-t border-line bg-app px-4 font-cond text-[10px] uppercase tracking-[0.06em] text-muted">
-        <span className="flex items-center gap-2">
-          <Icon name="message" size={15} />
-          Suporte · support@veritas.trader
+      <footer className="area-stat flex h-full items-center justify-between gap-2 border-t border-line bg-app px-3 font-cond text-[10px] uppercase tracking-[0.06em] text-muted sm:px-4">
+        <span className="flex min-w-0 items-center gap-2 truncate">
+          <Icon name="message" size={15} className="shrink-0" />
+          <span className="truncate">
+            <span className="sm:hidden">Suporte</span>
+            <span className="hidden sm:inline">Suporte · support@veritas.trader</span>
+          </span>
         </span>
         <span className="hidden items-center gap-1 sm:flex">
           Powered by <strong className="font-semibold text-ink">Veritas</strong>
         </span>
-        <span className="u-num text-[11px] text-ink">
+        <span className="u-num shrink-0 text-[11px] text-ink">
           UTC−3 · {clock.toLocaleTimeString('pt-BR', {
             hour: '2-digit',
             minute: '2-digit',

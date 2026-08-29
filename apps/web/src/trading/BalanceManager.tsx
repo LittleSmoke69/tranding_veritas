@@ -58,8 +58,8 @@ export function BalanceManager({
         className="u-focus rounded-ctl px-2 py-1 text-right leading-none transition hover:bg-elevated"
         aria-label={`Gerenciar saldo atual: ${balanceDisplay}`}
       >
-        <span className="u-caps block">Saldo</span>
-        <span className="u-num mt-1 block text-[17px] font-semibold text-accent">{balanceDisplay}</span>
+        <span className="u-caps hidden sm:block">Saldo</span>
+        <span className="u-num mt-0 block text-[15px] font-semibold text-accent sm:mt-1 sm:text-[17px]">{balanceDisplay}</span>
       </button>
 
       {open && (

@@ -159,15 +159,16 @@ export function PositionsBar({
               )}
             </div>
           ) : (
-            <table className="w-full text-[11px]">
+            <div className="u-scroll overflow-x-auto">
+            <table className="min-w-[640px] w-full text-[11px]">
               <thead className="sticky top-0 z-10 bg-panel font-cond uppercase tracking-[0.06em] text-muted">
                 <tr className="border-b border-line">
                   <th scope="col" className={TH_L}>Ativo</th>
                   <th scope="col" className={TH_L}>Direção</th>
                   <th scope="col" className={TH_R}>{tab === 'open' ? 'Expira em' : 'Resultado'}</th>
                   <th scope="col" className={TH_R}>Investimento</th>
-                  <th scope="col" className={TH_R}>Abertura</th>
-                  <th scope="col" className={TH_R}>{tab === 'open' ? 'Preço atual' : 'Fechamento'}</th>
+                  <th scope="col" className={`${TH_R} hidden sm:table-cell`}>Abertura</th>
+                  <th scope="col" className={`${TH_R} hidden md:table-cell`}>{tab === 'open' ? 'Preço atual' : 'Fechamento'}</th>
                   <th scope="col" className={TH_R}>{tab === 'open' ? 'L/P esperado' : 'L/P'}</th>
                 </tr>
               </thead>
@@ -194,8 +195,8 @@ export function PositionsBar({
                         )}
                       </td>
                       <td className={TD_R}>{p.stake_display}</td>
-                      <td className={`${TD_R} text-muted`}>{formatAssetPrice(p.entry_price)}</td>
-                      <td className={TD_R}>
+                      <td className={`${TD_R} hidden text-muted sm:table-cell`}>{formatAssetPrice(p.entry_price)}</td>
+                      <td className={`${TD_R} hidden md:table-cell`}>
                         {isOpen
                           ? formatAssetPrice(livePrice)
                           : p.exit_price != null
@@ -210,6 +211,7 @@ export function PositionsBar({
                 })}
               </tbody>
             </table>
+            </div>
           )}
         </div>
       )}

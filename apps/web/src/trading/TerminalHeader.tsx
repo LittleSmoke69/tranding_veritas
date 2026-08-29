@@ -33,14 +33,14 @@ export function TerminalHeader({
 }: TerminalHeaderProps) {
   return (
     <header
-      className="flex h-full items-stretch gap-3 border-b border-line bg-app pr-3"
-      style={{ paddingLeft: 12 }}
+      className="flex h-full items-stretch gap-2 border-b border-line bg-app pr-2 sm:gap-3 sm:pr-3"
+      style={{ paddingLeft: 8 }}
     >
-      <div className="flex shrink-0 items-center">
+      <div className="hidden shrink-0 items-center lg:flex">
         <VeritasLogo size="sm" subtitle="Trader" />
       </div>
 
-      <div className="mx-1 my-3 w-px shrink-0 bg-line" aria-hidden="true" />
+      <div className="mx-0.5 my-3 hidden w-px shrink-0 bg-line lg:block" aria-hidden="true" />
 
       {/* Abas de ativos */}
       <div
@@ -57,8 +57,8 @@ export function TerminalHeader({
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => onSelectTab(a.symbol)}
-                className={`u-focus u-lift flex h-12 items-center gap-2.5 rounded-t-panel border-b-2 py-2 pl-3 transition ${
-                  openAssets.length > 1 ? 'pr-8' : 'pr-3'
+                className={`u-focus u-lift flex h-12 items-center gap-2 rounded-t-panel border-b-2 py-2 pl-2 transition sm:pl-3 ${
+                  openAssets.length > 1 ? 'pr-7 sm:pr-8' : 'pr-2 sm:pr-3'
                 } ${
                   isActive
                     ? 'border-accent bg-elevated'
@@ -68,13 +68,13 @@ export function TerminalHeader({
                 <AssetMark asset={a} size={24} />
                 <span className="min-w-0 text-left leading-none">
                   <span
-                    className={`block max-w-[132px] truncate text-[13px] font-semibold ${
+                    className={`block max-w-[88px] truncate text-[13px] font-semibold sm:max-w-[132px] ${
                       isActive ? 'text-ink' : 'text-muted'
                     }`}
                   >
                     {a.name}
                   </span>
-                  <span className="u-caps mt-1 block">{categoryLabel(a.category)}</span>
+                  <span className="u-caps mt-1 hidden sm:block">{categoryLabel(a.category)}</span>
                 </span>
               </button>
 
@@ -103,7 +103,7 @@ export function TerminalHeader({
       </div>
 
       {/* Conta, saldo e depósito */}
-      <div className="flex shrink-0 items-center gap-3">
+      <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
         <div className="hidden items-center gap-2 lg:flex">
           <span
             className="flex h-8 w-8 items-center justify-center rounded-full border border-line bg-elevated text-muted"
