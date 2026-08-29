@@ -29,6 +29,7 @@ export const env = {
   supabaseUrl: required('NEXT_PUBLIC_SUPABASE_URL'),
   supabaseServiceKey: required('SUPABASE_SERVICE_ROLE_KEY'),
   sessionSecret: required('SESSION_SECRET'),
+  workerSecret: process.env.VERITAS_WORKER_SECRET?.trim() || required('SESSION_SECRET'),
   webOrigin: process.env.VERITAS_WEB_ORIGIN?.trim() || 'http://localhost:5173',
   cookieName: 'veritas_session',
   sessionTtlSec: 60 * 60 * 24 * 7,

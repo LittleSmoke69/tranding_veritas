@@ -6,8 +6,12 @@ Aplique **nesta ordem** no SQL Editor do Supabase (mesmo projeto do Zaploto):
 2. `002_seed_instruments.sql` — instrumentos
 3. `003_grants.sql` — grants
 4. `004_crm_users_both.sql` — contas CRM (`crm` → `both`) mantêm CRM e ganham Veritas
+5. `005_otc_assets.sql` — ativos OTC/FX/crypto das telas iniciais
+6. `006_binary_positions.sql` — posições ACIMA/ABAIXO + liquidação
 
 Depois, no Dashboard Supabase → **Settings → API → Exposed schemas**, inclua `veritas` (além de `public`).
+
+> **Self-hosted:** se o PostgREST retornar `Invalid schema: veritas`, a API usa `/pg/query` para ler/escrever o schema `veritas` (não depende da exposição no PostgREST).
 
 Padrão de acesso:
 

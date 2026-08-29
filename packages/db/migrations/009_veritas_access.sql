@@ -1,0 +1,4 @@
+BEGIN;
+ALTER TABLE public.profiles
+  ADD COLUMN IF NOT EXISTS veritas_access_enabled BOOLEAN NOT NULL DEFAULT TRUE;
+COMMIT;

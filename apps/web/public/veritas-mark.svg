@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="shieldFace" x1="12" y1="8" x2="52" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E4FD8"/>
+      <stop offset="1" stop-color="#0B2A8C"/>
+    </linearGradient>
+    <linearGradient id="chrome" x1="8" y1="4" x2="56" y2="68" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4F7FB"/>
+      <stop offset="0.45" stop-color="#A8B4C4"/>
+      <stop offset="1" stop-color="#E8EEF6"/>
+    </linearGradient>
+  </defs>
+  <!-- mortarboard -->
+  <path d="M10 14 L32 6 L54 14 L32 22 Z" fill="url(#chrome)"/>
+  <rect x="30" y="14" width="3" height="8" rx="1" fill="#C9D2DE"/>
+  <path d="M33 14 H46 V16 H33 Z" fill="#9AA7B8"/>
+  <!-- shield -->
+  <path
+    d="M32 18 C44 18 52 22 52 22 V40 C52 52 40 62 32 66 C24 62 12 52 12 40 V22 C12 22 20 18 32 18 Z"
+    fill="url(#shieldFace)"
+    stroke="url(#chrome)"
+    stroke-width="2.2"
+  />
+  <!-- rising bars -->
+  <rect x="20" y="42" width="6" height="10" rx="1" fill="#F5F8FC" opacity="0.95"/>
+  <rect x="29" y="34" width="6" height="18" rx="1" fill="#F5F8FC" opacity="0.95"/>
+  <rect x="38" y="26" width="6" height="26" rx="1" fill="#F5F8FC" opacity="0.95"/>
+</svg>

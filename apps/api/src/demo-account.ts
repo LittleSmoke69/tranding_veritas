@@ -1,5 +1,5 @@
 import { DEMO_CREDIT_CENTS } from '@veritas/shared';
-import { veritasDb } from './db.js';
+import { assertUuid, pgQuery } from './pg.js';
 
 export type DemoAccount = {
   id: string;
@@ -18,82 +18,68 @@ export async function ensureDemoAccount(userId: string): Promise<{
   cashCents: string;
   created: boolean;
 }> {
-  const vdb = veritasDb();
+  const uid = assertUuid(userId, 'user_id');
 
-  const { data: existing, error: findErr } = await vdb
-    .from('accounts')
-    .select('id, user_id, mode, currency, created_at')
-    .eq('user_id', userId)
-    .eq('mode', 'demo')
-    .maybeSingle();
-  if (findErr) throw new Error(`accounts: ${findErr.message}`);
+  const existing = await pgQuery<DemoAccount>(`
+    SELECT id, user_id, mode, currency, created_at::text AS created_at
+    FROM veritas.accounts
+    WHERE user_id = '${uid}'::uuid AND mode = 'demo'
+    LIMIT 1
+  `);
 
-  let account = existing as DemoAccount | null;
+  let account = existing[0] ?? null;
   let created = false;
 
   if (!account) {
-    const { data: inserted, error: insErr } = await vdb
-      .from('accounts')
-      .insert({ user_id: userId, mode: 'demo', currency: 'BRL' })
-      .select('id, user_id, mode, currency, created_at')
-      .single();
-    if (insErr) throw new Error(`criar account: ${insErr.message}`);
-    account = inserted as DemoAccount;
+    const inserted = await pgQuery<DemoAccount>(`
+      INSERT INTO veritas.accounts (user_id, mode, currency)
+      VALUES ('${uid}'::uuid, 'demo', 'BRL')
+      ON CONFLICT (user_id, mode) DO UPDATE SET currency = veritas.accounts.currency
+      RETURNING id, user_id, mode, currency, created_at::text AS created_at
+    `);
+    account = inserted[0] ?? null;
+    if (!account) throw new Error('Não foi possível criar a conta.');
     created = true;
   }
 
-  const eventId = `demo_credit:${account.id}`;
-  const { data: prior } = await vdb
-    .from('ledger_entries')
-    .select('id')
-    .eq('account_id', account.id)
-    .eq('event_id', eventId)
-    .limit(1);
+  const accountId = assertUuid(account.id, 'account_id');
+  const eventId = `demo_credit:${accountId}`;
 
-  if (!prior?.length) {
-    const credit = DEMO_CREDIT_CENTS;
-    const rows = [
-      {
-        account_id: account.id,
-        event_id: eventId,
-        leg: 'credit',
-        bucket: 'cash',
-        amount: credit.toString(),
-        asset: 'BRL',
-      },
-      {
-        account_id: account.id,
-        event_id: eventId,
-        leg: 'debit',
-        bucket: 'funding',
-        amount: (-credit).toString(),
-        asset: 'BRL',
-      },
-    ];
-    const { error: ledErr } = await vdb.from('ledger_entries').insert(rows);
-    if (ledErr) {
-      // corrida idempotente
-      if (!/duplicate|unique/i.test(ledErr.message)) {
-        throw new Error(`ledger demo: ${ledErr.message}`);
-      }
+  const prior = await pgQuery<{ id: string }>(`
+    SELECT id FROM veritas.ledger_entries
+    WHERE account_id = '${accountId}'::uuid
+      AND event_id = '${eventId}'
+    LIMIT 1
+  `);
+
+  if (!prior.length) {
+    const credit = DEMO_CREDIT_CENTS.toString();
+    try {
+      await pgQuery(`
+        INSERT INTO veritas.ledger_entries
+          (account_id, event_id, leg, bucket, amount, asset)
+        VALUES
+          ('${accountId}'::uuid, '${eventId}', 'credit', 'cash', ${credit}, 'BRL'),
+          ('${accountId}'::uuid, '${eventId}', 'debit', 'funding', -${credit}, 'BRL')
+      `);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      if (!/duplicate|unique/i.test(msg)) throw err;
     }
   }
 
-  const cashCents = await sumCash(account.id);
+  const cashCents = await sumCash(accountId);
   return { account, cashCents: cashCents.toString(), created };
 }
 
 export async function sumCash(accountId: string): Promise<bigint> {
-  const { data, error } = await veritasDb()
-    .from('ledger_entries')
-    .select('amount')
-    .eq('account_id', accountId)
-    .eq('bucket', 'cash')
-    .eq('asset', 'BRL');
-  if (error) throw new Error(`sum cash: ${error.message}`);
-  let total = 0n;
-  for (const row of data || []) {
-    total += BigInt(row.amount as number | string);
-  }
-  return total;
+  const id = assertUuid(accountId, 'account_id');
+  const rows = await pgQuery<{ total: string | number | null }>(`
+    SELECT COALESCE(SUM(amount), 0)::text AS total
+    FROM veritas.ledger_entries
+    WHERE account_id = '${id}'::uuid
+      AND bucket = 'cash'
+      AND asset = 'BRL'
+  `);
+  return BigInt(rows[0]?.total ?? '0');
 }

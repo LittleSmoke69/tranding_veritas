@@ -8,12 +8,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build -w @veritas/shared && npm run build -w @veritas/db && npm run build -w @veritas/api && npm run build -w @veritas/web",
-    "dev": "concurrently -n api,web -c orange,cyan \"npm run dev -w @veritas/api\" \"npm run dev -w @veritas/web\"",
+    "build": "npm run build -w @veritas/shared && npm run build -w @veritas/db && npm run build -w @veritas/api && npm run build -w @veritas/worker && npm run build -w @veritas/web",
+    "dev": "concurrently -n api,worker,web -c orange,magenta,cyan \"npm run dev -w @veritas/api\" \"npm run dev -w @veritas/worker\" \"npm run dev -w @veritas/web\"",
     "dev:api": "npm run dev -w @veritas/api",
     "dev:web": "npm run dev -w @veritas/web",
     "test": "npm run test -w @veritas/shared",
-    "typecheck": "npm run typecheck -w @veritas/shared && npm run typecheck -w @veritas/api && npm run typecheck -w @veritas/web",
+    "typecheck": "npm run typecheck -w @veritas/shared && npm run typecheck -w @veritas/api && npm run typecheck -w @veritas/worker && npm run typecheck -w @veritas/web",
     "lint:money": "node scripts/assert-no-float-money.mjs"
   },
   "engines": {

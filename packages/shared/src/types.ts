@@ -1,5 +1,5 @@
-export type AssetClass = 'crypto' | 'equity';
-export type ProductKind = 'spot' | 'margin' | 'binary';
+export type AssetClass = 'crypto' | 'equity' | 'forex' | 'commodity' | 'index' | 'otc';
+export type ProductKind = 'spot' | 'margin' | 'binary' | 'blitz' | 'digital';
 export type AccountMode = 'demo' | 'live';
 export type LedgerLeg = 'debit' | 'credit';
 export type LedgerBucket =

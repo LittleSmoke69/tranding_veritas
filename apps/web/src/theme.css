@@ -1,0 +1,415 @@
+/* ============================================================================
+   VeritasTrader — Tema único (design tokens)
+   ----------------------------------------------------------------------------
+   Camada 1: paleta bruta (valores literais, nunca usada direto em componente)
+   Camada 2: tokens semânticos (o que os componentes consomem)
+   Camada 3: ponte Tailwind v4 (@theme inline → utilitários bg-app, text-ink…)
+
+   Para um tema claro futuro: redefinir SÓ a camada 2 dentro de
+   [data-theme="light"]. Nenhum componente precisa mudar.
+   ========================================================================== */
+
+/* ─── Camada 1 · paleta bruta ─────────────────────────────────────────────── */
+:root {
+  /* Azul-petróleo dessaturado */
+  --petrol-950: #0e1620;
+  --petrol-900: #16202b;
+  --petrol-850: #1b2733;
+  --petrol-800: #223140;
+  --petrol-750: #223040;
+  --petrol-700: #2a3744;
+  --petrol-600: #35475a;
+
+  /* Neutros de texto */
+  --slate-050: #e6edf3;
+  --slate-400: #8a99a8;
+  --slate-500: #6b7a89;
+
+  /* Direcional */
+  --green-500: #34b565;
+  --green-700: #2b9553;
+  --green-ink: #06210f;
+  --red-500: #c4573d;
+  --red-600: #b54a31;
+  --red-300: #e07a5f;
+  --red-800: #a33119;
+
+  /* Marca Veritas */
+  --azure-400: #00c2ff;
+  --azure-600: #1e4fd8;
+  --amber-500: #f5a623;
+  --emerald-500: #2ecc71;
+
+  --paper: #e9eff5;
+}
+
+/* ─── Camada 2 · tokens semânticos (tema escuro = padrão) ─────────────────── */
+:root {
+  color-scheme: dark;
+
+  /* Superfícies */
+  --bg-app: var(--petrol-950);
+  --bg-panel: var(--petrol-900);
+  --bg-chart: var(--petrol-850);
+  --bg-elevated: var(--petrol-800);
+  --watermark: var(--petrol-750);
+  --border: var(--petrol-700);
+  --border-strong: var(--petrol-600);
+  --grid: rgba(255, 255, 255, 0.06);
+  --scrim: rgba(3, 8, 14, 0.62);
+
+  /* Texto */
+  --text-primary: var(--slate-050);
+  --text-muted: var(--slate-400);
+  --text-faint: var(--slate-500);
+
+  /* Direcional — `-fill` pinta superfície, `-text` é legível sobre painel */
+  --bull: var(--green-500);
+  --bull-fill: var(--green-500);
+  --bull-text: var(--green-500);
+  --on-bull: var(--green-ink);
+  --bear: var(--red-500);
+  --bear-fill: var(--red-600);
+  --bear-text: var(--red-300);
+  --on-bear: #ffffff;
+  --bear-ink: var(--red-800); /* vermelho legível sobre superfície clara */
+
+  /* Marca — azul manda na UI, âmbar reservado a saldo/NEW */
+  --brand: var(--azure-400);
+  --brand-strong: var(--azure-600);
+  --brand-dim: rgba(0, 194, 255, 0.14);
+  --brand-line: rgba(0, 194, 255, 0.45);
+  --accent: var(--amber-500);
+  --accent-dim: rgba(245, 166, 35, 0.16);
+  --cta: var(--emerald-500);
+
+  /* Superfície clara (badge de preço) */
+  --surface-bright: var(--paper);
+  --on-bright: var(--petrol-950);
+
+  /* Raio */
+  --radius-ctl: 4px;
+  --radius-panel: 6px;
+  --radius-btn: 8px;
+
+  /* Tipografia */
+  --font-ui: "IBM Plex Sans", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-cond: "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, sans-serif;
+  --font-brand: "Cinzel", "Times New Roman", serif;
+
+  /* Métricas de moldura */
+  --h-topbar: 64px;
+  --h-status: 40px;
+  --w-rail: 96px;
+  --w-order: 200px;
+  --h-mobile-nav: 64px;
+
+  /* Movimento */
+  --dur-fast: 150ms;
+  --dur: 200ms;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Elevação */
+  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  --shadow-float: 0 8px 24px rgba(3, 8, 14, 0.5);
+  --shadow-sheet: 0 -12px 32px rgba(3, 8, 14, 0.55);
+
+  /* Camadas */
+  --z-chart-overlay: 10;
+  --z-chart-ui: 20;
+  --z-sheet: 40;
+  --z-modal: 100;
+  --z-toast: 1000;
+}
+
+/* ─── Camada 3 · ponte Tailwind v4 ────────────────────────────────────────── */
+@theme inline {
+  --color-app: var(--bg-app);
+  --color-panel: var(--bg-panel);
+  --color-chart: var(--bg-chart);
+  --color-elevated: var(--bg-elevated);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-ink: var(--text-primary);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+  --color-bull: var(--bull);
+  --color-bull-text: var(--bull-text);
+  --color-on-bull: var(--on-bull);
+  --color-bear: var(--bear);
+  --color-bear-fill: var(--bear-fill);
+  --color-bear-text: var(--bear-text);
+  --color-brand: var(--brand);
+  --color-accent: var(--accent);
+  --color-cta: var(--cta);
+
+  --radius-ctl: var(--radius-ctl);
+  --radius-panel: var(--radius-panel);
+  --radius-btn: var(--radius-btn);
+
+  --font-ui: var(--font-ui);
+  --font-cond: var(--font-cond);
+  --font-brand: var(--font-brand);
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--brand-dim);
+  color: var(--text-primary);
+}
+
+/* ─── Utilitários de tema ─────────────────────────────────────────────────── */
+
+/* Todo número da interface usa figuras tabulares (evita layout shift) */
+.u-num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Rótulo de menu: CAPS condensado 10–11px */
+.u-caps {
+  font-family: var(--font-cond);
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.u-caps-11 {
+  font-size: 11px;
+}
+
+/* Foco visível único para toda a plataforma */
+.u-focus {
+  outline: none;
+}
+
+.u-focus:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: var(--radius-ctl);
+}
+
+/* Realce de 8% no hover sem deslocar layout */
+.u-lift {
+  transition:
+    filter var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.u-lift:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.u-lift:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.u-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.u-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.u-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+}
+
+.u-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Steppers: esconde as setas nativas do input number */
+.u-stepper::-webkit-outer-spin-button,
+.u-stepper::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.u-stepper {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-elevated) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ─── Entrada do terminal ─────────────────────────────────────────────────── */
+@keyframes loading-bar-rise {
+  0% { opacity: 0.18; transform: scaleY(0.08); }
+  55% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0.72; transform: scaleY(0.82); }
+}
+
+@keyframes loading-line-draw {
+  from { opacity: 0.2; stroke-dashoffset: 2600; }
+  45% { opacity: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes loading-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.loading-chart-bar {
+  animation: loading-bar-rise 900ms var(--ease-out) infinite alternate;
+}
+
+.loading-chart-line {
+  filter: drop-shadow(0 0 9px color-mix(in srgb, var(--brand) 75%, transparent));
+  stroke-dasharray: 2600;
+  animation: loading-line-draw 2100ms var(--ease-out) both;
+}
+
+.loading-chart-line--secondary {
+  opacity: 0.45;
+  animation-delay: 180ms;
+}
+
+.loading-logo-panel {
+  box-shadow: 0 0 72px color-mix(in srgb, var(--brand) 22%, transparent);
+}
+
+.loading-logo {
+  filter: drop-shadow(0 0 24px color-mix(in srgb, var(--brand) 42%, transparent));
+}
+
+.loading-progress {
+  transform-origin: left;
+  animation: loading-progress 2200ms var(--ease-out) both;
+}
+
+/* ─── Movimento reduzido ──────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .u-lift:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* ─── Moldura da aplicação ────────────────────────────────────────────────
+   Grid de altura fixa: a moldura NUNCA rola; só as regiões internas rolam.
+   ≥1024px  rail | gráfico | ordem     <1024px  tudo empilhado,
+   ─────────────────────────────────   rail vira barra inferior e o painel
+                                        de ordem vira folha no rodapé.
+   ------------------------------------------------------------------------ */
+.app-grid {
+  display: grid;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--bg-app);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows:
+    var(--h-topbar)
+    minmax(0, 1fr)
+    auto
+    var(--h-status)
+    var(--h-mobile-nav);
+  grid-template-areas:
+    "top"
+    "chart"
+    "pos"
+    "stat"
+    "rail";
+}
+
+@media (min-width: 1024px) {
+  .app-grid {
+    grid-template-columns: var(--w-rail) minmax(0, 1fr) var(--w-order);
+    grid-template-rows: var(--h-topbar) minmax(0, 1fr) auto var(--h-status);
+    grid-template-areas:
+      "top  top   top"
+      "rail chart order"
+      "rail pos   order"
+      "stat stat  stat";
+  }
+
+  .app-grid--agents {
+    grid-template-columns: var(--w-rail) minmax(0, 1fr);
+    grid-template-areas:
+      "top  top"
+      "rail chart"
+      "rail pos"
+      "stat stat";
+  }
+}
+
+.area-top { grid-area: top; min-width: 0; }
+.area-rail { grid-area: rail; min-width: 0; min-height: 0; }
+.area-chart { grid-area: chart; min-width: 0; min-height: 0; }
+.area-order { grid-area: order; min-width: 0; min-height: 0; }
+.area-pos { grid-area: pos; min-width: 0; min-height: 0; }
+.area-stat { grid-area: stat; min-width: 0; }
+
+/* Folha de ordem no mobile: sobrepõe o gráfico apenas quando aberta. */
+@media (max-width: 1023.98px) {
+  .area-order {
+    position: fixed;
+    z-index: var(--z-sheet);
+    right: 0;
+    bottom: calc(var(--h-status) + var(--h-mobile-nav));
+    left: 0;
+    height: min(430px, 52dvh);
+    max-height: calc(100dvh - var(--h-topbar) - var(--h-status) - var(--h-mobile-nav));
+    border-top: 1px solid var(--border);
+    box-shadow: var(--shadow-sheet);
+    transform: translateY(calc(100% + var(--h-status) + var(--h-mobile-nav)));
+    visibility: hidden;
+    transition:
+      transform var(--dur) var(--ease-out),
+      visibility var(--dur);
+  }
+
+  .area-order.is-open {
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
