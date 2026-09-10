@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
+import { scrollToId } from "./hooks/useLenis";
 import ScrollRevealText from "./components/ScrollRevealText";
 import logo1 from "./imports/logo_1.png";
 import imgBinance    from "./imports/image-7.png";
@@ -144,7 +145,7 @@ export function navigate(path: string) {
 }
 
 const NAV_LINKS = [
-  { label: "Início", path: "/" },
+  { label: "Página Inicial", path: "/" },
   { label: "Mercados", path: "/mercados" },
   { label: "Educação", path: "/educacao" },
   { label: "Planos", path: "/planos" },
@@ -236,11 +237,14 @@ export function Navbar({ path }: { path: string }) {
               </div>
             )}
           </div>
+          <button onClick={() => scrollToId("contato")}
+            style={{ color: MFG, fontSize: "0.9375rem", fontWeight: 600, letterSpacing: "0.01em" }}
+            className="transition-colors hover:text-white">Contato</button>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <a href={PLATFORM_URL} className="px-5 py-2.5 rounded-xl hover:opacity-90 animate-pulse-blue"
             style={{ background: B, color: "#fff", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 24px var(--primary-glow)" }}>
-            Acessar Plataforma
+            Acesso à Plataforma
           </a>
         </div>
         <button className="md:hidden" onClick={() => setOpen(!open)} style={{ color: FG }}>
@@ -286,8 +290,10 @@ export function Navbar({ path }: { path: string }) {
               ))}
             </div>
           )}
+          <button onClick={() => { scrollToId("contato"); setOpen(false); }} className="block w-full py-3 text-left border-b"
+            style={{ color: MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>Contato</button>
           <a href={PLATFORM_URL} className="mt-4 block w-full py-3 rounded-xl text-center"
-            style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acessar Plataforma</a>
+            style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acesso à Plataforma</a>
         </div>
       )}
     </nav>
@@ -321,7 +327,7 @@ export function useCountUp(target: number, d = 2000) {
 // ── Footer ────────────────────────────────────────────────────────────────────
 export function Footer() {
   return (
-    <footer className="border-t py-16" style={{ borderColor: BORDER, background: CARD }}>
+    <footer id="contato" className="border-t py-16" style={{ borderColor: BORDER, background: CARD }}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">

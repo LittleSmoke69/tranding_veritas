@@ -56,7 +56,7 @@ function Navbar({
     return () => window.removeEventListener("scroll", h);
   }, []);
   const links: { label: string; view: LandingView }[] = [
-    { label: "Início", view: "home" },
+    { label: "Página Inicial", view: "home" },
     { label: "Mercados", view: "mercados" },
     { label: "Educação", view: "educacao" },
     { label: "Planos", view: "planos" },
@@ -120,11 +120,14 @@ function Navbar({
               </div>
             )}
           </div>
+          <button onClick={() => scrollToId("contato")}
+            style={{ color: MFG, fontSize: "0.9375rem", fontWeight: 600, letterSpacing: "0.01em" }}
+            className="transition-colors hover:text-white">Contato</button>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <button onClick={onAccessPlatform} className="px-5 py-2.5 rounded-xl hover:opacity-90 animate-pulse-blue"
             style={{ background: B, color: "#fff", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 24px var(--primary-glow)" }}>
-            Acessar Plataforma
+            Acesso à Plataforma
           </button>
         </div>
         <button className="md:hidden" onClick={() => setOpen(!open)} style={{ color: FG }}>
@@ -170,8 +173,10 @@ function Navbar({
               ))}
             </div>
           )}
+          <button onClick={() => { scrollToId("contato"); setOpen(false); }} className="block w-full py-3 text-left border-b"
+            style={{ color: MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>Contato</button>
           <button onClick={onAccessPlatform} className="mt-4 w-full py-3 rounded-xl"
-            style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acessar Plataforma</button>
+            style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acesso à Plataforma</button>
         </div>
       )}
     </nav>
