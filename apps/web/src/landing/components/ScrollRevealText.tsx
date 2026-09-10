@@ -52,20 +52,35 @@ export default function ScrollRevealText({
     return () => ctx.revert();
   }, [children, stagger, start, end]);
 
-  const chars = [...children].map((char, i) =>
-    char === " " ? (
-      <span key={i} className="char" style={{ display: "inline-block", width: "0.25em", opacity: 0 }}>&nbsp;</span>
-    ) : (
-      <span key={i} className="char" style={{ display: "inline-block", opacity: 0 }}>
-        {char}
+  // Cada palavra vira um bloco inline-block contendo suas letras — assim o
+  // navegador só pode quebrar linha ENTRE palavras, nunca no meio de uma,
+  // já que cada letra sendo seu próprio span (para animar) apaga a noção
+  // nativa de "palavra" que o motor de quebra de linha usaria.
+  const words = children.split(" ");
+  let index = 0;
+  const content = words.map((word, wi) => {
+    const letters = [...word].map((char) => {
+      const key = index++;
+      return (
+        <span key={key} className="char" style={{ display: "inline-block", opacity: 0 }}>
+          {char}
+        </span>
+      );
+    });
+    return (
+      <span key={`w${wi}`} style={{ display: "inline-block" }}>
+        {letters}
+        {wi < words.length - 1 && (
+          <span key={`s${wi}`} className="char" style={{ display: "inline-block", width: "0.25em", opacity: 0 }}>&nbsp;</span>
+        )}
       </span>
-    )
-  );
+    );
+  });
 
   return (
     // @ts-ignore
     <Tag ref={ref} className={className} style={style}>
-      {chars}
+      {content}
     </Tag>
   );
 }
