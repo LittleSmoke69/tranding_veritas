@@ -3,199 +3,31 @@ import { useLenis } from "./hooks/useLenis";
 import ScrollRevealText from "./components/ScrollRevealText";
 import {
   Bitcoin, Target, Zap, BarChart3, Users,
-  ShieldCheck, ArrowRight, ChevronDown, Clock, Trophy,
+  ShieldCheck, ArrowRight, ChevronDown, Trophy,
   Percent, AlertTriangle, Lightbulb, Eye, Rocket, Globe,
   BookOpen, Bot, Scale, Handshake, TrendingUp,
 } from "lucide-react";
-import logo1 from "./imports/logo_1.png";
-import imgBinance    from "./imports/image-7.png";
-import imgCoinbase   from "./imports/image-8.png";
-import imgBybit      from "./imports/image-9.png";
-import imgKucoin     from "./imports/image-10.png";
-import imgTitaniumfx from "./imports/image-11.png";
-import imgKraken     from "./imports/image-12.png";
-import imgXm         from "./imports/image-13.png";
-import imgPepperstone from "./imports/image-14.png";
-import imgBlackbull  from "./imports/image-15.png";
-import imgAvenue     from "./imports/image-16.png";
+import Mercados from "./pages/Mercados";
+import Educacao from "./pages/Educacao";
+import Planos from "./pages/Planos";
+import {
+  B, BD, BB, G, GD, RED, RD, RB, GOLD, CARD, MFG, FG, BORDER,
+  IBox, Badge, SectionHeader, Ticker, PLATFORM_URL, usePath, navigate,
+  Navbar, useCountUp, Footer, NoiseOverlay, BrokersSection,
+} from "./shared";
 
-// ── Tokens ────────────────────────────────────────────────────────────────────
-const B      = "var(--primary)";
-const BD     = "var(--primary-dim)";
-const BB     = "var(--primary-border)";
-const G      = "var(--green)";
-const GD     = "var(--green-dim)";
-const RED    = "var(--red)";
-const RD     = "rgba(248,113,113,0.1)";
-const RB     = "rgba(248,113,113,0.2)";
-const GOLD   = "var(--gold)";
-const CARD   = "var(--card)";
-const MFG    = "var(--muted-foreground)";
-const FG     = "var(--foreground)";
-const BORDER = "var(--border)";
-
-// ── Shared: icon box ──────────────────────────────────────────────────────────
-function IBox({ children, color = "blue" }: { children: React.ReactNode; color?: "blue"|"green"|"red"|"gold" }) {
-  const map = {
-    blue:  { bg: BD, border: BB, c: B },
-    green: { bg: GD, border: "rgba(0,232,122,0.2)", c: G },
-    red:   { bg: RD, border: RB,  c: RED },
-    gold:  { bg: "rgba(201,168,76,0.1)", border: "rgba(201,168,76,0.25)", c: GOLD },
-  };
-  const s = map[color];
-  return (
-    <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-      style={{ background: s.bg, border: `1px solid ${s.border}` }}>
-      <div className="w-5 h-5" style={{ color: s.c }}>{children}</div>
-    </div>
-  );
-}
-
-// ── Shared: badge ─────────────────────────────────────────────────────────────
-function Badge({ children, color = "blue" }: { children: React.ReactNode; color?: "blue"|"green"|"red"|"gold" }) {
-  const map = {
-    blue:  { bg: BD, border: BB, c: B },
-    green: { bg: GD, border: "rgba(0,232,122,0.2)", c: G },
-    red:   { bg: RD, border: RB,  c: RED },
-    gold:  { bg: "rgba(201,168,76,0.1)", border: "rgba(201,168,76,0.25)", c: GOLD },
-  };
-  const s = map[color];
-  return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full"
-      style={{ background: s.bg, border: `1px solid ${s.border}`, color: s.c, fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.04em" }}>
-      {children}
-    </span>
-  );
-}
-
-// ── Section header helper ─────────────────────────────────────────────────────
-function SectionHeader({
-  badge, badgeColor = "blue", heading, sub, center = false,
-}: {
-  badge?: React.ReactNode;
-  badgeColor?: "blue"|"green"|"red"|"gold";
-  heading: string;
-  sub?: string;
-  center?: boolean;
-}) {
-  return (
-    <div className={`mb-16 ${center ? "text-center" : ""}`}>
-      {badge && <div className={`mb-4 ${center ? "flex justify-center" : ""}`}><Badge color={badgeColor}>{badge}</Badge></div>}
-      <h2 className={`section-heading-xl ${center ? "mx-auto" : ""}`} style={{ maxWidth: center ? "22ch" : undefined }}>
-        <ScrollRevealText>{heading}</ScrollRevealText>
-      </h2>
-      {sub && <p className={center ? "section-body-center mt-4" : "section-body mt-4"}>{sub}</p>}
-    </div>
-  );
-}
-
-// ── Ticker ────────────────────────────────────────────────────────────────────
-const TICK = [
-  { sym: "BTC/USD",  p: "94.210,50", c: "+2,34%", up: true  },
-  { sym: "ETH/USD",  p: "3.489,20",  c: "+1,87%", up: true  },
-  { sym: "SOL/USD",  p: "182,40",    c: "+4,12%", up: true  },
-  { sym: "BNB/USD",  p: "589,30",    c: "-0,42%", up: false },
-  { sym: "XRP/USD",  p: "0,6821",    c: "+3,21%", up: true  },
-  { sym: "DOGE/USD", p: "0,1543",    c: "-1,10%", up: false },
-  { sym: "EUR/USD",  p: "1,0921",    c: "+0,08%", up: true  },
-  { sym: "GBP/USD",  p: "1,2748",    c: "-0,14%", up: false },
-  { sym: "GOLD",     p: "2.341,00",  c: "+0,62%", up: true  },
-  { sym: "OIL",      p: "81,45",     c: "-0,31%", up: false },
-];
-
-function Ticker() {
-  const items = [...TICK, ...TICK];
-  return (
-    <div className="overflow-hidden py-2.5 border-b" style={{ borderColor: BORDER, background: "rgba(25,172,254,0.03)" }}>
-      <div className="flex animate-ticker" style={{ width: "max-content" }}>
-        {items.map((t, i) => (
-          <div key={i} className="flex items-center gap-2.5 px-7 whitespace-nowrap">
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 600, color: MFG, letterSpacing: "0.04em" }}>{t.sym}</span>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: FG }}>{t.p}</span>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: t.up ? G : RED }}>
-              {t.up ? "▲" : "▼"} {t.c}
-            </span>
-            <span style={{ color: BORDER, fontSize: 7 }}>◆</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ── Link para a plataforma (demo.investirbot.online) ───────────────────────────
-const PLATFORM_URL = "https://demo.investirbot.online";
-
-// ── Navbar ────────────────────────────────────────────────────────────────────
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", h);
-    return () => window.removeEventListener("scroll", h);
-  }, []);
-  const links = ["Início", "Binárias", "Cripto", "Sinais", "Educação", "Contato"];
-  return (
-    <nav className="sticky top-0 z-50 transition-all duration-300"
-      style={{ background: scrolled ? "rgba(4,5,12,0.95)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? `1px solid ${BORDER}` : "none" }}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        <img src={logo1} alt="Veritas" className="h-9 w-auto object-contain"
-          style={{ filter: "drop-shadow(0 0 8px rgba(25,172,254,0.3))" }} />
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a key={l} href="#"
-              style={{ color: MFG, fontSize: "0.8125rem", fontWeight: 600, letterSpacing: "0.01em" }}
-              className="transition-colors hover:text-white">{l}</a>
-          ))}
-        </div>
-        <div className="hidden md:flex items-center gap-3">
-          <a href={PLATFORM_URL} style={{ color: MFG, fontSize: "0.8125rem", fontWeight: 600 }} className="px-4 py-2 rounded-lg">Entrar</a>
-          <a href={PLATFORM_URL} className="px-5 py-2.5 rounded-xl hover:opacity-90 animate-pulse-blue"
-            style={{ background: B, color: "#fff", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 24px var(--primary-glow)" }}>
-            Acessar Plataforma
-          </a>
-        </div>
-        <button className="md:hidden" onClick={() => setOpen(!open)} style={{ color: FG }}>
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-              d={open ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-          </svg>
-        </button>
-      </div>
-      {open && (
-        <div className="md:hidden px-6 pb-4" style={{ background: "rgba(4,5,12,0.98)" }}>
-          {links.map((l) => (
-            <a key={l} href="#" className="block py-3 border-b"
-              style={{ color: MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>{l}</a>
-          ))}
-          <a href={PLATFORM_URL} className="mt-4 block w-full py-3 rounded-xl text-center"
-            style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acessar Plataforma</a>
-        </div>
-      )}
-    </nav>
-  );
-}
-
-// ── Hero: binary trading panel ────────────────────────────────────────────────
-function BinaryPanel() {
-  const [timer, setTimer] = useState(47);
-  const [selected, setSelected] = useState<"call" | "put" | null>(null);
-  const [profit, setProfit] = useState<null | { win: boolean }>(null);
+// ── Hero: painel de operação ao vivo ───────────────────────────────────────────
+function LivePanel() {
+  const [side, setSide] = useState<"buy" | "sell" | null>(null);
+  const [filled, setFilled] = useState(false);
 
   useEffect(() => {
-    const iv = setInterval(() => {
-      setTimer((t) => {
-        if (t <= 1) {
-          if (selected) setProfit({ win: Math.random() > 0.3 });
-          setTimeout(() => { setTimer(60); setProfit(null); setSelected(null); }, 2000);
-          return 0;
-        }
-        return t - 1;
-      });
-    }, 1000);
-    return () => clearInterval(iv);
-  }, [selected]);
+    if (!side) return;
+    setFilled(false);
+    const fill = window.setTimeout(() => setFilled(true), 900);
+    const reset = window.setTimeout(() => { setSide(null); setFilled(false); }, 3200);
+    return () => { window.clearTimeout(fill); window.clearTimeout(reset); };
+  }, [side]);
 
   return (
     <div className="bento-card p-6 w-full max-w-sm mx-auto" style={{ boxShadow: "0 40px 80px rgba(0,0,0,0.6)" }}>
@@ -211,8 +43,8 @@ function BinaryPanel() {
           </div>
         </div>
         <div className="text-right">
-          <p className="card-label">Payout</p>
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "1.25rem", fontWeight: 700, color: G }}>+87%</p>
+          <p className="card-label">Alavancagem</p>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "1.25rem", fontWeight: 700, color: G }}>10x</p>
         </div>
       </div>
 
@@ -245,46 +77,34 @@ function BinaryPanel() {
         </svg>
       </div>
 
-      {/* Expiry timer */}
-      <div className="flex items-center justify-between mb-4 p-3 rounded-xl"
-        style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}>
-        <div className="flex items-center gap-2">
-          <Clock className="w-4 h-4" style={{ color: timer < 10 ? RED : B }} />
-          <span style={{ fontSize: "0.75rem", fontWeight: 600, color: MFG }}>Expiração</span>
-        </div>
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "1.375rem", fontWeight: 700, color: timer < 10 ? RED : FG }}>
-          00:{timer.toString().padStart(2, "0")}
-        </span>
-      </div>
-
       {/* Entry */}
       <div className="flex items-center justify-between mb-5 px-1">
         <div>
-          <p className="card-label mb-1">Entrada</p>
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: FG }}>R$ 100,00</p>
+          <p className="card-label mb-1">Preço de entrada</p>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: FG }}>$ 94.210,50</p>
         </div>
         <div className="text-right">
-          <p className="card-label mb-1">Retorno</p>
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: G }}>R$ 187,00</p>
+          <p className="card-label mb-1">Volume 24h</p>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: G }}>$ 2,4B</p>
         </div>
       </div>
 
-      {profit ? (
+      {side ? (
         <div className="py-4 rounded-xl text-center"
-          style={{ background: profit.win ? GD : RD, color: profit.win ? G : RED, border: `1px solid ${profit.win ? "rgba(0,232,122,0.3)" : RB}`, fontWeight: 700, fontSize: "1rem" }}>
-          {profit.win ? "✓ WIN  +R$ 87,00" : "✗ LOSS  -R$ 100,00"}
+          style={{ background: side === "buy" ? GD : RD, color: side === "buy" ? G : RED, border: `1px solid ${side === "buy" ? "rgba(0,232,122,0.3)" : RB}`, fontWeight: 700, fontSize: "1rem" }}>
+          {filled ? `✓ Posição em ${side === "buy" ? "ALTA" : "BAIXA"} aberta` : "Executando ordem…"}
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-3">
-          <button onClick={() => setSelected("call")}
+          <button onClick={() => setSide("buy")}
             className="py-3 rounded-xl transition-all hover:scale-105"
-            style={{ background: selected === "call" ? G : GD, color: selected === "call" ? "#fff" : G, border: "1px solid rgba(0,232,122,0.3)", fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
-            ▲ CALL
+            style={{ background: GD, color: G, border: "1px solid rgba(0,232,122,0.3)", fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
+            ▲ COMPRAR
           </button>
-          <button onClick={() => setSelected("put")}
+          <button onClick={() => setSide("sell")}
             className="py-3 rounded-xl transition-all hover:scale-105"
-            style={{ background: selected === "put" ? RED : RD, color: selected === "put" ? "#fff" : RED, border: `1px solid ${RB}`, fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
-            ▼ PUT
+            style={{ background: RD, color: RED, border: `1px solid ${RB}`, fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
+            ▼ VENDER
           </button>
         </div>
       )}
@@ -353,7 +173,7 @@ function Hero() {
             <div className="flex flex-wrap gap-3">
               {[
                 { label: "Taxa de acerto", value: "78%" },
-                { label: "Payout médio",   value: "+87%" },
+                { label: "ROI médio mensal", value: "+18%" },
                 { label: "Traders ativos", value: "5.200+" },
               ].map((p) => (
                 <div key={p.label} className="flex items-center gap-2.5 px-4 py-2 rounded-full"
@@ -366,7 +186,7 @@ function Hero() {
           </div>
 
           <div className="animate-float hidden lg:block">
-            <BinaryPanel />
+            <LivePanel />
           </div>
         </div>
       </div>
@@ -379,39 +199,17 @@ function Hero() {
 }
 
 // ── Stats ─────────────────────────────────────────────────────────────────────
-function useCountUp(target: number, d = 2000) {
-  const [value, setValue] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const started = useRef(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !started.current) {
-        started.current = true;
-        const t0 = Date.now();
-        const tick = () => {
-          const p = Math.min((Date.now() - t0) / d, 1);
-          setValue(Math.round((1 - Math.pow(1 - p, 3)) * target));
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      }
-    }, { threshold: 0.3 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [target, d]);
-  return { value, ref };
-}
 
 const STATS = [
   { value: 5200, suffix: "+",  label: "Traders formados",       icon: <Users className="w-5 h-5" />,   prefix: ""  },
   { value: 78,   suffix: "%",  label: "Taxa média de acerto",   icon: <Target className="w-5 h-5" />,  prefix: ""  },
-  { value: 87,   suffix: "%",  label: "Payout médio garantido", icon: <Percent className="w-5 h-5" />, prefix: "+" },
+  { value: 18,   suffix: "%",  label: "ROI médio mensal",       icon: <Percent className="w-5 h-5" />, prefix: "+" },
   { value: 3200, suffix: "+",  label: "Sinais emitidos/mês",    icon: <Zap className="w-5 h-5" />,     prefix: ""  },
 ];
 
 function Stats() {
   const winRate = useCountUp(78);
-  const payout  = useCountUp(87);
+  const roi     = useCountUp(18);
   const traders = useCountUp(5200);
   const signals = useCountUp(3200);
 
@@ -468,8 +266,8 @@ function Stats() {
             </div>
           </div>
 
-          {/* Bottom-left — Payout */}
-          <div ref={payout.ref} className="bento-card p-7 flex flex-col items-center justify-center text-center gap-5" style={{ minHeight: 220 }}>
+          {/* Bottom-left — ROI */}
+          <div ref={roi.ref} className="bento-card p-7 flex flex-col items-center justify-center text-center gap-5" style={{ minHeight: 220 }}>
             {/* Double-ring icon */}
             <div className="relative flex items-center justify-center" style={{ width: 100, height: 100 }}>
               <div className="absolute inset-0 rounded-full" style={{ border: `1px solid rgba(25,172,254,0.12)` }} />
@@ -482,8 +280,8 @@ function Stats() {
               </div>
             </div>
             <div>
-              <p className="stat-value" style={{ fontSize: "2.5rem" }}>+{payout.value}%</p>
-              <p className="stat-label">Payout médio garantido</p>
+              <p className="stat-value" style={{ fontSize: "2.5rem" }}>+{roi.value}%</p>
+              <p className="stat-label">ROI médio mensal</p>
             </div>
           </div>
 
@@ -520,7 +318,7 @@ function Solutions() {
         <SectionHeader
           badge="O que você aprende"
           heading="Do sinal ao lucro em operações reais"
-          sub="Metodologia completa para operar binárias e cripto com consistência — estratégia, gestão e psicologia do trader."
+          sub="Metodologia completa para operar cripto e forex com consistência — estratégia, gestão e psicologia do trader."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-6 gap-4">
@@ -536,24 +334,24 @@ function Solutions() {
                     <span className="w-1.5 h-1.5 rounded-full" style={{ background: G }} />Mais popular
                   </Badge>
                 </div>
-                <h3 className="card-title text-xl mb-3">Opções Binárias na Prática</h3>
+                <h3 className="card-title text-xl mb-3">Forex & CFDs na Prática</h3>
                 <p className="card-body max-w-sm">
-                  Aprenda a identificar entradas de CALL e PUT com alta precisão — análise de tendência, suporte/resistência
-                  e padrões de vela em ativos cripto e Forex.
+                  Aprenda a identificar entradas de compra e venda com alta precisão — análise de tendência, suporte/resistência
+                  e padrões de vela em pares de Forex e cripto.
                 </p>
               </div>
               <IBox><Target className="w-5 h-5" /></IBox>
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3">
               <div className="p-4 rounded-xl" style={{ background: GD, border: "1px solid rgba(0,232,122,0.2)" }}>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: G, letterSpacing: "0.06em", marginBottom: "0.4rem" }}>▲ CALL</p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: G, letterSpacing: "0.06em", marginBottom: "0.4rem" }}>▲ COMPRA</p>
                 <p style={{ fontSize: "0.9375rem", fontWeight: 700, color: FG }}>BTC/USD · 5min</p>
-                <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.25rem" }}>Payout: +87% · WIN</p>
+                <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.25rem" }}>Resultado: +1,8% · GANHO</p>
               </div>
               <div className="p-4 rounded-xl" style={{ background: RD, border: `1px solid ${RB}` }}>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: RED, letterSpacing: "0.06em", marginBottom: "0.4rem" }}>▼ PUT</p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: RED, letterSpacing: "0.06em", marginBottom: "0.4rem" }}>▼ VENDA</p>
                 <p style={{ fontSize: "0.9375rem", fontWeight: 700, color: FG }}>ETH/USD · 1min</p>
-                <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.25rem" }}>Payout: +83% · WIN</p>
+                <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.25rem" }}>Resultado: +1,4% · GANHO</p>
               </div>
             </div>
           </div>
@@ -581,17 +379,17 @@ function Solutions() {
             </div>
             <div>
               <h3 className="card-title mb-2">Sinais em Tempo Real</h3>
-              <p className="card-body">Receba 12–20 sinais por dia no grupo exclusivo — ativo, direção, horário e payout esperado.</p>
+              <p className="card-body">Receba 12–20 sinais por dia no grupo exclusivo — ativo, direção, horário e retorno esperado.</p>
             </div>
             <div className="mt-auto space-y-2">
               {[
-                { asset: "BTC/USD", dir: "CALL", time: "14:30", pay: "+87%" },
-                { asset: "EUR/USD", dir: "PUT",  time: "14:45", pay: "+83%" },
+                { asset: "BTC/USD", dir: "COMPRA", time: "14:30", pay: "+1,8%" },
+                { asset: "EUR/USD", dir: "VENDA",  time: "14:45", pay: "+1,4%" },
               ].map((s) => (
                 <div key={s.time} className="flex items-center justify-between p-2.5 rounded-lg"
                   style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 700, color: FG }}>{s.asset}</span>
-                  <span style={{ fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.04em", color: s.dir === "CALL" ? G : RED }}>{s.dir}</span>
+                  <span style={{ fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.04em", color: s.dir === "COMPRA" ? G : RED }}>{s.dir}</span>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 500, color: MFG }}>{s.time}</span>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 700, color: B }}>{s.pay}</span>
                 </div>
@@ -619,7 +417,7 @@ function Solutions() {
             <IBox><BarChart3 className="w-5 h-5" /></IBox>
             <div>
               <h3 className="card-title mb-2">Análise Técnica</h3>
-              <p className="card-body">Price action, médias, RSI, Bandas de Bollinger e IFR aplicados às binárias e cripto.</p>
+              <p className="card-body">Price action, médias, RSI, Bandas de Bollinger e IFR aplicados a cripto e forex.</p>
             </div>
           </div>
 
@@ -659,12 +457,12 @@ function Solutions() {
 
 // ── Live Operations ───────────────────────────────────────────────────────────
 const OPS = [
-  { user: "M. Oliveira", asset: "BTC/USD", dir: "CALL", entry: "R$ 200", result: "+R$ 174", win: true,  time: "2min" },
-  { user: "F. Costa",    asset: "ETH/USD", dir: "PUT",  entry: "R$ 150", result: "+R$ 124", win: true,  time: "4min" },
-  { user: "R. Souza",    asset: "EUR/USD", dir: "CALL", entry: "R$ 100", result: "-R$ 100", win: false, time: "7min" },
-  { user: "A. Lima",     asset: "SOL/USD", dir: "CALL", entry: "R$ 300", result: "+R$ 261", win: true,  time: "10min" },
-  { user: "C. Santos",   asset: "GBP/USD", dir: "PUT",  entry: "R$ 80",  result: "+R$ 69",  win: true,  time: "13min" },
-  { user: "L. Ferreira", asset: "BNB/USD", dir: "CALL", entry: "R$ 250", result: "+R$ 217", win: true,  time: "17min" },
+  { user: "M. Oliveira", asset: "BTC/USD", dir: "COMPRA", entry: "R$ 200", result: "+R$ 174", win: true,  time: "2min" },
+  { user: "F. Costa",    asset: "ETH/USD", dir: "VENDA",  entry: "R$ 150", result: "+R$ 124", win: true,  time: "4min" },
+  { user: "R. Souza",    asset: "EUR/USD", dir: "COMPRA", entry: "R$ 100", result: "-R$ 100", win: false, time: "7min" },
+  { user: "A. Lima",     asset: "SOL/USD", dir: "COMPRA", entry: "R$ 300", result: "+R$ 261", win: true,  time: "10min" },
+  { user: "C. Santos",   asset: "GBP/USD", dir: "VENDA",  entry: "R$ 80",  result: "+R$ 69",  win: true,  time: "13min" },
+  { user: "L. Ferreira", asset: "BNB/USD", dir: "COMPRA", entry: "R$ 250", result: "+R$ 217", win: true,  time: "17min" },
 ];
 
 function OpCard({ op }: { op: typeof OPS[0] }) {
@@ -688,8 +486,8 @@ function OpCard({ op }: { op: typeof OPS[0] }) {
         <div>
           <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: FG }}>{op.asset}</p>
           <span className="inline-block mt-1.5 px-2 py-0.5 rounded"
-            style={{ background: op.dir === "CALL" ? GD : RD, color: op.dir === "CALL" ? G : RED, fontSize: "0.6875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
-            {op.dir === "CALL" ? "▲" : "▼"} {op.dir}
+            style={{ background: op.dir === "COMPRA" ? GD : RD, color: op.dir === "COMPRA" ? G : RED, fontSize: "0.6875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
+            {op.dir === "COMPRA" ? "▲" : "▼"} {op.dir}
           </span>
         </div>
         <div className="text-right">
@@ -741,8 +539,8 @@ function LiveOps() {
                 <div key={idx} className="grid grid-cols-4 items-center px-4 py-3 border-b last:border-0" style={{ borderColor: BORDER }}>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8125rem", fontWeight: 700, color: FG }}>{op.asset}</span>
                   <span className="px-2 py-0.5 rounded inline-flex w-fit items-center gap-1"
-                    style={{ background: op.dir === "CALL" ? GD : RD, color: op.dir === "CALL" ? G : RED, fontSize: "0.6875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
-                    {op.dir === "CALL" ? "▲" : "▼"} {op.dir}
+                    style={{ background: op.dir === "COMPRA" ? GD : RD, color: op.dir === "COMPRA" ? G : RED, fontSize: "0.6875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
+                    {op.dir === "COMPRA" ? "▲" : "▼"} {op.dir}
                   </span>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.875rem", fontWeight: 700, color: op.win ? G : RED }}>{op.result}</span>
                   <span className="px-2.5 py-0.5 rounded-full inline-flex w-fit"
@@ -787,8 +585,8 @@ function LiveOps() {
 
 // ── Education ─────────────────────────────────────────────────────────────────
 const MODS = [
-  { title: "Fundamentos das Opções Binárias", level: "Iniciante",     lessons: 14, img: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&h=400&fit=crop" },
-  { title: "Estratégias de CALL e PUT",       level: "Intermediário", lessons: 18, img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop" },
+  { title: "Fundamentos de Cripto e Forex",   level: "Iniciante",     lessons: 14, img: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&h=400&fit=crop" },
+  { title: "Estratégias de Compra e Venda",   level: "Intermediário", lessons: 18, img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop" },
   { title: "Gestão de Banca Profissional",    level: "Fundamental",   lessons: 10, img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=400&fit=crop" },
   { title: "Bitcoin e Altcoins na Prática",   level: "Intermediário", lessons: 20, img: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=400&fit=crop" },
   { title: "Price Action & Padrões de Vela",  level: "Avançado",      lessons: 22, img: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=600&h=400&fit=crop" },
@@ -807,7 +605,7 @@ function Education() {
           center
           badge="Trilha Completa"
           heading="Aprenda do zero ao avançado"
-          sub="6 módulos estruturados para transformar qualquer pessoa em um trader consistente de binárias e cripto."
+          sub="6 módulos estruturados para transformar qualquer pessoa em um trader consistente de cripto e forex."
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {MODS.map((m) => (
@@ -841,24 +639,40 @@ function Education() {
 
 // ── Profit Calculator ─────────────────────────────────────────────────────────
 function Calculator() {
-  const [banca, setBanca] = useState(1000);
-  const [entrada, setEntrada] = useState(2);
-  const [payout, setPayout] = useState(87);
-  const [acerto, setAcerto] = useState(70);
-  const [ops, setOps] = useState(20);
+  const [inicial, setInicial] = useState(10000);
+  const [aporte, setAporte] = useState(500);
+  const [retornoAnual, setRetornoAnual] = useState(12);
+  const [periodo, setPeriodo] = useState(60);
 
-  const entradaVal = (banca * entrada) / 100;
-  const wins = Math.round((ops * acerto) / 100);
-  const losses = ops - wins;
-  const lucro = wins * entradaVal * (payout / 100) - losses * entradaVal;
-  const roi = ((lucro / banca) * 100).toFixed(1);
+  const taxaMensal = retornoAnual / 100 / 12;
+  const valorFinal =
+    inicial * Math.pow(1 + taxaMensal, periodo) +
+    (taxaMensal > 0 ? aporte * ((Math.pow(1 + taxaMensal, periodo) - 1) / taxaMensal) : aporte * periodo);
+  const totalInvestido = inicial + aporte * periodo;
+  const rendimento = valorFinal - totalInvestido;
+  const roiTotal = totalInvestido > 0 ? (rendimento / totalInvestido) * 100 : 0;
+
+  const points = 6;
+  const chart = Array.from({ length: points + 1 }, (_, i) => {
+    const m = Math.round((periodo / points) * i);
+    const investido = inicial + aporte * m;
+    const projetado =
+      inicial * Math.pow(1 + taxaMensal, m) +
+      (taxaMensal > 0 ? aporte * ((Math.pow(1 + taxaMensal, m) - 1) / taxaMensal) : aporte * m);
+    return { m, investido, projetado };
+  });
+  const maxV = Math.max(...chart.map((p) => p.projetado), 1);
+  const toXY = (m: number, v: number) => ({ x: (m / periodo) * 300, y: 110 - (v / maxV) * 100 });
+  const pathOf = (key: "investido" | "projetado") =>
+    chart.map((p, i) => `${i === 0 ? "M" : "L"}${toXY(p.m, p[key]).x.toFixed(1)} ${toXY(p.m, p[key]).y.toFixed(1)}`).join(" ");
+
+  const brl = (v: number) => v.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 
   const controls = [
-    { label: "Banca inicial",    value: banca,   min: 100,  max: 50000, step: 100,  set: setBanca,   fmt: (v: number) => `R$ ${v.toLocaleString("pt-BR")}` },
-    { label: "Entrada (%banca)", value: entrada, min: 1,    max: 10,    step: 0.5,  set: setEntrada, fmt: (v: number) => `${v}%` },
-    { label: "Payout médio",     value: payout,  min: 70,   max: 95,    step: 1,    set: setPayout,  fmt: (v: number) => `+${v}%` },
-    { label: "Taxa de acerto",   value: acerto,  min: 50,   max: 90,    step: 1,    set: setAcerto,  fmt: (v: number) => `${v}%` },
-    { label: "Operações/dia",    value: ops,     min: 5,    max: 50,    step: 1,    set: setOps,     fmt: (v: number) => `${v} ops` },
+    { label: "Valor inicial",  value: inicial,      min: 1000, max: 500000, step: 500,  set: setInicial,      fmt: (v: number) => `R$ ${v.toLocaleString("pt-BR")}` },
+    { label: "Aporte mensal",  value: aporte,       min: 0,    max: 10000,  step: 100,  set: setAporte,       fmt: (v: number) => `R$ ${v.toLocaleString("pt-BR")}` },
+    { label: "Retorno anual",  value: retornoAnual, min: 1,    max: 50,     step: 1,    set: setRetornoAnual, fmt: (v: number) => `${v}% a.a.` },
+    { label: "Período",       value: periodo,      min: 6,    max: 360,    step: 6,    set: setPeriodo,      fmt: (v: number) => `${v} meses` },
   ];
 
   return (
@@ -866,9 +680,9 @@ function Calculator() {
       <div className="max-w-5xl mx-auto px-6">
         <SectionHeader
           center
-          badge="Calculadora"
-          heading="Calcule seu lucro em binárias"
-          sub="Simule seus resultados com base em taxa de acerto, payout e gestão de banca real."
+          badge="Simulação de Investimento"
+          heading="Calculadora de Investimentos"
+          sub="Simule o crescimento do seu patrimônio e descubra o poder dos juros compostos."
         />
         <div className="grid lg:grid-cols-2 gap-10">
           <div className="space-y-8">
@@ -886,15 +700,13 @@ function Calculator() {
 
           <div>
             <div className="bento-card p-6 mb-4">
-              <p className="card-label mb-5">Resultado estimado por dia</p>
-              <div className="grid grid-cols-2 gap-3 mb-4">
+              <p className="card-label mb-5">Projeção ao final do período</p>
+              <div className="grid grid-cols-2 gap-3 mb-5">
                 {[
-                  { label: "Entrada por op.",   value: `R$ ${entradaVal.toFixed(2)}`,                            color: FG  },
-                  { label: "Wins",              value: `${wins} ops`,                                             color: G   },
-                  { label: "Losses",            value: `${losses} ops`,                                           color: RED },
-                  { label: "Lucro líquido",     value: `${lucro >= 0 ? "+" : ""}R$ ${lucro.toFixed(2)}`,         color: lucro >= 0 ? G : RED },
-                  { label: "ROI diário",        value: `${lucro >= 0 ? "+" : ""}${roi}%`,                        color: lucro >= 0 ? B : RED },
-                  { label: "ROI mensal est.",   value: `${(Number(roi) * 22).toFixed(1)}%`,                      color: B   },
+                  { label: "Total investido", value: `R$ ${brl(totalInvestido)}`,        color: FG },
+                  { label: "Rendimento",      value: `+R$ ${brl(rendimento)}`,            color: G  },
+                  { label: "Valor final",     value: `R$ ${brl(valorFinal)}`,             color: B  },
+                  { label: "ROI total",       value: `+${roiTotal.toFixed(1)}%`,          color: B  },
                 ].map((item) => (
                   <div key={item.label} className="p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}>
                     <p className="card-label mb-2">{item.label}</p>
@@ -902,26 +714,27 @@ function Calculator() {
                   </div>
                 ))}
               </div>
+
               <div className="p-3.5 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${BORDER}` }}>
-                <div className="flex justify-between mb-2">
-                  <span style={{ fontSize: "0.75rem", fontWeight: 600, color: MFG }}>Taxa de acerto</span>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 700, color: acerto >= 60 ? G : RED }}>{acerto}%</span>
+                <div className="flex items-center gap-4 mb-2 text-[0.6875rem] font-semibold" style={{ color: MFG }}>
+                  <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full" style={{ background: BORDER }} />Investido</span>
+                  <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full" style={{ background: B }} />Projetado</span>
                 </div>
-                <div className="h-1.5 rounded-full overflow-hidden" style={{ background: BORDER }}>
-                  <div className="h-full rounded-full transition-all duration-500"
-                    style={{ width: `${acerto}%`, background: acerto >= 60 ? G : RED }} />
-                </div>
+                <svg viewBox="0 0 300 115" className="w-full h-28" preserveAspectRatio="none">
+                  <path d={pathOf("investido")} fill="none" stroke={BORDER} strokeWidth="2" strokeDasharray="4,3" />
+                  <path d={pathOf("projetado")} fill="none" stroke={B} strokeWidth="2.5" strokeLinecap="round" />
+                </svg>
               </div>
             </div>
 
-            <button className="w-full py-4 rounded-xl hover:opacity-90"
+            <button onClick={() => navigate("/planos")} className="w-full py-4 rounded-xl hover:opacity-90"
               style={{ background: B, color: "#fff", fontSize: "0.9375rem", fontWeight: 700, boxShadow: "0 0 30px var(--primary-glow)" }}>
-              Quero esses resultados →
+              Pronto para investir? Ver planos →
             </button>
             <div className="flex items-start gap-2 mt-3">
               <AlertTriangle className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: MFG }} />
               <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, lineHeight: 1.6 }}>
-                Simulação com fins educacionais. Resultados passados não garantem resultados futuros. Operações binárias envolvem risco de perda.
+                Simulação com fins educacionais baseada em juros compostos. Resultados passados não garantem resultados futuros. Investimentos envolvem risco de perda.
               </p>
             </div>
           </div>
@@ -938,7 +751,7 @@ const TESTS = [
     text: "Comecei com R$500 e hoje opero com banca de R$8.000. A metodologia de gestão da Veritas mudou tudo — parei de quebrar e comecei a lucrar consistentemente." },
   { name: "Fernanda Costa", role: "Médica + Trader — Rio",  gain: "R$ 3.200/mês", plan: "Pro",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-    text: "Em 4 meses aprendi a operar BTC e binárias enquanto trabalhava. Os sinais do grupo são precisos e a sala ao vivo me ensinou a pensar como trader." },
+    text: "Em 4 meses aprendi a operar cripto e forex enquanto trabalhava. Os sinais do grupo são precisos e a sala ao vivo me ensinou a pensar como trader." },
   { name: "Rafael Souza", role: "Engenheiro + Trader — BH", gain: "78% acerto",    plan: "Starter",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
     text: "Tentei várias plataformas sozinho e só perdia. Com a Veritas aprendi gestão de banca e análise técnica — hoje tenho 78% de acerto consistente." },
@@ -1051,16 +864,16 @@ function LeadCapture() {
 
 // ── FAQ ───────────────────────────────────────────────────────────────────────
 const FAQS = [
-  { q: "Opções binárias são legais no Brasil?",
-    a: "Sim. A operação com opções binárias é legal para residentes brasileiros em plataformas internacionais. O trader é responsável por declarar os ganhos à Receita Federal conforme a legislação vigente." },
+  { q: "Operar cripto e forex é legal no Brasil?",
+    a: "Sim. A operação em cripto e forex é legal para residentes brasileiros em plataformas internacionais regulamentadas. O investidor é responsável por declarar os ganhos à Receita Federal conforme a legislação vigente." },
   { q: "Preciso de experiência para começar?",
-    a: "Não. Nosso Módulo 1 começa do absoluto zero — explicamos o que é uma opção binária, como funciona o payout, como escolher ativos e como fazer sua primeira operação com segurança." },
+    a: "Não. Nosso Módulo 1 começa do absoluto zero — explicamos os fundamentos do mercado financeiro, como escolher ativos e como fazer sua primeira operação com segurança." },
   { q: "Qual o valor mínimo para começar a operar?",
-    a: "A maioria das plataformas aceita depósito mínimo de R$50 a R$200. Recomendamos começar com pelo menos R$500 para conseguir aplicar a gestão de banca de forma eficiente." },
+    a: "A maioria das corretoras aceita depósito mínimo de R$50 a R$200. Recomendamos começar com pelo menos R$500 para conseguir aplicar a gestão de banca de forma eficiente." },
   { q: "Como funcionam os sinais de operação?",
-    a: "Enviamos sinais diários no grupo exclusivo contendo: ativo, direção (CALL ou PUT), horário de entrada e tempo de expiração. Você executa na sua plataforma e acompanha o resultado." },
-  { q: "Posso operar cripto e binárias ao mesmo tempo?",
-    a: "Sim, e ensinamos as duas modalidades. Muitos alunos usam cripto para investimento de médio/longo prazo e binárias para geração de renda mensal — estratégias complementares." },
+    a: "Enviamos sinais diários no grupo exclusivo contendo: ativo, direção (compra ou venda), horário de entrada e retorno esperado. Você executa na sua corretora e acompanha o resultado." },
+  { q: "Posso operar cripto e forex ao mesmo tempo?",
+    a: "Sim, e ensinamos as duas modalidades. Muitos alunos usam cripto para investimento de médio/longo prazo e forex para geração de renda mensal — estratégias complementares." },
 ];
 
 function FAQ() {
@@ -1091,48 +904,6 @@ function FAQ() {
   );
 }
 
-// ── Footer ────────────────────────────────────────────────────────────────────
-function Footer() {
-  return (
-    <footer className="border-t py-16" style={{ borderColor: BORDER, background: CARD }}>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-2">
-            <img src={logo1} alt="Veritas" className="h-10 w-auto object-contain mb-6"
-              style={{ filter: "drop-shadow(0 0 6px rgba(25,172,254,0.25))" }} />
-            <p className="card-body max-w-xs mb-6">
-              Formação profissional em opções binárias e criptomoedas — do iniciante ao trader consistente.
-            </p>
-            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 500, color: MFG }}>contato@academyveritas.net</p>
-            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.3rem" }}>Vila Olímpia, São Paulo/SP</p>
-          </div>
-          {[
-            { title: "Conteúdo", links: ["Binárias", "Cripto", "Sinais", "Educação"] },
-            { title: "Suporte",  links: ["Ajuda", "Privacidade", "Termos", "Contato"] },
-          ].map((col) => (
-            <div key={col.title}>
-              <h4 style={{ fontSize: "0.8125rem", fontWeight: 700, color: FG, marginBottom: "1.25rem", letterSpacing: "0.04em", textTransform: "uppercase" }}>{col.title}</h4>
-              <ul className="space-y-3">
-                {col.links.map((l) => (
-                  <li key={l}><a href="#" className="hover:text-white transition-colors"
-                    style={{ fontSize: "0.875rem", fontWeight: 500, color: MFG }}>{l}</a></li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 border-t" style={{ borderColor: BORDER }}>
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 500, color: MFG }}>
-            © 2026 Veritas Academy — Veritas School Mentoria e Treinamento LTDA — CNPJ 33.893.234/0001-64
-          </p>
-          <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, maxWidth: "36ch", lineHeight: 1.6 }}>
-            Opções binárias e criptomoedas envolvem risco de perda. Opere com responsabilidade.
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}
 
 // ── Missão e Visão ────────────────────────────────────────────────────────────
 function MissionVision() {
@@ -1169,7 +940,7 @@ function MissionVision() {
               <p className="card-body leading-relaxed mx-auto" style={{ maxWidth: "52ch" }}>
                 Desenvolver traders estratégicos por meio de conhecimento estruturado, acompanhamento profissional
                 e integração com os melhores mercados financeiros — promovendo uma atuação consciente, disciplinada
-                e lucrativa em opções binárias e cripto.
+                e lucrativa em cripto e forex.
               </p>
             </div>
             <div className="pt-4 mt-auto border-t flex justify-center" style={{ borderColor: BORDER }}>
@@ -1226,7 +997,7 @@ const PILLARS = [
   {
     icon: <BookOpen className="w-6 h-6" />,
     title: "Conhecimento Estratégico",
-    desc: "Formação estruturada para compreensão profunda dos mercados financeiros — análise técnica, price action e padrões de binárias.",
+    desc: "Formação estruturada para compreensão profunda dos mercados financeiros — análise técnica, price action e padrões gráficos.",
   },
   {
     icon: <Target className="w-6 h-6" />,
@@ -1241,7 +1012,7 @@ const PILLARS = [
   {
     icon: <Globe className="w-6 h-6" />,
     title: "Integração Global",
-    desc: "Acesso e conexão com as principais plataformas internacionais de binárias e exchanges de cripto do mundo.",
+    desc: "Acesso e conexão com as principais corretoras internacionais de forex e exchanges de cripto do mundo.",
   },
 ];
 
@@ -1328,7 +1099,7 @@ function Methodology() {
                 <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#22c55e" }} />
               </div>
               <div className="p-4 space-y-3">
-                {["IQ Option", "Binance", "Quotex"].map((platform) => (
+                {["Binance", "Kraken", "XM"].map((platform) => (
                   <div key={platform} className="flex items-center gap-2.5">
                     <div className="w-2 h-2 rounded-full" style={{ background: G }} />
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 600, color: FG }}>{platform}</span>
@@ -1356,13 +1127,13 @@ function Methodology() {
               </div>
               <div className="p-3 space-y-2">
                 {[
-                  { asset: "BTC/USD", dir: "CALL", pay: "+87%", win: true },
-                  { asset: "EUR/USD", dir: "PUT",  pay: "+83%", win: true },
-                  { asset: "SOL/USD", dir: "CALL", pay: "+85%", win: false },
+                  { asset: "BTC/USD", dir: "COMPRA", pay: "+87%", win: true },
+                  { asset: "EUR/USD", dir: "VENDA",  pay: "+83%", win: true },
+                  { asset: "SOL/USD", dir: "COMPRA", pay: "+85%", win: false },
                 ].map((s, idx) => (
                   <div key={idx} className="flex items-center gap-2 p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}>
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: FG, flex: 1 }}>{s.asset}</span>
-                    <span style={{ fontSize: "0.6rem", fontWeight: 800, color: s.dir === "CALL" ? G : RED }}>{s.dir}</span>
+                    <span style={{ fontSize: "0.6rem", fontWeight: 800, color: s.dir === "COMPRA" ? G : RED }}>{s.dir}</span>
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: s.win ? G : RED }}>{s.pay}</span>
                   </div>
                 ))}
@@ -1381,7 +1152,7 @@ const VALUES = [
   {
     icon: <Lightbulb className="w-6 h-6" />,
     title: "Inovação",
-    desc: "Tecnologia de ponta e estratégias modernas aplicadas ao mercado de binárias e cripto.",
+    desc: "Tecnologia de ponta e estratégias modernas aplicadas ao mercado de cripto e forex.",
     accent: "rgba(139,92,246,0.15)",
     accentBorder: "rgba(139,92,246,0.25)",
     accentText: "#a78bfa",
@@ -1574,124 +1345,11 @@ function ValuesSection() {
   );
 }
 
-// ── Brokers por categoria ─────────────────────────────────────────────────────
-type BrokerEntry = { name: string; desc: string; logo?: string; logoBg?: string; initials?: string; initialsColor?: string };
 
-const BROKER_CATS: { label: string; color: string; brokers: BrokerEntry[] }[] = [
-  {
-    label: "Criptomoedas",
-    color: "#F0B90B",
-    brokers: [
-      { name: "Binance",  desc: "Maior exchange do mundo",       logo: imgBinance,  logoBg: "#0B0E11" },
-      { name: "Coinbase", desc: "Exchange regulamentada EUA",    logo: imgCoinbase, logoBg: "#0052FF" },
-      { name: "Bybit",    desc: "Derivativos e futuros cripto",  logo: imgBybit,    logoBg: "#F5F5F5" },
-      { name: "KuCoin",   desc: "Exchange global de altcoins",   logo: imgKucoin,   logoBg: "#fff" },
-    ],
-  },
-  {
-    label: "Forex & CFDs",
-    color: "#7C4DFF",
-    brokers: [
-      { name: "TitaniumFX",  desc: "CFDs de alta performance",      logo: imgTitaniumfx, logoBg: "#0D1117" },
-      { name: "Kraken",      desc: "Forex + cripto unificados",     logo: imgKraken,     logoBg: "#fff" },
-      { name: "XM",          desc: "Broker regulamentado global",   logo: imgXm,         logoBg: "#fff" },
-      { name: "Pepperstone", desc: "Spreads baixos, execução rápida", logo: imgPepperstone, logoBg: "#1448FF" },
-      { name: "BlackBull",   desc: "Broker NDD premium",            logo: imgBlackbull,  logoBg: "#111" },
-    ],
-  },
-  {
-    label: "Investimentos Internacionais",
-    color: "#1A6B3C",
-    brokers: [
-      { name: "Avenue", desc: "Ações e ETFs nos EUA para brasileiros", logo: imgAvenue, logoBg: "#fff" },
-    ],
-  },
-];
-
-function BrokerCard({ b }: { b: BrokerEntry }) {
+// ── Home ──────────────────────────────────────────────────────────────────────
+function Home() {
   return (
-    <div className="bento-card flex flex-col items-center text-center gap-3 overflow-hidden hover:scale-105 transition-transform">
-      {/* Logo area */}
-      <div className="w-full h-20 flex items-center justify-center px-5 pt-5">
-        {b.logo ? (
-          <div className="w-full h-full rounded-xl flex items-center justify-center overflow-hidden"
-            style={{ background: b.logoBg }}>
-            <img src={b.logo} alt={b.name}
-              className="w-full h-full object-contain p-3" />
-          </div>
-        ) : (
-          <div className="w-16 h-16 rounded-2xl flex items-center justify-center"
-            style={{ background: BD, border: `1px solid ${BB}` }}>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.875rem", fontWeight: 900, color: b.initialsColor ?? B, letterSpacing: "-0.02em" }}>
-              {b.initials}
-            </span>
-          </div>
-        )}
-      </div>
-      {/* Info */}
-      <div className="px-4 pb-5">
-        <p style={{ fontSize: "0.875rem", fontWeight: 700, color: FG }}>{b.name}</p>
-        <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.2rem", lineHeight: 1.45 }}>{b.desc}</p>
-      </div>
-    </div>
-  );
-}
-
-function BrokersSection() {
-  return (
-    <section className="py-24 border-t" style={{ borderColor: BORDER }}>
-      <div className="max-w-6xl mx-auto px-6">
-        <SectionHeader
-          center
-          badge="Plataformas Parceiras"
-          heading="Opere nas melhores plataformas do mundo"
-          sub="Ensinamos a operar nas principais exchanges de cripto, brokers Forex regulamentados e plataformas de investimentos internacionais."
-        />
-        <div className="space-y-10">
-          {BROKER_CATS.map((cat) => (
-            <div key={cat.label}>
-              <div className="flex items-center gap-4 mb-5">
-                <div className="flex-1 h-px" style={{ background: BORDER }} />
-                <span className="px-4 py-1.5 rounded-full"
-                  style={{ background: `${cat.color}18`, border: `1px solid ${cat.color}35`, color: cat.color, fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                  {cat.label}
-                </span>
-                <div className="flex-1 h-px" style={{ background: BORDER }} />
-              </div>
-              <div className={`grid gap-3 ${cat.brokers.length === 1 ? "grid-cols-1 max-w-xs" : cat.brokers.length <= 3 ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-2 md:grid-cols-4"} ${cat.brokers.length === 1 ? "" : ""}`}>
-                {cat.brokers.map((b) => <BrokerCard key={b.name} b={b} />)}
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="text-center mt-10" style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG }}>
-          Plataformas independentes. A Veritas Global não atua como corretora ou intermediária financeira.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-// ── Noise overlay ─────────────────────────────────────────────────────────────
-function NoiseOverlay() {
-  return (
-    <div style={{
-      width: "100vw", height: "100vh", opacity: 0.12,
-      backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px)",
-      backgroundSize: "28px 28px",
-      position: "fixed", top: 0, left: 0, pointerEvents: "none", zIndex: 50, mixBlendMode: "plus-lighter",
-    }} />
-  );
-}
-
-// ── App ───────────────────────────────────────────────────────────────────────
-export default function App() {
-  useLenis();
-  return (
-    <div style={{ background: "var(--background)", minHeight: "100%" }}>
-      <NoiseOverlay />
-      <Ticker />
-      <Navbar />
+    <>
       <Hero />
       <Stats />
       <MissionVision />
@@ -1705,6 +1363,25 @@ export default function App() {
       <Testimonials />
       <LeadCapture />
       <FAQ />
+    </>
+  );
+}
+
+// ── App (router) ────────────────────────────────────────────────────────────
+export default function App() {
+  useLenis();
+  const path = usePath();
+  const Page = path === "/mercados" ? Mercados
+    : path === "/educacao" ? Educacao
+    : path === "/planos" ? Planos
+    : Home;
+
+  return (
+    <div style={{ background: "var(--background)", minHeight: "100%" }}>
+      <NoiseOverlay />
+      <Ticker />
+      <Navbar path={path} />
+      <Page />
       <Footer />
     </div>
   );
