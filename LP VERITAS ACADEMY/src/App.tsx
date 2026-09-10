@@ -16,6 +16,7 @@ import Carreiras from "./pages/Carreiras";
 import CopyTrading from "./pages/CopyTrading";
 import Consultoria from "./pages/Consultoria";
 import Automacao from "./pages/Automacao";
+import HomeOriginal from "./pages/HomeOriginal";
 import {
   B, BD, BB, G, GD, RED, RD, RB, GOLD, CARD, MFG, FG, BORDER,
   IBox, Badge, SectionHeader, Ticker, PLATFORM_URL, usePath, navigate,
@@ -1358,7 +1359,7 @@ export default function App() {
     : path === "/copy-trading" ? CopyTrading
     : path === "/consultoria" ? Consultoria
     : path === "/automacao" ? Automacao
-    : Home;
+    : HomeOriginal;
 
   return (
     <div style={{ background: "var(--background)", minHeight: "100%" }}>

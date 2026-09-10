@@ -18,6 +18,7 @@ import Carreiras from "./pages/Carreiras";
 import CopyTrading from "./pages/CopyTrading";
 import Consultoria from "./pages/Consultoria";
 import Automacao from "./pages/Automacao";
+import HomeOriginal from "./pages/HomeOriginal";
 import {
   B, BD, BB, G, GD, RED, RD, RB, GOLD, CARD, MFG, FG, BORDER,
   IBox, Badge, SectionHeader, Ticker, useCountUp, Footer, NoiseOverlay, BrokersSection,
@@ -1508,7 +1509,7 @@ export function LandingPage({ onAccessPlatform }: { onAccessPlatform: () => void
       <NoiseOverlay />
       <Ticker />
       <Navbar view={view} onNavigate={setView} onAccessPlatform={onAccessPlatform} />
-      {view === "home" && <Home onAccessPlatform={onAccessPlatform} onNavigate={setView} />}
+      {view === "home" && <HomeOriginal onAccessPlatform={onAccessPlatform} onNavigate={setView} />}
       {view === "mercados" && <Mercados onNavigate={setView} />}
       {view === "educacao" && <Educacao onNavigate={setView} />}
       {view === "planos" && <Planos onAccessPlatform={onAccessPlatform} />}

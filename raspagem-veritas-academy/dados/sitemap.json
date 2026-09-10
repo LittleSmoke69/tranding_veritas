@@ -1,0 +1,34 @@
+{
+  "nav_principal": {
+    "Página Inicial": "/",
+    "Mercados": "/Mercados",
+    "Trading Lab": "/TradingLab",
+    "Educação": "/Educacao",
+    "Planos": "/Planos"
+  },
+  "dropdown_a_veritas": {
+    "Quem Somos": "/QuemSomos",
+    "Nossa Equipe": "/NossaEquipe",
+    "Carreiras": "/Carreiras"
+  },
+  "dropdown_servicos": {
+    "Copy Trading": "/CopyTrading",
+    "Cursos": "/Educacao",
+    "Análises": "/Analises",
+    "Consultoria": "/Consultoria",
+    "Automação": "/Automacao"
+  },
+  "rodape_corretoras": {
+    "Binance": "https://www.binance.com/pt-BR",
+    "Coinbase": "https://www.coinbase.com/pt-br",
+    "Bybit": "https://www.bybit.com/pt-BR/",
+    "KuCoin": "https://www.kucoin.com/",
+    "Titanium FX": "https://titaniumfxpro.co.uk/",
+    "Hantec Markets": "https://hmarkets.com/pt/",
+    "XM": "https://www.xm.com/pt",
+    "Pepperstone": "https://pepperstone.com/pt-br/",
+    "BlackBull Markets": "https://blackbull.com/",
+    "Avenue": "https://avenue.us/pt"
+  },
+  "contato_email": "contato@academyveritas.net"
+}
