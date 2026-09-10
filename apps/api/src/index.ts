@@ -23,16 +23,24 @@ async function main() {
   await app.register(cookie);
   await app.register(rateLimit, {
     global: false,
-    errorResponseBuilder: () => ({
+    // fastify-rate-limit lança o retorno deste builder como erro; sem `statusCode`
+    // próprio, cairia no branch de 500 do setErrorHandler abaixo.
+    errorResponseBuilder: (_req, context) => ({
       success: false,
       error: 'Muitas tentativas de cadastro. Aguarde um pouco e tente novamente.',
+      statusCode: context.statusCode,
     }),
   });
 
   app.setErrorHandler((err, _req, reply) => {
     app.log.error(err);
-    const e = err as { statusCode?: number; validation?: unknown };
+    const e = err as { statusCode?: number; validation?: unknown; success?: boolean; error?: string };
     const status = typeof e.statusCode === 'number' && e.statusCode >= 400 ? e.statusCode : 500;
+    // Erros já formatados por esta própria API (ex.: rate limit por rota) seguem
+    // com a mensagem original em vez de serem genéricos.
+    if (e.success === false && typeof e.error === 'string') {
+      return reply.code(status).send({ success: false, error: e.error });
+    }
     const message =
       status >= 500
         ? AuthMessages.unavailable

@@ -11,34 +11,34 @@
 
 /* ─── Camada 1 · paleta bruta ─────────────────────────────────────────────── */
 :root {
-  /* Azul-petróleo dessaturado */
-  --petrol-950: #0e1620;
-  --petrol-900: #16202b;
-  --petrol-850: #1b2733;
-  --petrol-800: #223140;
-  --petrol-750: #223040;
-  --petrol-700: #2a3744;
-  --petrol-600: #35475a;
+  /* Superfícies — mesmo azul quase-preto da landing (Veritas Academy) */
+  --petrol-950: #04050c;
+  --petrol-900: #080c18;
+  --petrol-850: #0b1020;
+  --petrol-800: #0d1224;
+  --petrol-750: #121729;
+  --petrol-700: #171a26;
+  --petrol-600: #262a3d;
 
   /* Neutros de texto */
-  --slate-050: #e6edf3;
-  --slate-400: #8a99a8;
-  --slate-500: #6b7a89;
+  --slate-050: #f0f0f8;
+  --slate-400: #93a1c0;
+  --slate-500: #5a6a8a;
 
   /* Direcional */
-  --green-500: #34b565;
-  --green-700: #2b9553;
+  --green-500: #00e87a;
+  --green-700: #00b862;
   --green-ink: #06210f;
-  --red-500: #c4573d;
-  --red-600: #b54a31;
-  --red-300: #e07a5f;
-  --red-800: #a33119;
+  --red-500: #f87171;
+  --red-600: #e2574f;
+  --red-300: #ff9c93;
+  --red-800: #7a2318;
 
   /* Marca Veritas */
-  --azure-400: #00c2ff;
-  --azure-600: #1e4fd8;
-  --amber-500: #f5a623;
-  --emerald-500: #2ecc71;
+  --azure-400: #19acfe;
+  --azure-600: #0f7fc0;
+  --amber-500: #c9a84c;
+  --emerald-500: #00e87a;
 
   --paper: #e9eff5;
 }
@@ -74,27 +74,29 @@
   --on-bear: #ffffff;
   --bear-ink: var(--red-800); /* vermelho legível sobre superfície clara */
 
-  /* Marca — azul manda na UI, âmbar reservado a saldo/NEW */
+  /* Marca — azul manda na UI, dourado reservado a saldo/NEW (mesma paleta da landing) */
   --brand: var(--azure-400);
   --brand-strong: var(--azure-600);
-  --brand-dim: rgba(0, 194, 255, 0.14);
-  --brand-line: rgba(0, 194, 255, 0.45);
+  --brand-dim: rgba(25, 172, 254, 0.14);
+  --brand-line: rgba(25, 172, 254, 0.45);
+  --brand-glow: rgba(25, 172, 254, 0.22);
   --accent: var(--amber-500);
-  --accent-dim: rgba(245, 166, 35, 0.16);
+  --accent-dim: rgba(201, 168, 76, 0.16);
   --cta: var(--emerald-500);
 
   /* Superfície clara (badge de preço) */
   --surface-bright: var(--paper);
   --on-bright: var(--petrol-950);
 
-  /* Raio */
-  --radius-ctl: 4px;
-  --radius-panel: 6px;
-  --radius-btn: 8px;
+  /* Raio — mais arredondado, como os cards/botões da landing */
+  --radius-ctl: 6px;
+  --radius-panel: 14px;
+  --radius-btn: 12px;
 
-  /* Tipografia */
-  --font-ui: "IBM Plex Sans", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
-  --font-cond: "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, sans-serif;
+  /* Tipografia — Manrope (display/UI) + JetBrains Mono (números), como a landing */
+  --font-ui: "Manrope", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-cond: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
   --font-brand: "Cinzel", "Times New Roman", serif;
 
   /* Métricas de moldura */
@@ -151,6 +153,7 @@
 
   --font-ui: var(--font-ui);
   --font-cond: var(--font-cond);
+  --font-mono: var(--font-mono);
   --font-brand: var(--font-brand);
 }
 
@@ -185,10 +188,38 @@ body {
 
 /* ─── Utilitários de tema ─────────────────────────────────────────────────── */
 
-/* Todo número da interface usa figuras tabulares (evita layout shift) */
+/* Todo número da interface usa figuras tabulares (evita layout shift) + mono, como na landing */
 .u-num {
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
+}
+
+/* Brilho azul nos elementos de destaque (mesmo tratamento dos CTAs da landing) */
+.u-glow-brand {
+  box-shadow: 0 0 24px var(--brand-glow);
+}
+
+.u-glow-bull {
+  box-shadow: 0 0 22px color-mix(in srgb, var(--bull) 35%, transparent);
+}
+
+.u-glow-bear {
+  box-shadow: 0 0 22px color-mix(in srgb, var(--bear-fill) 35%, transparent);
+}
+
+/* Card com hover "flutuante" — mesmo padrão .bento-card da landing */
+.u-card-float {
+  transition:
+    border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.u-card-float:hover {
+  border-color: var(--brand-line);
+  box-shadow: 0 0 32px var(--brand-glow), 0 16px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Rótulo de menu: CAPS condensado 10–11px */

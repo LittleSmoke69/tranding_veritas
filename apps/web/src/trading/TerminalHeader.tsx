@@ -1,7 +1,7 @@
 import { AssetMark } from '../components/AssetMark';
 import { Icon } from '../components/Icon';
-import { VeritasLogo } from '../components/VeritasLogo';
 import { categoryLabel, type TradingAsset } from '../data/assets';
+import landingLogo from '../landing/assets/logo_1.png';
 import { BalanceManager } from './BalanceManager';
 
 type TerminalHeaderProps = {
@@ -37,7 +37,12 @@ export function TerminalHeader({
       style={{ paddingLeft: 8 }}
     >
       <div className="hidden shrink-0 items-center lg:flex">
-        <VeritasLogo size="sm" subtitle="Trader" />
+        <img
+          src={landingLogo}
+          alt="Veritas"
+          className="h-10 w-auto object-contain"
+          style={{ filter: 'drop-shadow(0 0 8px rgba(25,172,254,0.3))' }}
+        />
       </div>
 
       <div className="mx-0.5 my-3 hidden w-px shrink-0 bg-line lg:block" aria-hidden="true" />
@@ -61,7 +66,7 @@ export function TerminalHeader({
                   openAssets.length > 1 ? 'pr-7 sm:pr-8' : 'pr-2 sm:pr-3'
                 } ${
                   isActive
-                    ? 'border-accent bg-elevated'
+                    ? 'border-brand bg-elevated'
                     : 'border-transparent bg-transparent hover:bg-elevated/60'
                 }`}
               >
@@ -96,7 +101,7 @@ export function TerminalHeader({
           type="button"
           onClick={onOpenPicker}
           aria-label="Abrir novo ativo"
-          className="u-focus u-lift mb-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-ctl border border-line text-muted hover:border-line-strong hover:text-ink"
+          className="u-focus u-lift mb-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-ctl border border-line text-muted hover:border-brand hover:text-brand"
         >
           <Icon name="plus" size={18} />
         </button>

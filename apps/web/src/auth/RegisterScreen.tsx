@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { VeritasLogo } from '../components/VeritasLogo';
+import landingLogo from '../landing/assets/logo_1.png';
 
 export type RegistrationData = {
   full_name: string;
@@ -47,9 +47,14 @@ export function RegisterScreen({ onBack, onRegister }: RegisterScreenProps) {
 
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center bg-app px-4 py-10 text-ink">
-      <div className="mb-6">
-        <VeritasLogo size="lg" subtitle="TRADER" />
-      </div>
+      <button type="button" onClick={onBack} className="mb-6" aria-label="Voltar">
+        <img
+          src={landingLogo}
+          alt="Veritas"
+          className="h-11 w-auto object-contain"
+          style={{ filter: 'drop-shadow(0 0 8px rgba(25,172,254,0.3))' }}
+        />
+      </button>
 
       <div className="w-full max-w-[460px] overflow-hidden rounded-panel border border-line bg-panel shadow-[var(--shadow-float)]">
         <header className="px-7 pb-2 pt-7">
@@ -87,7 +92,7 @@ export function RegisterScreen({ onBack, onRegister }: RegisterScreenProps) {
 
           {error && <p role="alert" className="rounded-ctl border border-bear/50 bg-bear/10 px-3 py-2 text-sm text-bear-text">{error}</p>}
 
-          <button type="submit" disabled={busy} className="u-focus u-lift w-full rounded-btn bg-brand px-4 py-3.5 text-[15px] font-semibold text-app disabled:cursor-not-allowed disabled:opacity-60">
+          <button type="submit" disabled={busy} className="u-focus u-lift u-glow-brand w-full rounded-btn bg-brand px-4 py-3.5 text-[15px] font-semibold text-app transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100">
             {busy ? 'Criando sua conta…' : 'Criar conta'}
           </button>
           <button type="button" onClick={onBack} className="u-focus w-full rounded-btn py-2 text-sm font-medium text-brand hover:bg-brand/10">

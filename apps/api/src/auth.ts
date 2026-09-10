@@ -7,9 +7,15 @@ import { db } from './db.js';
 import { ensureDemoAccount, sumCash } from './demo-account.js';
 import { env } from './env.js';
 import { AuthMessages, friendlyAuthError } from './errors.js';
+import { clearAttempts, isLocked, registerFailedAttempt } from './login-guard.js';
 import { createSessionToken, verifySessionToken } from './session.js';
 import { pgQuery } from './pg.js';
 import { sqlText } from './sql.js';
+
+/** Hash bcrypt "de descarte": nunca corresponde a nenhuma senha real.
+ *  Usado para manter o tempo de resposta parecido quando o identificador
+ *  não existe, evitando enumeração de contas por diferença de latência. */
+const DUMMY_PASSWORD_HASH = '$2a$10$CwTycUXWue0Thq9StjUM0uJ8p9pKZ8v0zZM/9mVoI3l5X2xhk2VJa';
 
 type ProfileRow = {
   id: string;
@@ -180,7 +186,19 @@ export async function registerAuthRoutes(app: FastifyInstance) {
     }
   });
 
-  app.post('/auth/login', async (req, reply) => {
+  app.post('/auth/login', {
+    config: {
+      rateLimit: {
+        max: 5,
+        timeWindow: '15 minutes',
+        errorResponseBuilder: (_req, context) => ({
+          success: false,
+          error: AuthMessages.rateLimited,
+          statusCode: context.statusCode,
+        }),
+      },
+    },
+  }, async (req, reply) => {
     try {
       const parsed = loginBody.safeParse(req.body);
       if (!parsed.success) {
@@ -197,8 +215,16 @@ export async function registerAuthRoutes(app: FastifyInstance) {
         return reply.code(400).send({ success: false, error: AuthMessages.validation });
       }
 
+      if (isLocked(identifier)) {
+        return reply.code(429).send({ success: false, error: AuthMessages.lockout });
+      }
+
       const profile = await findProfile(identifier);
       if (!profile?.password_hash) {
+        // Compara contra um hash de descarte para não vazar, pelo tempo de resposta,
+        // se o identificador existe ou não (mitiga enumeração de contas).
+        await bcrypt.compare(password, DUMMY_PASSWORD_HASH);
+        registerFailedAttempt(identifier);
         return reply.code(401).send({ success: false, error: AuthMessages.auth });
       }
 
@@ -217,9 +243,11 @@ export async function registerAuthRoutes(app: FastifyInstance) {
 
       const ok = await bcrypt.compare(password, profile.password_hash);
       if (!ok) {
+        registerFailedAttempt(identifier);
         return reply.code(401).send({ success: false, error: AuthMessages.auth });
       }
 
+      clearAttempts(identifier);
       const demo = await ensureDemoAccount(profile.id);
       setSessionCookie(reply, profile.id);
 

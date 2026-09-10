@@ -7,6 +7,8 @@ const FRIENDLY = {
   unavailable: 'Não foi possível concluir o login agora. Tente novamente em instantes.',
   validation: 'Preencha usuário/e-mail e senha para continuar.',
   generic: 'Algo deu errado. Tente novamente.',
+  lockout: 'Muitas tentativas para esta conta. Aguarde alguns minutos e tente novamente.',
+  rateLimited: 'Muitas tentativas de login. Aguarde alguns minutos e tente novamente.',
 } as const;
 
 export function friendlyAuthError(err: unknown): string {

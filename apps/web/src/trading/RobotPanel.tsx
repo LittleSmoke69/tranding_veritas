@@ -43,6 +43,11 @@ const analysisTime = (value: string | null) =>
       }).format(new Date(value))
     : null;
 
+const ALLOCATION_PRESETS = [500, 1000, 5000];
+
+const brl = (v: number) =>
+  v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
 const nextCycleCountdown = (intervalSec: number, now: number) => {
   const currentSecond = Math.floor(now / 1000);
   const remaining = intervalSec - (currentSecond % intervalSec);
@@ -67,6 +72,11 @@ export function RobotPanel({ asset, positions, livePrice }: RobotPanelProps) {
   const [stopping, setStopping] = useState(false);
   const [now, setNow] = useState(() => Date.now());
   const selected = ROBOT_PROFILES[profile];
+  const targetMinPct = selected.targetMinBps / 100;
+  const targetMaxPct = selected.targetMaxBps / 100;
+  const targetMidPct = Math.round(((targetMinPct + targetMaxPct) / 2) * 10) / 10;
+  const targetPresets = Array.from(new Set([targetMinPct, targetMidPct, targetMaxPct]));
+  const estimatedGain = (allocation * target) / 100;
   const active = instances.find((item) => item.status === 'active');
   const visibleInstance = active ?? instances[0];
   const agentPositions = visibleInstance
@@ -87,8 +97,9 @@ export function RobotPanel({ asset, positions, livePrice }: RobotPanelProps) {
   }, [active?.id]);
 
   const choose = (code: RobotProfileCode) => {
+    const item = ROBOT_PROFILES[code];
     setProfile(code);
-    setTarget(ROBOT_PROFILES[code].targetMaxBps / 100);
+    setTarget(Math.round(((item.targetMinBps + item.targetMaxBps) / 2 / 100) * 10) / 10);
   };
 
   const start = async () => {
@@ -235,10 +246,83 @@ export function RobotPanel({ asset, positions, livePrice }: RobotPanelProps) {
             <div className="mt-3 grid grid-cols-2 gap-3 text-sm md:grid-cols-4"><div><span className="u-caps block">Capital</span>{active.allocation_display}</div><div><span className="u-caps block">Resultado</span><strong className={active.pnl_display.startsWith('-') ? 'text-bear-text' : 'text-bull-text'}>{active.pnl_display}</strong></div><div><span className="u-caps block">Meta</span>{active.target_display}</div><div><span className="u-caps block">Ganhas/perdidas</span>{active.wins}/{active.losses} · {active.win_rate}%</div></div>
           </div>
         ) : (
-          <div className="grid gap-4 rounded-panel border border-line bg-panel p-5 md:grid-cols-[1fr_1fr_auto] md:items-end">
-            <label className="text-sm"><span className="u-caps mb-2 block">Capital virtual alocado</span><input type="number" min="10" value={allocation} onChange={(e) => setAllocation(Number(e.target.value))} className="u-focus h-11 w-full rounded-ctl border border-line bg-app px-3 u-num" /></label>
-            <label className="text-sm"><span className="u-caps mb-2 block">Meta de lucro</span><input type="number" min={selected.targetMinBps / 100} max={selected.targetMaxBps / 100} step="0.1" value={target} onChange={(e) => setTarget(Number(e.target.value))} className="u-focus h-11 w-full rounded-ctl border border-line bg-app px-3 u-num" /></label>
-            <button disabled={activating} onClick={() => void start().catch((error) => setMessage(error.message))} className="u-focus u-lift h-11 rounded-btn bg-cta px-5 font-semibold text-app disabled:cursor-not-allowed disabled:opacity-50">{activating ? 'Ativando…' : 'Ativar Agente IA'}</button>
+          <div className="space-y-4 rounded-panel border border-line bg-panel p-5">
+            <div className="grid gap-5 md:grid-cols-2">
+              <label className="text-sm">
+                <span className="u-caps mb-2 block">Capital virtual alocado</span>
+                <div className="flex items-stretch overflow-hidden rounded-ctl border border-line bg-app transition focus-within:border-brand">
+                  <span className="flex items-center pl-3 pr-1 text-[13px] text-muted">R$</span>
+                  <input
+                    type="number"
+                    min="10"
+                    value={allocation}
+                    onChange={(e) => setAllocation(Math.max(10, Number(e.target.value) || 10))}
+                    className="u-num h-11 w-full min-w-0 flex-1 bg-transparent px-1 outline-none"
+                  />
+                </div>
+                <div className="mt-1.5 flex gap-1">
+                  {ALLOCATION_PRESETS.map((n) => (
+                    <button
+                      key={n}
+                      type="button"
+                      onClick={() => setAllocation(n)}
+                      className={`u-focus u-num flex-1 rounded-ctl border py-1 text-[11px] font-semibold transition ${
+                        allocation === n ? 'border-brand bg-brand/10 text-brand' : 'border-line bg-elevated text-muted hover:text-ink'
+                      }`}
+                    >
+                      {n}
+                    </button>
+                  ))}
+                </div>
+              </label>
+
+              <div className="text-sm">
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="u-caps">Meta de lucro</span>
+                  <span className="u-num text-lg font-semibold text-brand">{target.toFixed(1)}%</span>
+                </div>
+                <input
+                  type="range"
+                  min={targetMinPct}
+                  max={targetMaxPct}
+                  step={0.1}
+                  value={target}
+                  onChange={(e) => setTarget(Number(e.target.value))}
+                  className="u-focus h-1.5 w-full cursor-pointer appearance-none rounded-full bg-line accent-brand"
+                />
+                <div className="mt-1.5 flex justify-between text-[10px] text-faint">
+                  <span>Conservadora {targetMinPct}%</span>
+                  <span>Ambiciosa {targetMaxPct}%</span>
+                </div>
+                <div className="mt-2 flex gap-1">
+                  {targetPresets.map((p) => (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => setTarget(p)}
+                      className={`u-focus u-num flex-1 rounded-ctl border py-1 text-[11px] font-semibold transition ${
+                        target === p ? 'border-brand bg-brand/10 text-brand' : 'border-line bg-elevated text-muted hover:text-ink'
+                      }`}
+                    >
+                      {p}%
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-ctl border border-brand/30 bg-brand/10 px-4 py-3">
+              <span className="text-sm text-muted">Ganho estimado ao atingir a meta</span>
+              <strong className="u-num text-xl text-bull-text">+R$ {brl(estimatedGain)}</strong>
+            </div>
+
+            <button
+              disabled={activating}
+              onClick={() => void start().catch((error) => setMessage(error.message))}
+              className="u-focus u-lift u-glow-brand w-full rounded-btn bg-cta py-3 font-semibold text-app transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 sm:w-auto sm:px-8"
+            >
+              {activating ? 'Ativando…' : 'Ativar Agente IA'}
+            </button>
           </div>
         )}
         {visibleInstance && (

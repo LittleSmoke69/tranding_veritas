@@ -173,7 +173,12 @@ export function TradingTerminal({ session, onLogout, onBalance, onAdmin }: Tradi
     setActiveNav(id);
     if (id !== 'history') {
       setContentNav(id);
-      if (id === 'robots') setOrderSheetOpen(false);
+      if (id === 'robots') {
+        setOrderSheetOpen(false);
+        setPositionsCollapsed(true);
+      } else if (contentNav === 'robots') {
+        setPositionsCollapsed(false);
+      }
     }
   };
 

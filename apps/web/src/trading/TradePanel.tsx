@@ -194,7 +194,7 @@ export function TradePanel({
           type="button"
           disabled={busy}
           onClick={() => void fire('up')}
-          className="u-focus u-lift flex h-[72px] w-full flex-col items-center justify-center gap-1.5 rounded-btn bg-bull font-semibold text-on-bull disabled:opacity-60 sm:h-[88px]"
+          className="u-focus u-lift u-glow-bull flex h-[72px] w-full flex-col items-center justify-center gap-1.5 rounded-btn bg-bull font-semibold text-on-bull transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:hover:scale-100 sm:h-[88px]"
         >
           <Icon name="trendUp" size={26} strokeWidth={2} />
           <span className="font-cond text-[15px] uppercase tracking-[0.06em]">Acima</span>
@@ -203,7 +203,7 @@ export function TradePanel({
           type="button"
           disabled={busy}
           onClick={() => void fire('down')}
-          className="u-focus u-lift flex h-[72px] w-full flex-col items-center justify-center gap-1.5 rounded-btn bg-bear-fill font-semibold text-white disabled:opacity-60 sm:h-[88px]"
+          className="u-focus u-lift u-glow-bear flex h-[72px] w-full flex-col items-center justify-center gap-1.5 rounded-btn bg-bear-fill font-semibold text-white transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:hover:scale-100 sm:h-[88px]"
         >
           <Icon name="trendDown" size={26} strokeWidth={2} />
           <span className="font-cond text-[15px] uppercase tracking-[0.06em]">Abaixo</span>

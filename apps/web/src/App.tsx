@@ -1,10 +1,11 @@
-import { FormEvent, useEffect, useState } from 'react';
-import { VeritasLogo } from './components/VeritasLogo';
+import { type CSSProperties, FormEvent, useEffect, useState } from 'react';
 import { api } from './lib/api';
 import { TradingTerminal } from './trading/TradingTerminal';
 import { AdminApp } from './admin/AdminApp';
 import { TradingLoadingScreen } from './components/TradingLoadingScreen';
 import { RegisterScreen, type RegistrationData } from './auth/RegisterScreen';
+import { LandingPage } from './landing/Landing';
+import landingLogo from './landing/assets/logo_1.png';
 
 type MeData = {
   user: {
@@ -53,6 +54,7 @@ function LoginScreen({
   onTogglePassword,
   onSubmit,
   onRegister,
+  onBack,
 }: {
   identifier: string;
   password: string;
@@ -64,59 +66,102 @@ function LoginScreen({
   onTogglePassword: () => void;
   onSubmit: (e: FormEvent) => void;
   onRegister: () => void;
+  onBack: () => void;
 }) {
+  const fieldStyle: CSSProperties = {
+    background: 'rgba(255,255,255,0.04)',
+    border: '1px solid var(--border)',
+    color: 'var(--foreground)',
+    fontFamily: "'Manrope', sans-serif",
+  };
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center bg-app px-4 py-10 text-ink">
-      <div className="mb-8">
-        <VeritasLogo size="lg" subtitle="TRADER" />
-      </div>
+    <div
+      className="veritas-landing grid-bg relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-4 py-10"
+      style={{ background: 'var(--background)' }}
+    >
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(25,172,254,0.1) 0%, transparent 70%)', filter: 'blur(60px)' }}
+      />
 
-      <div className="w-full max-w-[420px] overflow-hidden rounded-panel border border-line bg-panel shadow-[var(--shadow-float)]">
+      <button
+        type="button"
+        onClick={onBack}
+        className="relative z-10 mb-8 flex items-center gap-2"
+        style={{ color: 'var(--muted-foreground)', fontSize: '0.8125rem', fontWeight: 600 }}
+      >
+        <img
+          src={landingLogo}
+          alt="Veritas"
+          className="h-11 w-auto object-contain"
+          style={{ filter: 'drop-shadow(0 0 8px rgba(25,172,254,0.3))' }}
+        />
+      </button>
+
+      <div className="bento-card relative z-10 w-full max-w-[420px] overflow-hidden" style={{ boxShadow: '0 40px 80px rgba(0,0,0,0.6)' }}>
         <div className="flex items-start justify-between gap-3 px-7 pb-2 pt-7">
           <div>
-            <p className="text-sm text-muted">Feliz em te ver</p>
-            <h1 className="mt-1 text-[28px] font-semibold leading-tight tracking-tight text-ink">
-              Bem-vindo novamente
+            <span
+              className="mb-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1"
+              style={{
+                background: 'var(--primary-dim)',
+                border: '1px solid var(--primary-border)',
+                color: 'var(--primary)',
+                fontSize: '0.6875rem',
+                fontWeight: 700,
+                letterSpacing: '0.04em',
+              }}
+            >
+              Ambiente de simulação
+            </span>
+            <h1
+              className="mt-3 text-[28px] leading-tight"
+              style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--foreground)' }}
+            >
+              Bem-vindo <span className="blue-gradient">novamente</span>
             </h1>
+            <p className="mt-1 text-sm" style={{ color: 'var(--muted-foreground)' }}>
+              Acesse sua conta e opere na plataforma.
+            </p>
           </div>
-          <button
-            type="button"
-            className="u-focus mt-1 shrink-0 rounded-ctl border border-line bg-app px-2.5 py-1.5 text-xs text-muted"
-            title="Idioma"
-          >
-            Português ▾
-          </button>
         </div>
 
         <form onSubmit={onSubmit} className="space-y-4 px-7 pb-6 pt-5">
           <label className="block">
-            <span className="mb-1.5 block text-sm text-muted">E-mail ou usuário</span>
+            <span className="mb-1.5 block text-sm" style={{ color: 'var(--muted-foreground)' }}>E-mail ou usuário</span>
             <input
-              className="u-focus w-full rounded-ctl border border-line bg-app px-4 py-3.5 text-[15px] text-ink transition placeholder:text-faint focus:border-brand"
+              className="u-focus w-full rounded-xl px-4 py-3.5 text-[15px] outline-none transition"
+              style={fieldStyle}
               value={identifier}
               onChange={(e) => onIdentifier(e.target.value)}
               placeholder="E-mail ou usuário"
               autoComplete="username"
+              onFocus={(e) => (e.target.style.borderColor = 'var(--primary-border)')}
+              onBlur={(e) => (e.target.style.borderColor = 'var(--border)')}
               required
             />
           </label>
 
           <label className="block">
-            <span className="mb-1.5 block text-sm text-muted">Senha</span>
+            <span className="mb-1.5 block text-sm" style={{ color: 'var(--muted-foreground)' }}>Senha</span>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
-                className="u-focus w-full rounded-ctl border border-line bg-app px-4 py-3.5 pr-12 text-[15px] text-ink transition placeholder:text-faint focus:border-brand"
+                className="u-focus w-full rounded-xl px-4 py-3.5 pr-12 text-[15px] outline-none transition"
+                style={fieldStyle}
                 value={password}
                 onChange={(e) => onPassword(e.target.value)}
                 placeholder="Senha"
                 autoComplete="current-password"
+                onFocus={(e) => (e.target.style.borderColor = 'var(--primary-border)')}
+                onBlur={(e) => (e.target.style.borderColor = 'var(--border)')}
                 required
               />
               <button
                 type="button"
                 onClick={onTogglePassword}
-                className="u-focus absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-ctl text-muted hover:bg-elevated hover:text-ink"
+                className="u-focus absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg"
+                style={{ color: 'var(--muted-foreground)' }}
                 aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
               >
                 <EyeIcon open={showPassword} />
@@ -125,7 +170,11 @@ function LoginScreen({
           </label>
 
           {error && (
-            <p role="alert" className="rounded-ctl border border-bear/50 bg-bear/10 px-3 py-2 text-sm text-bear-text">
+            <p
+              role="alert"
+              className="rounded-xl px-3 py-2 text-sm"
+              style={{ background: 'rgba(248,113,113,0.1)', border: '1px solid rgba(248,113,113,0.2)', color: 'var(--red)' }}
+            >
               {error}
             </p>
           )}
@@ -133,22 +182,30 @@ function LoginScreen({
           <button
             type="submit"
             disabled={busy}
-            className="u-focus u-lift w-full rounded-btn bg-brand px-4 py-3.5 text-[15px] font-semibold text-app disabled:opacity-60"
+            className="u-focus w-full rounded-xl px-4 py-3.5 text-[15px] font-bold transition-all hover:opacity-90 hover:scale-[1.02] disabled:opacity-60"
+            style={{ background: 'var(--primary)', color: '#fff', boxShadow: '0 0 40px var(--primary-glow)' }}
           >
             {busy ? 'Entrando…' : 'Entrar'}
           </button>
 
           <div className="flex items-center justify-between gap-3 pt-1 text-sm">
-            <span className="cursor-default text-brand">Esqueceu a senha?</span>
-            <button type="button" onClick={onRegister} className="u-focus rounded-ctl px-1 font-medium text-brand hover:underline">Registrar-se</button>
+            <span className="cursor-default" style={{ color: 'var(--primary)' }}>Esqueceu a senha?</span>
+            <button
+              type="button"
+              onClick={onRegister}
+              className="u-focus rounded-lg px-1 font-medium hover:underline"
+              style={{ color: 'var(--primary)' }}
+            >
+              Registrar-se
+            </button>
           </div>
         </form>
 
-        <div className="border-t border-line bg-elevated px-7 py-5">
-          <p className="u-caps text-brand">
+        <div className="border-t px-7 py-5" style={{ borderColor: 'var(--border)', background: 'rgba(255,255,255,0.02)' }}>
+          <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--primary)' }}>
             VeritasTrader
           </p>
-          <p className="mt-1 text-sm text-ink">Acesse sua conta e opere no terminal.</p>
+          <p className="mt-1 text-sm" style={{ color: 'var(--foreground)' }}>Simulação com fins educacionais. Nenhum valor real é movimentado.</p>
         </div>
       </div>
     </div>
@@ -164,7 +221,13 @@ export function App() {
   const [session, setSession] = useState<MeData | null>(null);
   const [path, setPath] = useState(() => window.location.pathname);
   const [enteringTrading, setEnteringTrading] = useState(false);
-  const [authView, setAuthView] = useState<'login' | 'register'>('login');
+  const [authView, setAuthView] = useState<'landing' | 'login' | 'register'>(() =>
+    window.location.pathname.startsWith('/login') || window.location.pathname.startsWith('/register')
+      ? window.location.pathname.startsWith('/register')
+        ? 'register'
+        : 'login'
+      : 'landing',
+  );
 
   useEffect(() => {
     void api<MeData>('/auth/me')
@@ -215,10 +278,15 @@ export function App() {
   };
 
   const onLogout = async () => {
-    await fetch('/auth/logout', { method: 'POST', credentials: 'include' });
+    try {
+      await fetch('/auth/logout', { method: 'POST', credentials: 'include' });
+    } catch {
+      // Best-effort: mesmo sem rede/API, a sessão local é encerrada abaixo.
+    }
     setEnteringTrading(false);
-    setAuthView('login');
     setSession(null);
+    setAuthView('landing');
+    navigate('/');
   };
 
   const onRegister = async (registration: RegistrationData) => {
@@ -232,10 +300,23 @@ export function App() {
   };
 
   if (!session) {
+    if (authView === 'landing') {
+      return (
+        <LandingPage
+          onAccessPlatform={() => {
+            navigate('/login');
+            setAuthView('login');
+          }}
+        />
+      );
+    }
     if (authView === 'register') {
       return (
         <RegisterScreen
-          onBack={() => setAuthView('login')}
+          onBack={() => {
+            navigate('/login');
+            setAuthView('login');
+          }}
           onRegister={onRegister}
         />
       );
@@ -251,7 +332,14 @@ export function App() {
         onPassword={setPassword}
         onTogglePassword={() => setShowPassword((v) => !v)}
         onSubmit={(e) => void onLogin(e)}
-        onRegister={() => setAuthView('register')}
+        onRegister={() => {
+          navigate('/register');
+          setAuthView('register');
+        }}
+        onBack={() => {
+          navigate('/');
+          setAuthView('landing');
+        }}
       />
     );
   }
