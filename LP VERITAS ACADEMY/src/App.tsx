@@ -5,7 +5,7 @@ import {
   Bitcoin, Target, Zap, BarChart3, Users,
   ShieldCheck, ArrowRight, ChevronDown, Trophy,
   Percent, AlertTriangle, Lightbulb, Eye, Rocket, Globe,
-  BookOpen, Bot, Scale, Handshake, TrendingUp,
+  BookOpen, Bot, Scale, Handshake, TrendingUp, GraduationCap,
 } from "lucide-react";
 import Mercados from "./pages/Mercados";
 import Educacao from "./pages/Educacao";
@@ -240,112 +240,45 @@ function Hero() {
   );
 }
 
-// ── Stats ─────────────────────────────────────────────────────────────────────
+// ── Soluções (visão geral) ──────────────────────────────────────────────────
 
-const STATS = [
-  { value: 5200, suffix: "+",  label: "Traders formados",       icon: <Users className="w-5 h-5" />,   prefix: ""  },
-  { value: 78,   suffix: "%",  label: "Taxa média de acerto",   icon: <Target className="w-5 h-5" />,  prefix: ""  },
-  { value: 18,   suffix: "%",  label: "ROI médio mensal",       icon: <Percent className="w-5 h-5" />, prefix: "+" },
-  { value: 3200, suffix: "+",  label: "Sinais emitidos/mês",    icon: <Zap className="w-5 h-5" />,     prefix: ""  },
+const SOLUTIONS_OVERVIEW = [
+  { icon: <TrendingUp className="w-5 h-5" />, gradient: "linear-gradient(135deg, #38bdf8, #2563eb)",
+    title: "Mercado Financeiro", desc: "Soluções inteligentes conectando empresas e investidores com agilidade e segurança." },
+  { icon: <BarChart3 className="w-5 h-5" />, gradient: "linear-gradient(135deg, #f472b6, #a21caf)",
+    title: "Performance", desc: "Tecnologia, experiência e estratégia. Conheça nossos números e o diferencial." },
+  { icon: <Users className="w-5 h-5" />, gradient: "linear-gradient(135deg, #fb923c, #ec4899)",
+    title: "Consultoria", desc: "Transforme decisões financeiras em estratégias vencedoras com segurança." },
+  { icon: <ShieldCheck className="w-5 h-5" />, gradient: "linear-gradient(135deg, #34d399, #059669)",
+    title: "Segurança", desc: "A proteção de seus dados e investimentos é a base de tudo que fazemos." },
+  { icon: <Zap className="w-5 h-5" />, gradient: "linear-gradient(135deg, #f87171, #dc2626)",
+    title: "Robô", desc: "Robôs configurados para operar com precisão e agilidade no mercado." },
+  { icon: <GraduationCap className="w-5 h-5" />, gradient: "linear-gradient(135deg, #818cf8, #4f46e5)",
+    title: "Cursos e Material", desc: "Cursos e materiais complementares para você aprender de forma prática e eficiente." },
 ];
 
 function Stats() {
-  const winRate = useCountUp(78);
-  const roi     = useCountUp(18);
-  const traders = useCountUp(5200);
-  const signals = useCountUp(3200);
-
   return (
     <section className="py-24 border-y" style={{ borderColor: BORDER }}>
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-          {/* Top-left — Signals chart */}
-          <div ref={signals.ref} className="bento-card p-7 flex flex-col gap-5" style={{ minHeight: 260 }}>
-            {/* Chart area */}
-            <div className="flex-1 overflow-hidden rounded-xl relative"
-              style={{ background: "linear-gradient(135deg, rgba(25,172,254,0.07) 0%, rgba(4,5,12,0.6) 100%)", border: `1px solid ${BB}` }}>
-              {/* Subtle inner grid lines */}
-              <div className="absolute inset-0 opacity-20"
-                style={{ backgroundImage: "linear-gradient(rgba(25,172,254,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(25,172,254,0.3) 1px, transparent 1px)", backgroundSize: "40px 30px" }} />
-              <svg viewBox="0 0 300 140" className="w-full h-full relative z-10" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="sigGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="rgba(25,172,254,0.25)" />
-                    <stop offset="100%" stopColor="rgba(25,172,254,0)" />
-                  </linearGradient>
-                </defs>
-                <path d="M0 135 C20 130 40 118 60 108 C80 98 90 105 110 94 C130 83 138 66 160 56 C182 46 190 58 210 44 C230 30 245 10 270 6 C285 4 293 10 300 8"
-                  stroke={B} strokeWidth="2.5" fill="none" strokeLinecap="round" />
-                <path d="M0 135 C20 130 40 118 60 108 C80 98 90 105 110 94 C130 83 138 66 160 56 C182 46 190 58 210 44 C230 30 245 10 270 6 C285 4 293 10 300 8 L300 140 L0 140Z"
-                  fill="url(#sigGrad)" />
-                {/* Dot at the end */}
-                <circle cx="300" cy="8" r="4" fill={B} />
-                <circle cx="300" cy="8" r="8" fill={B} opacity="0.2" />
-              </svg>
-            </div>
-            {/* Text */}
-            <div>
-              <p className="stat-value" style={{ fontSize: "2.25rem" }}>+{signals.value.toLocaleString("pt-BR")}</p>
-              <p className="stat-label">sinais emitidos/mês</p>
-            </div>
-          </div>
-
-          {/* Top-right — Win rate */}
-          <div ref={winRate.ref} className="bento-card p-7 flex flex-col items-center justify-center text-center gap-5" style={{ minHeight: 260 }}>
-            {/* Ellipse decoration behind number */}
-            <div className="relative flex items-center justify-center" style={{ width: 200, height: 100 }}>
-              <svg viewBox="0 0 254 104" fill="none" className="absolute inset-0 w-full h-full" style={{ color: "rgba(25,172,254,0.1)" }}>
-                <path d="M112.891 97.7022C140.366 97.0802 171.004 94.6715 201.087 87.5116C210.43 85.2881 219.615 82.6412 228.284 78.2473C232.198 76.3179 235.905 73.9942 239.348 71.3124C241.85 69.2557 243.954 66.7571 245.555 63.9408C249.34 57.3235 248.281 50.5341 242.498 45.6109C239.033 42.7237 235.228 40.2703 231.169 38.3054C219.443 32.7209 207.141 28.4382 194.482 25.534C184.013 23.1927 173.358 21.7755 162.64 21.2989C129.914 5.70776 102.154 8.06792 75.2124 14.5228C60.6177 17.8788 46.5758 23.2977 33.5102 30.6161C26.6595 34.3329 20.4123 39.0673 14.9818 44.658C4.87056 59.5336 5.61172 67.2494 11.9246 73.7608C31.6176 87.7101 41.3848 90.5291 51.3902 92.5804C70.6068 96.5773 90.0219 97.7419 112.891 97.7022Z" fill="currentColor" />
-              </svg>
-              <span className="relative z-10" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "4.5rem", fontWeight: 900, color: B, lineHeight: 1, letterSpacing: "-0.04em" }}>
-                {winRate.value}%
-              </span>
-            </div>
-            <div>
-              <p className="card-title" style={{ fontSize: "1.0625rem" }}>Taxa de acerto</p>
-              <p className="card-body mt-1" style={{ maxWidth: "26ch" }}>Média histórica dos traders formados pela Veritas</p>
-            </div>
-          </div>
-
-          {/* Bottom-left — ROI */}
-          <div ref={roi.ref} className="bento-card p-7 flex flex-col items-center justify-center text-center gap-5" style={{ minHeight: 220 }}>
-            {/* Double-ring icon */}
-            <div className="relative flex items-center justify-center" style={{ width: 100, height: 100 }}>
-              <div className="absolute inset-0 rounded-full" style={{ border: `1px solid rgba(25,172,254,0.12)` }} />
-              <div className="absolute rounded-full" style={{ inset: 10, border: `1px solid ${BB}` }} />
-              <div className="absolute inset-0 rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(25,172,254,0.07) 0%, transparent 70%)" }} />
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative"
-                style={{ background: BD, border: `1px solid ${BB}` }}>
-                <Percent className="w-7 h-7" style={{ color: B }} />
+        <SectionHeader
+          center
+          badge="Nossas Soluções"
+          heading="Soluções para você investir com inteligência"
+          sub="Educação, análise e tecnologia de ponta para sua operação no mercado financeiro global."
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {SOLUTIONS_OVERVIEW.map((s) => (
+            <div key={s.title} className="bento-card p-7 flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white shrink-0" style={{ background: s.gradient }}>
+                {s.icon}
+              </div>
+              <div>
+                <h3 className="card-title mb-2">{s.title}</h3>
+                <p className="card-body">{s.desc}</p>
               </div>
             </div>
-            <div>
-              <p className="stat-value" style={{ fontSize: "2.5rem" }}>+{roi.value}%</p>
-              <p className="stat-label">ROI médio mensal</p>
-            </div>
-          </div>
-
-          {/* Bottom-right — Traders */}
-          <div ref={traders.ref} className="bento-card p-7 flex flex-col items-center justify-center text-center gap-5" style={{ minHeight: 220 }}>
-            {/* Double-ring icon */}
-            <div className="relative flex items-center justify-center" style={{ width: 100, height: 100 }}>
-              <div className="absolute inset-0 rounded-full" style={{ border: "1px solid rgba(0,232,122,0.12)" }} />
-              <div className="absolute rounded-full" style={{ inset: 10, border: "1px solid rgba(0,232,122,0.25)" }} />
-              <div className="absolute inset-0 rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(0,232,122,0.06) 0%, transparent 70%)" }} />
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative"
-                style={{ background: GD, border: "1px solid rgba(0,232,122,0.25)" }}>
-                <Users className="w-7 h-7" style={{ color: G }} />
-              </div>
-            </div>
-            <div>
-              <p className="stat-value" style={{ fontSize: "2.5rem", color: G }}>{traders.value.toLocaleString("pt-BR")}+</p>
-              <p className="stat-label">Traders formados</p>
-            </div>
-          </div>
-
+          ))}
         </div>
       </div>
     </section>
