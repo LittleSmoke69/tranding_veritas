@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { type CSSProperties, useEffect, useState } from 'react';
 import logo1 from '../landing/assets/logo_1.png';
 import '../landing/landing.css';
 
@@ -33,14 +33,20 @@ export function TradingLoadingScreen() {
   return (
     <div
       className="veritas-landing grid-bg relative flex h-dvh items-center justify-center overflow-hidden px-6"
-      style={{ background: 'var(--background)' }}
+      style={{
+        background: 'var(--background)',
+        '--primary': '#2e64ff',
+        '--primary-dim': 'rgba(46,100,255,0.12)',
+        '--primary-border': 'rgba(46,100,255,0.22)',
+        '--primary-glow': 'rgba(46,100,255,0.18)',
+      } as CSSProperties}
       role="status"
       aria-live="polite"
       aria-label="Preparando o acesso à plataforma Veritas"
     >
       <div
         className="pointer-events-none absolute left-1/2 top-1/4 h-[600px] w-[600px] -translate-x-1/2 rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(25,172,254,0.1) 0%, transparent 70%)', filter: 'blur(60px)' }}
+        style={{ background: 'radial-gradient(circle, rgba(46,100,255,0.1) 0%, transparent 70%)', filter: 'blur(60px)' }}
         aria-hidden="true"
       />
 
@@ -112,7 +118,7 @@ export function TradingLoadingScreen() {
           src={logo1}
           alt="Veritas"
           className="loading-logo h-16 w-auto object-contain"
-          style={{ filter: 'drop-shadow(0 0 8px rgba(25,172,254,0.3))' }}
+          style={{ filter: 'drop-shadow(0 0 8px rgba(46,100,255,0.3))' }}
         />
 
         <p className="mt-5 text-lg font-bold" style={{ color: 'var(--foreground)' }}>

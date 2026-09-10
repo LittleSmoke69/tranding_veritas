@@ -77,11 +77,17 @@ function LoginScreen({
   return (
     <div
       className="veritas-landing grid-bg relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-4 py-10"
-      style={{ background: 'var(--background)' }}
+      style={{
+        background: 'var(--background)',
+        '--primary': '#2e64ff',
+        '--primary-dim': 'rgba(46,100,255,0.12)',
+        '--primary-border': 'rgba(46,100,255,0.22)',
+        '--primary-glow': 'rgba(46,100,255,0.18)',
+      } as CSSProperties}
     >
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(25,172,254,0.1) 0%, transparent 70%)', filter: 'blur(60px)' }}
+        style={{ background: 'radial-gradient(circle, rgba(46,100,255,0.1) 0%, transparent 70%)', filter: 'blur(60px)' }}
       />
 
       <button
@@ -94,7 +100,7 @@ function LoginScreen({
           src={landingLogo}
           alt="Veritas"
           className="h-11 w-auto object-contain"
-          style={{ filter: 'drop-shadow(0 0 8px rgba(25,172,254,0.3))' }}
+          style={{ filter: 'drop-shadow(0 0 8px rgba(46,100,255,0.3))' }}
         />
       </button>
 
@@ -118,7 +124,10 @@ function LoginScreen({
               className="mt-3 text-[28px] leading-tight"
               style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--foreground)' }}
             >
-              Bem-vindo <span className="blue-gradient">novamente</span>
+              Bem-vindo{' '}
+              <span style={{ backgroundImage: 'linear-gradient(to right, #5e90ff, #1f4ee6)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
+                novamente
+              </span>
             </h1>
             <p className="mt-1 text-sm" style={{ color: 'var(--muted-foreground)' }}>
               Acesse sua conta e opere na plataforma.
@@ -183,7 +192,7 @@ function LoginScreen({
             type="submit"
             disabled={busy}
             className="u-focus w-full rounded-xl px-4 py-3.5 text-[15px] font-bold transition-all hover:opacity-90 hover:scale-[1.02] disabled:opacity-60"
-            style={{ background: 'var(--primary)', color: '#fff', boxShadow: '0 0 40px var(--primary-glow)' }}
+            style={{ backgroundImage: 'linear-gradient(to right, #2e64ff, #1f4ee6)', color: '#fff', boxShadow: '0 0 40px var(--primary-glow)' }}
           >
             {busy ? 'Entrando…' : 'Entrar'}
           </button>
