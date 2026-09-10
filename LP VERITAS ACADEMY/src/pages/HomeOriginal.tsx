@@ -221,16 +221,26 @@ function NossaAtuacao() {
 function QuemSomosIntro() {
   return (
     <section className="py-24" style={{ background: BG }}>
-      <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         <div className="relative">
-          <div className="rounded-2xl overflow-hidden border" style={{ borderColor: BORDER }}>
+          <div className="absolute -top-4 -left-4 w-16 h-16 pointer-events-none hidden sm:block"
+            style={{ borderTop: `2px solid ${BLUE_LIGHT}`, borderLeft: `2px solid ${BLUE_LIGHT}`, borderTopLeftRadius: "1.5rem" }} />
+          <div className="absolute -bottom-4 -right-4 w-16 h-16 pointer-events-none hidden sm:block"
+            style={{ borderBottom: `2px solid ${BLUE_LIGHT}`, borderRight: `2px solid ${BLUE_LIGHT}`, borderBottomRightRadius: "1.5rem" }} />
+          <div className="relative rounded-2xl overflow-hidden border" style={{ borderColor: BORDER }}>
             <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&h=700&fit=crop" alt="Equipe Veritas Global"
               className="w-full h-full object-cover" style={{ maxHeight: 460 }} />
+            <div className="absolute left-4 right-4 bottom-4 rounded-xl px-4 py-3 flex items-center gap-3 backdrop-blur-md"
+              style={{ background: "rgba(10,10,10,0.55)", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: BLUE_LIGHT, color: "#fff" }}>
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <p style={{ fontSize: "0.9375rem", fontWeight: 700, color: WHITE }}>Segurança Garantida</p>
+                <p style={{ fontSize: "0.8125rem", color: MUTED }}>Proteção em todas as operações</p>
+              </div>
+            </div>
           </div>
-          <Card className="absolute -bottom-5 left-6 px-4 py-3 flex items-center gap-3" style={{ background: BG }}>
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "rgba(34,197,94,0.15)", color: "#22c55e" }}><ShieldCheck className="w-4 h-4" /></div>
-            <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: WHITE }}>Segurança Garantida</span>
-          </Card>
         </div>
         <div>
           <Eyebrow>Quem Somos</Eyebrow>
@@ -246,18 +256,24 @@ function QuemSomosIntro() {
             Nosso trabalho está focado na construção de conhecimento, estrutura de acompanhamento e integração
             com plataformas internacionais utilizadas por investidores ao redor do mundo.
           </p>
-          <div className="mb-8 pl-4 border-l-2" style={{ borderColor: BLUE_LIGHT }}>
-            <p style={{ fontSize: "1.75rem", fontWeight: 900, color: BLUE_LIGHT }}>10+</p>
-            <p style={{ color: MUTED, fontSize: "0.9375rem" }}>Anos de atuação no mercado financeiro internacional</p>
+          <div className="mb-8 pl-4 border-l-2 flex items-center gap-4" style={{ borderColor: BLUE_LIGHT }}>
+            <p style={{ fontSize: "2.25rem", fontWeight: 800, color: BLUE_LIGHT, lineHeight: 1 }}>10+</p>
+            <p style={{ color: WHITE, fontSize: "0.9375rem", fontWeight: 600, lineHeight: 1.4 }}>Anos de atuação no mercado financeiro internacional</p>
           </div>
           <ul className="space-y-3 mb-8">
             {["Conhecimento estratégico para mercados globais", "Disciplina operacional e acompanhamento profissional", "Integração com plataformas internacionais"].map((t) => (
-              <li key={t} className="flex items-start gap-2.5" style={{ fontSize: "0.9375rem", color: MUTED }}>
-                <Check className="w-4 h-4 shrink-0 mt-0.5" style={{ color: "#22c55e" }} />{t}
+              <li key={t} className="flex items-center gap-3" style={{ fontSize: "0.9375rem", color: WHITE }}>
+                <span className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ background: BLUE_LIGHT }}>
+                  <Check className="w-3 h-3" style={{ color: "#fff" }} strokeWidth={3} />
+                </span>
+                {t}
               </li>
             ))}
           </ul>
-          <PrimaryButton onClick={() => navigate("/planos")}>Ver Planos</PrimaryButton>
+          <button onClick={() => navigate("/planos")} className="px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
+            style={{ background: "#fff", color: "#0a0a0a", fontSize: "0.9375rem", fontWeight: 700 }}>
+            Ver Planos
+          </button>
         </div>
       </div>
     </section>
