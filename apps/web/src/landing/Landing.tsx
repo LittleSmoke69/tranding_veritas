@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useLenis } from "./hooks/useLenis";
+import { useLenis, scrollToId } from "./hooks/useLenis";
 import ScrollRevealText from "./components/ScrollRevealText";
 import {
   Bitcoin, Target, Zap, BarChart3, Users,
@@ -15,6 +15,9 @@ import Planos from "./pages/Planos";
 import QuemSomos from "./pages/QuemSomos";
 import NossaEquipe from "./pages/NossaEquipe";
 import Carreiras from "./pages/Carreiras";
+import CopyTrading from "./pages/CopyTrading";
+import Consultoria from "./pages/Consultoria";
+import Automacao from "./pages/Automacao";
 import {
   B, BD, BB, G, GD, RED, RD, RB, GOLD, CARD, MFG, FG, BORDER,
   IBox, Badge, SectionHeader, Ticker, useCountUp, Footer, NoiseOverlay, BrokersSection,
@@ -28,6 +31,13 @@ const VERITAS_LINKS: { label: string; view: LandingView }[] = [
   { label: "Carreiras", view: "carreiras" },
 ];
 
+const SERVICOS_LINKS: { label: string; view: LandingView }[] = [
+  { label: "Copy Trading", view: "copytrading" },
+  { label: "Cursos", view: "educacao" },
+  { label: "Consultoria", view: "consultoria" },
+  { label: "Automação", view: "automacao" },
+];
+
 function Navbar({
   view, onNavigate, onAccessPlatform,
 }: { view: LandingView; onNavigate: (v: LandingView) => void; onAccessPlatform: () => void }) {
@@ -35,6 +45,8 @@ function Navbar({
   const [open, setOpen] = useState(false);
   const [veritasOpen, setVeritasOpen] = useState(false);
   const [mobileVeritasOpen, setMobileVeritasOpen] = useState(false);
+  const [servicosOpen, setServicosOpen] = useState(false);
+  const [mobileServicosOpen, setMobileServicosOpen] = useState(false);
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", h);
@@ -46,8 +58,9 @@ function Navbar({
     { label: "Educação", view: "educacao" },
     { label: "Planos", view: "planos" },
   ];
-  const go = (v: LandingView) => { onNavigate(v); setOpen(false); setVeritasOpen(false); };
+  const go = (v: LandingView) => { onNavigate(v); setOpen(false); setVeritasOpen(false); setServicosOpen(false); };
   const veritasActive = VERITAS_LINKS.some((l) => l.view === view);
+  const servicosActive = SERVICOS_LINKS.some((l) => l.view === view);
   return (
     <nav className="sticky top-0 z-50 transition-all duration-300"
       style={{ background: scrolled ? "rgba(4,5,12,0.95)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? `1px solid ${BORDER}` : "none" }}>
@@ -73,6 +86,27 @@ function Navbar({
               <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3">
                 <div className="w-52 rounded-xl overflow-hidden" style={{ background: "rgba(8,12,24,0.98)", border: `1px solid ${BORDER}`, boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
                   {VERITAS_LINKS.map((l) => (
+                    <button key={l.view} onClick={() => go(l.view)}
+                      className="block w-full px-4 py-3 text-left transition-colors hover:bg-white/5"
+                      style={{ color: view === l.view ? B : MFG, fontSize: "0.8125rem", fontWeight: 600 }}>
+                      {l.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="relative" onMouseEnter={() => setServicosOpen(true)} onMouseLeave={() => setServicosOpen(false)}>
+            <button
+              style={{ color: servicosActive || servicosOpen ? FG : MFG, fontSize: "0.9375rem", fontWeight: 600, letterSpacing: "0.01em" }}
+              className="flex items-center gap-1.5 transition-colors hover:text-white">
+              Serviços
+              <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200" style={{ transform: servicosOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
+            </button>
+            {servicosOpen && (
+              <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3">
+                <div className="w-52 rounded-xl overflow-hidden" style={{ background: "rgba(8,12,24,0.98)", border: `1px solid ${BORDER}`, boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
+                  {SERVICOS_LINKS.map((l) => (
                     <button key={l.view} onClick={() => go(l.view)}
                       className="block w-full px-4 py-3 text-left transition-colors hover:bg-white/5"
                       style={{ color: view === l.view ? B : MFG, fontSize: "0.8125rem", fontWeight: 600 }}>
@@ -114,6 +148,22 @@ function Navbar({
               {VERITAS_LINKS.map((l) => (
                 <button key={l.view} onClick={() => go(l.view)} className="block w-full py-2.5 text-left border-b"
                   style={{ color: view === l.view ? B : MFG, fontSize: "0.8125rem", fontWeight: 600, borderColor: BORDER }}>{l.label}</button>
+              ))}
+            </div>
+          )}
+          <button onClick={() => setMobileServicosOpen((v) => !v)}
+            className="flex w-full items-center justify-between py-3 border-b"
+            style={{ color: servicosActive ? FG : MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>
+            Serviços
+            <ChevronDown className="w-4 h-4 transition-transform duration-200" style={{ transform: mobileServicosOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
+          </button>
+          {mobileServicosOpen && (
+            <div className="pl-4">
+              {SERVICOS_LINKS.map((l) => (
+                <button key={l.view} onClick={() => go(l.view)} className="block w-full py-2.5 text-left border-b"
+                  style={{ color: view === l.view ? B : MFG, fontSize: "0.8125rem", fontWeight: 600, borderColor: BORDER }}>
+                  {l.label}
+                </button>
               ))}
             </div>
           )}
@@ -299,7 +349,7 @@ function Hero({ onAccessPlatform }: { onAccessPlatform: () => void }) {
                 style={{ background: B, color: "#fff", fontSize: "0.9375rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 40px var(--primary-glow)" }}>
                 Acessar Plataforma <ArrowRight className="w-4 h-4" />
               </button>
-              <button className="flex items-center gap-2.5 px-7 py-4 rounded-xl border transition-all hover:border-white/20"
+              <button onClick={() => scrollToId("metodologia")} className="flex items-center gap-2.5 px-7 py-4 rounded-xl border transition-all hover:border-white/20"
                 style={{ borderColor: BORDER, color: FG, background: "rgba(255,255,255,0.03)", fontSize: "0.9375rem", fontWeight: 600 }}>
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 Como funciona
@@ -1101,7 +1151,7 @@ function Methodology() {
   const consistRate = useCountUp(95);
 
   return (
-    <section className="py-24" style={{ background: "var(--muted)" }}>
+    <section id="metodologia" className="py-24" style={{ background: "var(--muted)" }}>
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeader
           center
@@ -1465,6 +1515,9 @@ export function LandingPage({ onAccessPlatform }: { onAccessPlatform: () => void
       {view === "quemsomos" && <QuemSomos onNavigate={setView} />}
       {view === "nossaequipe" && <NossaEquipe onNavigate={setView} />}
       {view === "carreiras" && <Carreiras />}
+      {view === "copytrading" && <CopyTrading onNavigate={setView} />}
+      {view === "consultoria" && <Consultoria onNavigate={setView} />}
+      {view === "automacao" && <Automacao onNavigate={setView} />}
       <Footer />
     </div>
   );
