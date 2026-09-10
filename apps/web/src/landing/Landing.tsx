@@ -12,6 +12,9 @@ import logo1 from "./assets/logo_1.png";
 import Mercados from "./pages/Mercados";
 import Educacao from "./pages/Educacao";
 import Planos from "./pages/Planos";
+import QuemSomos from "./pages/QuemSomos";
+import NossaEquipe from "./pages/NossaEquipe";
+import Carreiras from "./pages/Carreiras";
 import {
   B, BD, BB, G, GD, RED, RD, RB, GOLD, CARD, MFG, FG, BORDER,
   IBox, Badge, SectionHeader, Ticker, useCountUp, Footer, NoiseOverlay, BrokersSection,
@@ -19,11 +22,19 @@ import {
 } from "./shared";
 
 // ── Navbar ────────────────────────────────────────────────────────────────────
+const VERITAS_LINKS: { label: string; view: LandingView }[] = [
+  { label: "Quem Somos", view: "quemsomos" },
+  { label: "Nossa Equipe", view: "nossaequipe" },
+  { label: "Carreiras", view: "carreiras" },
+];
+
 function Navbar({
   view, onNavigate, onAccessPlatform,
 }: { view: LandingView; onNavigate: (v: LandingView) => void; onAccessPlatform: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [veritasOpen, setVeritasOpen] = useState(false);
+  const [mobileVeritasOpen, setMobileVeritasOpen] = useState(false);
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", h);
@@ -35,7 +46,8 @@ function Navbar({
     { label: "Educação", view: "educacao" },
     { label: "Planos", view: "planos" },
   ];
-  const go = (v: LandingView) => { onNavigate(v); setOpen(false); };
+  const go = (v: LandingView) => { onNavigate(v); setOpen(false); setVeritasOpen(false); };
+  const veritasActive = VERITAS_LINKS.some((l) => l.view === view);
   return (
     <nav className="sticky top-0 z-50 transition-all duration-300"
       style={{ background: scrolled ? "rgba(4,5,12,0.95)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? `1px solid ${BORDER}` : "none" }}>
@@ -50,6 +62,27 @@ function Navbar({
               style={{ color: view === l.view ? FG : MFG, fontSize: "0.8125rem", fontWeight: 600, letterSpacing: "0.01em" }}
               className="transition-colors hover:text-white">{l.label}</button>
           ))}
+          <div className="relative" onMouseEnter={() => setVeritasOpen(true)} onMouseLeave={() => setVeritasOpen(false)}>
+            <button
+              style={{ color: veritasActive || veritasOpen ? FG : MFG, fontSize: "0.8125rem", fontWeight: 600, letterSpacing: "0.01em" }}
+              className="flex items-center gap-1.5 transition-colors hover:text-white">
+              A Veritas
+              <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200" style={{ transform: veritasOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
+            </button>
+            {veritasOpen && (
+              <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3">
+                <div className="w-52 rounded-xl overflow-hidden" style={{ background: "rgba(8,12,24,0.98)", border: `1px solid ${BORDER}`, boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
+                  {VERITAS_LINKS.map((l) => (
+                    <button key={l.view} onClick={() => go(l.view)}
+                      className="block w-full px-4 py-3 text-left transition-colors hover:bg-white/5"
+                      style={{ color: view === l.view ? B : MFG, fontSize: "0.8125rem", fontWeight: 600 }}>
+                      {l.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <button onClick={onAccessPlatform} style={{ color: MFG, fontSize: "0.8125rem", fontWeight: 600 }} className="px-4 py-2 rounded-lg">Entrar</button>
@@ -71,6 +104,20 @@ function Navbar({
             <button key={l.view} onClick={() => go(l.view)} className="block w-full py-3 text-left border-b"
               style={{ color: view === l.view ? FG : MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>{l.label}</button>
           ))}
+          <button onClick={() => setMobileVeritasOpen((v) => !v)}
+            className="flex w-full items-center justify-between py-3 border-b"
+            style={{ color: veritasActive ? FG : MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>
+            A Veritas
+            <ChevronDown className="w-4 h-4 transition-transform duration-200" style={{ transform: mobileVeritasOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
+          </button>
+          {mobileVeritasOpen && (
+            <div className="pl-4">
+              {VERITAS_LINKS.map((l) => (
+                <button key={l.view} onClick={() => go(l.view)} className="block w-full py-2.5 text-left border-b"
+                  style={{ color: view === l.view ? B : MFG, fontSize: "0.8125rem", fontWeight: 600, borderColor: BORDER }}>{l.label}</button>
+              ))}
+            </div>
+          )}
           <button onClick={onAccessPlatform} className="mt-4 w-full py-3 rounded-xl"
             style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acessar Plataforma</button>
         </div>
@@ -1449,6 +1496,9 @@ export function LandingPage({ onAccessPlatform }: { onAccessPlatform: () => void
       {view === "mercados" && <Mercados onNavigate={setView} />}
       {view === "educacao" && <Educacao onNavigate={setView} />}
       {view === "planos" && <Planos onAccessPlatform={onAccessPlatform} />}
+      {view === "quemsomos" && <QuemSomos onNavigate={setView} />}
+      {view === "nossaequipe" && <NossaEquipe onNavigate={setView} />}
+      {view === "carreiras" && <Carreiras />}
       <Footer />
     </div>
   );

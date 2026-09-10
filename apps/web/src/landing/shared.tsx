@@ -19,7 +19,7 @@ import imgAvenue     from "./assets/image-16.png";
  * volta de "../Landing").
  */
 
-export type LandingView = "home" | "mercados" | "educacao" | "planos";
+export type LandingView = "home" | "mercados" | "educacao" | "planos" | "quemsomos" | "nossaequipe" | "carreiras";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 export const B      = "var(--primary)";
