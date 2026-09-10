@@ -53,9 +53,9 @@ EXPOSE 80
 FROM node:22-alpine AS landing-build
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@10.34.3 --activate
-COPY "LP VERITAS ACADEMY/package.json" "LP VERITAS ACADEMY/pnpm-lock.yaml" ./
+COPY ["LP VERITAS ACADEMY/package.json", "LP VERITAS ACADEMY/pnpm-lock.yaml", "./"]
 RUN pnpm install --frozen-lockfile
-COPY "LP VERITAS ACADEMY/" .
+COPY ["LP VERITAS ACADEMY/", "."]
 RUN pnpm run build
 
 FROM nginx:alpine AS landing
