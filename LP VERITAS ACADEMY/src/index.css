@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import 'tailwindcss';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+:root {
+  --background: #04050c;
+  --foreground: #f0f0f8;
+  --card: #080c18;
+  --card-2: #0b1020;
+  --card-foreground: #f0f0f8;
+  --primary: #19ACFE;
+  --primary-dim: rgba(25, 172, 254, 0.12);
+  --primary-border: rgba(25, 172, 254, 0.22);
+  --primary-glow: rgba(25, 172, 254, 0.18);
+  --gold: #c9a84c;
+  --gold-dim: rgba(201, 168, 76, 0.1);
+  --green: #00e87a;
+  --green-dim: rgba(0, 232, 122, 0.1);
+  --red: #f87171;
+  --muted: #0d1224;
+  --muted-foreground: #5a6a8a;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.1);
+  --radius: 14px;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar { display: none; }
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Manrope', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.font-display { font-family: 'Fraunces', serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes pulse-blue {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(25,172,254,0.35); }
+  50%       { box-shadow: 0 0 0 10px rgba(25,172,254,0); }
+}
+@keyframes glow-green {
+  0%, 100% { box-shadow: 0 0 6px rgba(0,232,122,0.2); }
+  50%       { box-shadow: 0 0 20px rgba(0,232,122,0.5); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-ticker      { animation: ticker 38s linear infinite; }
+.animate-float       { animation: float 6s ease-in-out infinite; }
+.animate-pulse-blue  { animation: pulse-blue 2.5s ease-in-out infinite; }
+.animate-glow-green  { animation: glow-green 2s ease-in-out infinite; }
+
+/* ── Text gradients ─────────────────────────────────────────── */
+.gold-gradient {
+  background: linear-gradient(135deg, #c9a84c 0%, #f5d78e 50%, #c9a84c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.blue-gradient {
+  background: linear-gradient(135deg, #19ACFE 0%, #7dd3fc 60%, #19ACFE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Bento card ─────────────────────────────────────────────── */
+.bento-card {
+  position: relative;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.bento-card:hover {
+  border-color: var(--primary-border);
+  box-shadow: 0 0 40px var(--primary-glow), 0 20px 60px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+.bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(25,172,254,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── Typography helpers ─────────────────────────────────────── */
+.section-heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+.section-heading-xl {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+.section-body {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+  max-width: 46ch;
+}
+.section-body-center {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+  max-width: 54ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.card-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.card-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+}
+.card-body {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+.stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+}
+.stat-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+  margin-top: 0.35rem;
+}
+
+/* ── Background grid ────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Range input ────────────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.08);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  border: none;
+}

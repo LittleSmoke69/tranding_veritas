@@ -1,0 +1,10 @@
+{
+  "description": "A visually engaging landing page designed to showcase investment and cryptocurrency education, attracting users seeking expert financial insights and guidance.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
