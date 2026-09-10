@@ -177,15 +177,15 @@ export function Navbar({ path }: { path: string }) {
           <img src={logo1} alt="Veritas" className="h-9 w-auto object-contain"
             style={{ filter: "drop-shadow(0 0 8px rgba(25,172,254,0.3))" }} />
         </button>
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-5">
           {NAV_LINKS.map((l) => (
             <button key={l.path} onClick={() => go(l.path)}
-              style={{ color: path === l.path ? FG : MFG, fontSize: "0.8125rem", fontWeight: 600, letterSpacing: "0.01em" }}
+              style={{ color: path === l.path ? FG : MFG, fontSize: "0.9375rem", fontWeight: 600, letterSpacing: "0.01em" }}
               className="transition-colors hover:text-white">{l.label}</button>
           ))}
           <div className="relative" onMouseEnter={() => setVeritasOpen(true)} onMouseLeave={() => setVeritasOpen(false)}>
             <button
-              style={{ color: veritasActive || veritasOpen ? FG : MFG, fontSize: "0.8125rem", fontWeight: 600, letterSpacing: "0.01em" }}
+              style={{ color: veritasActive || veritasOpen ? FG : MFG, fontSize: "0.9375rem", fontWeight: 600, letterSpacing: "0.01em" }}
               className="flex items-center gap-1.5 transition-colors hover:text-white">
               A Veritas
               <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200" style={{ transform: veritasOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
