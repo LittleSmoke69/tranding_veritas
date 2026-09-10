@@ -107,20 +107,21 @@ const FAQS = [
 
 function PlanCard({ plan, onAccessPlatform }: { plan: Plan; onAccessPlatform: () => void }) {
   return (
-    <div
-      className="bento-card relative flex flex-col p-6"
-      style={{
-        borderColor: plan.highlight ? BB : BORDER,
-        boxShadow: plan.highlight ? "0 0 40px var(--primary-glow), 0 20px 50px rgba(0,0,0,0.5)" : undefined,
-        transform: plan.highlight ? "scale(1.02)" : undefined,
-      }}
-    >
+    <div className={`relative h-full${plan.highlight ? " mt-5 sm:mt-0" : ""}`}>
       {plan.highlight && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full whitespace-nowrap"
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded-full whitespace-nowrap"
           style={{ background: B, color: "#fff", fontSize: "0.625rem", fontWeight: 800, letterSpacing: "0.04em", textTransform: "uppercase" }}>
           Mais escolhido pelos investidores
         </span>
       )}
+      <div
+        className="bento-card relative flex flex-col p-6 h-full"
+        style={{
+          borderColor: plan.highlight ? BB : BORDER,
+          boxShadow: plan.highlight ? "0 0 40px var(--primary-glow), 0 20px 50px rgba(0,0,0,0.5)" : undefined,
+          transform: plan.highlight ? "scale(1.02)" : undefined,
+        }}
+      >
       <p className="card-title text-lg mt-2">{plan.name}</p>
       <p className="mt-2" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "2rem", fontWeight: 800, color: FG }}>{plan.price}</p>
 
@@ -158,6 +159,7 @@ function PlanCard({ plan, onAccessPlatform }: { plan: Plan; onAccessPlatform: ()
         Iniciar minha conta internacional
       </button>
       <p className="text-center mt-2" style={{ fontSize: "0.6875rem", color: MFG }}>Ativação imediata após confirmação</p>
+      </div>
     </div>
   );
 }

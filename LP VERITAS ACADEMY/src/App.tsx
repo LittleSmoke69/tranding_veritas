@@ -177,7 +177,7 @@ function Hero() {
 
             {/* Headline */}
             <h1 className="mb-7" key={slide}
-              style={{ fontFamily: "'Manrope', sans-serif", fontSize: "clamp(2.75rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em", minHeight: "3.2em", animation: "hero-fade 500ms ease" }}>
+              style={{ fontFamily: "'Manrope', sans-serif", fontSize: "clamp(2.1rem, 7.5vw, 4.5rem)", fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em", minHeight: "3.2em", animation: "hero-fade 500ms ease", overflowWrap: "break-word" }}>
               <span style={{ color: FG }}>{s.plain} </span>
               <span className="blue-gradient">{s.gradient}</span>
             </h1>
