@@ -1,0 +1,46 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      VERITAS_WEB_ORIGIN: https://trading.capdosucesso.co.uk
+    networks: [veritas]
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: worker
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      VERITAS_API_URL: http://api:4010
+    depends_on:
+      - api
+    networks: [veritas]
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: web
+    restart: unless-stopped
+    depends_on:
+      - api
+    networks: [veritas]
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - web
+    networks: [veritas]
+
+networks:
+  veritas:
+    driver: bridge
