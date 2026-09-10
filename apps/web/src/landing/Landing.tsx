@@ -322,14 +322,14 @@ function Hero({ onAccessPlatform }: { onAccessPlatform: () => void }) {
 
             {/* Headline */}
             <h1 className="mb-7"
-              style={{ fontFamily: "'Manrope', sans-serif", fontSize: "clamp(2.75rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em", height: 298, width: 657 }}>
+              style={{ fontFamily: "'Manrope', sans-serif", fontSize: "clamp(2.75rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em" }}>
               <span style={{ color: FG }}>Desenvolvimento</span><br />
               <span className="blue-gradient">estratégico para o</span><br />
               <span style={{ color: FG }}>mercado financeiro global</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="mb-10" style={{ fontSize: "1.0625rem", fontWeight: 500, lineHeight: 1.75, color: MFG, maxWidth: "46ch", width: 486 }}>
+            <p className="mb-10" style={{ fontSize: "1.0625rem", fontWeight: 500, lineHeight: 1.75, color: MFG, maxWidth: "46ch" }}>
               A Veritas Global foi estruturada com o propósito de desenvolver investidores que desejam
               compreender os mercados financeiros internacionais com uma visão mais estratégica e disciplinada.
             </p>
@@ -416,7 +416,7 @@ function Stats() {
   return (
     <section className="py-24 border-y" style={{ borderColor: BORDER }}>
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
           {/* Top-left — Signals chart */}
           <div ref={signals.ref} className="bento-card p-7 flex flex-col gap-5" style={{ minHeight: 260 }}>
