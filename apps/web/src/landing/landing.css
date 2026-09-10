@@ -63,6 +63,14 @@
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes vl-hero-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes vl-hero-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 .veritas-landing .animate-ticker      { animation: vl-ticker 38s linear infinite; }
 .veritas-landing .animate-float       { animation: vl-float 6s ease-in-out infinite; }

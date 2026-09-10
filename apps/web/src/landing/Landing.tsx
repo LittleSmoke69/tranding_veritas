@@ -3,7 +3,7 @@ import { useLenis } from "./hooks/useLenis";
 import ScrollRevealText from "./components/ScrollRevealText";
 import {
   Bitcoin, Target, Zap, BarChart3, Users,
-  ShieldCheck, ArrowRight, ChevronDown, Clock, Trophy,
+  ShieldCheck, ArrowRight, ChevronDown, Trophy,
   Percent, AlertTriangle, Lightbulb, Eye, Rocket, Globe,
   BookOpen, Bot, Scale, Handshake, TrendingUp,
 } from "lucide-react";
@@ -126,25 +126,18 @@ function Navbar({
   );
 }
 
-// ── Hero: binary trading panel ────────────────────────────────────────────────
-function BinaryPanel() {
-  const [timer, setTimer] = useState(47);
-  const [selected, setSelected] = useState<"call" | "put" | null>(null);
-  const [profit, setProfit] = useState<null | { win: boolean }>(null);
+// ── Hero: painel de operação ao vivo ───────────────────────────────────────────
+function LivePanel() {
+  const [side, setSide] = useState<"buy" | "sell" | null>(null);
+  const [filled, setFilled] = useState(false);
 
   useEffect(() => {
-    const iv = setInterval(() => {
-      setTimer((t) => {
-        if (t <= 1) {
-          if (selected) setProfit({ win: Math.random() > 0.3 });
-          setTimeout(() => { setTimer(60); setProfit(null); setSelected(null); }, 2000);
-          return 0;
-        }
-        return t - 1;
-      });
-    }, 1000);
-    return () => clearInterval(iv);
-  }, [selected]);
+    if (!side) return;
+    setFilled(false);
+    const fill = window.setTimeout(() => setFilled(true), 900);
+    const reset = window.setTimeout(() => { setSide(null); setFilled(false); }, 3200);
+    return () => { window.clearTimeout(fill); window.clearTimeout(reset); };
+  }, [side]);
 
   return (
     <div className="bento-card p-6 w-full max-w-sm mx-auto" style={{ boxShadow: "0 40px 80px rgba(0,0,0,0.6)" }}>
@@ -160,8 +153,8 @@ function BinaryPanel() {
           </div>
         </div>
         <div className="text-right">
-          <p className="card-label">Payout</p>
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "1.25rem", fontWeight: 700, color: G }}>+87%</p>
+          <p className="card-label">Alavancagem</p>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "1.25rem", fontWeight: 700, color: G }}>10x</p>
         </div>
       </div>
 
@@ -194,46 +187,34 @@ function BinaryPanel() {
         </svg>
       </div>
 
-      {/* Expiry timer */}
-      <div className="flex items-center justify-between mb-4 p-3 rounded-xl"
-        style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}>
-        <div className="flex items-center gap-2">
-          <Clock className="w-4 h-4" style={{ color: timer < 10 ? RED : B }} />
-          <span style={{ fontSize: "0.75rem", fontWeight: 600, color: MFG }}>Expiração</span>
-        </div>
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "1.375rem", fontWeight: 700, color: timer < 10 ? RED : FG }}>
-          00:{timer.toString().padStart(2, "0")}
-        </span>
-      </div>
-
       {/* Entry */}
       <div className="flex items-center justify-between mb-5 px-1">
         <div>
-          <p className="card-label mb-1">Entrada</p>
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: FG }}>R$ 100,00</p>
+          <p className="card-label mb-1">Preço de entrada</p>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: FG }}>$ 94.210,50</p>
         </div>
         <div className="text-right">
-          <p className="card-label mb-1">Retorno</p>
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: G }}>R$ 187,00</p>
+          <p className="card-label mb-1">Volume 24h</p>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: G }}>$ 2,4B</p>
         </div>
       </div>
 
-      {profit ? (
+      {side ? (
         <div className="py-4 rounded-xl text-center"
-          style={{ background: profit.win ? GD : RD, color: profit.win ? G : RED, border: `1px solid ${profit.win ? "rgba(0,232,122,0.3)" : RB}`, fontWeight: 700, fontSize: "1rem" }}>
-          {profit.win ? "✓ WIN  +R$ 87,00" : "✗ LOSS  -R$ 100,00"}
+          style={{ background: side === "buy" ? GD : RD, color: side === "buy" ? G : RED, border: `1px solid ${side === "buy" ? "rgba(0,232,122,0.3)" : RB}`, fontWeight: 700, fontSize: "1rem" }}>
+          {filled ? `✓ Posição em ${side === "buy" ? "ALTA" : "BAIXA"} aberta` : "Executando ordem…"}
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-3">
-          <button onClick={() => setSelected("call")}
+          <button onClick={() => setSide("buy")}
             className="py-3 rounded-xl transition-all hover:scale-105"
-            style={{ background: selected === "call" ? G : GD, color: selected === "call" ? "#fff" : G, border: "1px solid rgba(0,232,122,0.3)", fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
-            ▲ CALL
+            style={{ background: GD, color: G, border: "1px solid rgba(0,232,122,0.3)", fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
+            ▲ COMPRAR
           </button>
-          <button onClick={() => setSelected("put")}
+          <button onClick={() => setSide("sell")}
             className="py-3 rounded-xl transition-all hover:scale-105"
-            style={{ background: selected === "put" ? RED : RD, color: selected === "put" ? "#fff" : RED, border: `1px solid ${RB}`, fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
-            ▼ PUT
+            style={{ background: RD, color: RED, border: `1px solid ${RB}`, fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
+            ▼ VENDER
           </button>
         </div>
       )}
@@ -252,7 +233,37 @@ function BinaryPanel() {
   );
 }
 
+const HERO_SLIDES = [
+  {
+    icon: <Globe className="w-3 h-3" />,
+    plain: "Desenvolvimento estratégico para o",
+    gradient: "mercado financeiro global",
+    sub: "A Veritas Global foi estruturada com o propósito de desenvolver investidores que desejam compreender os mercados financeiros internacionais com uma visão mais estratégica e disciplinada.",
+  },
+  {
+    icon: <ShieldCheck className="w-3 h-3" />,
+    plain: "Conhecimento e estrutura para",
+    gradient: "mercados globais",
+    sub: "Nosso trabalho está focado na construção de conhecimento, estrutura de acompanhamento e integração com plataformas internacionais utilizadas por investidores ao redor do mundo.",
+  },
+  {
+    icon: <Zap className="w-3 h-3" />,
+    plain: "Mais de 10 anos no",
+    gradient: "mercado financeiro",
+    sub: "Experiência consolidada no desenvolvimento de investidores e integração com infraestrutura global de mercados financeiros.",
+  },
+];
+
 function Hero({ onAccessPlatform }: { onAccessPlatform: () => void }) {
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setSlide((s) => (s + 1) % HERO_SLIDES.length), 5000);
+    return () => window.clearTimeout(id);
+  }, [slide]);
+
+  const s = HERO_SLIDES[slide];
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden grid-bg">
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
@@ -266,27 +277,25 @@ function Hero({ onAccessPlatform }: { onAccessPlatform: () => void }) {
             {/* Eyebrow */}
             <div className="mb-8">
               <Badge color="blue">
-                <Globe className="w-3 h-3" />
-                Veritas Global — Mercados Internacionais
+                {s.icon}
+                Investimentos Globais
               </Badge>
             </div>
 
             {/* Headline */}
-            <h1 className="mb-7"
-              style={{ fontFamily: "'Manrope', sans-serif", fontSize: "clamp(2.75rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em" }}>
-              <span style={{ color: FG }}>Desenvolvimento</span><br />
-              <span className="blue-gradient">estratégico para o</span><br />
-              <span style={{ color: FG }}>mercado financeiro global</span>
+            <h1 className="mb-7" key={slide}
+              style={{ fontFamily: "'Manrope', sans-serif", fontSize: "clamp(2.75rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em", minHeight: "3.2em", animation: "vl-hero-fade 500ms ease" }}>
+              <span style={{ color: FG }}>{s.plain} </span>
+              <span className="blue-gradient">{s.gradient}</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="mb-10" style={{ fontSize: "1.0625rem", fontWeight: 500, lineHeight: 1.75, color: MFG, maxWidth: "46ch" }}>
-              A Veritas Global foi estruturada com o propósito de desenvolver investidores que desejam
-              compreender os mercados financeiros internacionais com uma visão mais estratégica e disciplinada.
+            <p className="mb-10" key={`sub-${slide}`} style={{ fontSize: "1.0625rem", fontWeight: 500, lineHeight: 1.75, color: MFG, maxWidth: "46ch", minHeight: "3.5em", animation: "vl-hero-fade 500ms ease" }}>
+              {s.sub}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 mb-12">
+            <div className="flex flex-wrap items-center gap-4 mb-8">
               <button onClick={onAccessPlatform} className="flex items-center gap-2.5 px-7 py-4 rounded-xl hover:opacity-90 transition-all hover:scale-105"
                 style={{ background: B, color: "#fff", fontSize: "0.9375rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 40px var(--primary-glow)" }}>
                 Acessar Plataforma <ArrowRight className="w-4 h-4" />
@@ -298,11 +307,22 @@ function Hero({ onAccessPlatform }: { onAccessPlatform: () => void }) {
               </button>
             </div>
 
+            {/* Carousel indicator */}
+            <div className="flex items-center gap-2 mb-8">
+              {HERO_SLIDES.map((_, i) => (
+                <button key={i} onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`}
+                  className="h-1 rounded-full overflow-hidden transition-all duration-300"
+                  style={{ width: i === slide ? 32 : 16, background: BORDER }}>
+                  {i === slide && <span className="block h-full rounded-full" style={{ background: B, transformOrigin: "left", animation: "vl-hero-progress 5s linear" }} />}
+                </button>
+              ))}
+            </div>
+
             {/* Proof pills */}
             <div className="flex flex-wrap gap-3">
               {[
                 { label: "Taxa de acerto", value: "78%" },
-                { label: "Payout médio",   value: "+87%" },
+                { label: "ROI médio mensal", value: "+18%" },
                 { label: "Traders ativos", value: "5.200+" },
               ].map((p) => (
                 <div key={p.label} className="flex items-center gap-2.5 px-4 py-2 rounded-full"
@@ -315,7 +335,7 @@ function Hero({ onAccessPlatform }: { onAccessPlatform: () => void }) {
           </div>
 
           <div className="animate-float hidden lg:block">
-            <BinaryPanel />
+            <LivePanel />
           </div>
         </div>
       </div>
@@ -332,13 +352,13 @@ function Hero({ onAccessPlatform }: { onAccessPlatform: () => void }) {
 const STATS = [
   { value: 5200, suffix: "+",  label: "Traders formados",       icon: <Users className="w-5 h-5" />,   prefix: ""  },
   { value: 78,   suffix: "%",  label: "Taxa média de acerto",   icon: <Target className="w-5 h-5" />,  prefix: ""  },
-  { value: 87,   suffix: "%",  label: "Payout médio garantido", icon: <Percent className="w-5 h-5" />, prefix: "+" },
+  { value: 18,   suffix: "%",  label: "ROI médio mensal",       icon: <Percent className="w-5 h-5" />, prefix: "+" },
   { value: 3200, suffix: "+",  label: "Sinais emitidos/mês",    icon: <Zap className="w-5 h-5" />,     prefix: ""  },
 ];
 
 function Stats() {
   const winRate = useCountUp(78);
-  const payout  = useCountUp(87);
+  const roi     = useCountUp(18);
   const traders = useCountUp(5200);
   const signals = useCountUp(3200);
 
@@ -395,8 +415,8 @@ function Stats() {
             </div>
           </div>
 
-          {/* Bottom-left — Payout */}
-          <div ref={payout.ref} className="bento-card p-7 flex flex-col items-center justify-center text-center gap-5" style={{ minHeight: 220 }}>
+          {/* Bottom-left — ROI */}
+          <div ref={roi.ref} className="bento-card p-7 flex flex-col items-center justify-center text-center gap-5" style={{ minHeight: 220 }}>
             {/* Double-ring icon */}
             <div className="relative flex items-center justify-center" style={{ width: 100, height: 100 }}>
               <div className="absolute inset-0 rounded-full" style={{ border: `1px solid rgba(25,172,254,0.12)` }} />
@@ -409,8 +429,8 @@ function Stats() {
               </div>
             </div>
             <div>
-              <p className="stat-value" style={{ fontSize: "2.5rem" }}>+{payout.value}%</p>
-              <p className="stat-label">Payout médio garantido</p>
+              <p className="stat-value" style={{ fontSize: "2.5rem" }}>+{roi.value}%</p>
+              <p className="stat-label">ROI médio mensal</p>
             </div>
           </div>
 
@@ -447,7 +467,7 @@ function Solutions() {
         <SectionHeader
           badge="O que você aprende"
           heading="Do sinal ao lucro em operações reais"
-          sub="Metodologia completa para operar binárias e cripto com consistência — estratégia, gestão e psicologia do trader."
+          sub="Metodologia completa para operar cripto e forex com consistência — estratégia, gestão e psicologia do trader."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-6 gap-4">
@@ -463,24 +483,24 @@ function Solutions() {
                     <span className="w-1.5 h-1.5 rounded-full" style={{ background: G }} />Mais popular
                   </Badge>
                 </div>
-                <h3 className="card-title text-xl mb-3">Opções Binárias na Prática</h3>
+                <h3 className="card-title text-xl mb-3">Forex & CFDs na Prática</h3>
                 <p className="card-body max-w-sm">
-                  Aprenda a identificar entradas de CALL e PUT com alta precisão — análise de tendência, suporte/resistência
-                  e padrões de vela em ativos cripto e Forex.
+                  Aprenda a identificar entradas de compra e venda com alta precisão — análise de tendência, suporte/resistência
+                  e padrões de vela em pares de Forex e cripto.
                 </p>
               </div>
               <IBox><Target className="w-5 h-5" /></IBox>
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3">
               <div className="p-4 rounded-xl" style={{ background: GD, border: "1px solid rgba(0,232,122,0.2)" }}>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: G, letterSpacing: "0.06em", marginBottom: "0.4rem" }}>▲ CALL</p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: G, letterSpacing: "0.06em", marginBottom: "0.4rem" }}>▲ COMPRA</p>
                 <p style={{ fontSize: "0.9375rem", fontWeight: 700, color: FG }}>BTC/USD · 5min</p>
-                <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.25rem" }}>Payout: +87% · WIN</p>
+                <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.25rem" }}>Resultado: +1,8% · GANHO</p>
               </div>
               <div className="p-4 rounded-xl" style={{ background: RD, border: `1px solid ${RB}` }}>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: RED, letterSpacing: "0.06em", marginBottom: "0.4rem" }}>▼ PUT</p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: RED, letterSpacing: "0.06em", marginBottom: "0.4rem" }}>▼ VENDA</p>
                 <p style={{ fontSize: "0.9375rem", fontWeight: 700, color: FG }}>ETH/USD · 1min</p>
-                <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.25rem" }}>Payout: +83% · WIN</p>
+                <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, marginTop: "0.25rem" }}>Resultado: +1,4% · GANHO</p>
               </div>
             </div>
           </div>
@@ -508,17 +528,17 @@ function Solutions() {
             </div>
             <div>
               <h3 className="card-title mb-2">Sinais em Tempo Real</h3>
-              <p className="card-body">Receba 12–20 sinais por dia no grupo exclusivo — ativo, direção, horário e payout esperado.</p>
+              <p className="card-body">Receba 12–20 sinais por dia no grupo exclusivo — ativo, direção, horário e retorno esperado.</p>
             </div>
             <div className="mt-auto space-y-2">
               {[
-                { asset: "BTC/USD", dir: "CALL", time: "14:30", pay: "+87%" },
-                { asset: "EUR/USD", dir: "PUT",  time: "14:45", pay: "+83%" },
+                { asset: "BTC/USD", dir: "COMPRA", time: "14:30", pay: "+1,8%" },
+                { asset: "EUR/USD", dir: "VENDA",  time: "14:45", pay: "+1,4%" },
               ].map((s) => (
                 <div key={s.time} className="flex items-center justify-between p-2.5 rounded-lg"
                   style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 700, color: FG }}>{s.asset}</span>
-                  <span style={{ fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.04em", color: s.dir === "CALL" ? G : RED }}>{s.dir}</span>
+                  <span style={{ fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.04em", color: s.dir === "COMPRA" ? G : RED }}>{s.dir}</span>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 500, color: MFG }}>{s.time}</span>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 700, color: B }}>{s.pay}</span>
                 </div>
@@ -546,7 +566,7 @@ function Solutions() {
             <IBox><BarChart3 className="w-5 h-5" /></IBox>
             <div>
               <h3 className="card-title mb-2">Análise Técnica</h3>
-              <p className="card-body">Price action, médias, RSI, Bandas de Bollinger e IFR aplicados às binárias e cripto.</p>
+              <p className="card-body">Price action, médias, RSI, Bandas de Bollinger e IFR aplicados a cripto e forex.</p>
             </div>
           </div>
 
@@ -586,12 +606,12 @@ function Solutions() {
 
 // ── Live Operations ───────────────────────────────────────────────────────────
 const OPS = [
-  { user: "M. Oliveira", asset: "BTC/USD", dir: "CALL", entry: "R$ 200", result: "+R$ 174", win: true,  time: "2min" },
-  { user: "F. Costa",    asset: "ETH/USD", dir: "PUT",  entry: "R$ 150", result: "+R$ 124", win: true,  time: "4min" },
-  { user: "R. Souza",    asset: "EUR/USD", dir: "CALL", entry: "R$ 100", result: "-R$ 100", win: false, time: "7min" },
-  { user: "A. Lima",     asset: "SOL/USD", dir: "CALL", entry: "R$ 300", result: "+R$ 261", win: true,  time: "10min" },
-  { user: "C. Santos",   asset: "GBP/USD", dir: "PUT",  entry: "R$ 80",  result: "+R$ 69",  win: true,  time: "13min" },
-  { user: "L. Ferreira", asset: "BNB/USD", dir: "CALL", entry: "R$ 250", result: "+R$ 217", win: true,  time: "17min" },
+  { user: "M. Oliveira", asset: "BTC/USD", dir: "COMPRA", entry: "R$ 200", result: "+R$ 174", win: true,  time: "2min" },
+  { user: "F. Costa",    asset: "ETH/USD", dir: "VENDA",  entry: "R$ 150", result: "+R$ 124", win: true,  time: "4min" },
+  { user: "R. Souza",    asset: "EUR/USD", dir: "COMPRA", entry: "R$ 100", result: "-R$ 100", win: false, time: "7min" },
+  { user: "A. Lima",     asset: "SOL/USD", dir: "COMPRA", entry: "R$ 300", result: "+R$ 261", win: true,  time: "10min" },
+  { user: "C. Santos",   asset: "GBP/USD", dir: "VENDA",  entry: "R$ 80",  result: "+R$ 69",  win: true,  time: "13min" },
+  { user: "L. Ferreira", asset: "BNB/USD", dir: "COMPRA", entry: "R$ 250", result: "+R$ 217", win: true,  time: "17min" },
 ];
 
 function OpCard({ op }: { op: typeof OPS[0] }) {
@@ -615,8 +635,8 @@ function OpCard({ op }: { op: typeof OPS[0] }) {
         <div>
           <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.9375rem", fontWeight: 700, color: FG }}>{op.asset}</p>
           <span className="inline-block mt-1.5 px-2 py-0.5 rounded"
-            style={{ background: op.dir === "CALL" ? GD : RD, color: op.dir === "CALL" ? G : RED, fontSize: "0.6875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
-            {op.dir === "CALL" ? "▲" : "▼"} {op.dir}
+            style={{ background: op.dir === "COMPRA" ? GD : RD, color: op.dir === "COMPRA" ? G : RED, fontSize: "0.6875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
+            {op.dir === "COMPRA" ? "▲" : "▼"} {op.dir}
           </span>
         </div>
         <div className="text-right">
@@ -668,8 +688,8 @@ function LiveOps() {
                 <div key={idx} className="grid grid-cols-4 items-center px-4 py-3 border-b last:border-0" style={{ borderColor: BORDER }}>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8125rem", fontWeight: 700, color: FG }}>{op.asset}</span>
                   <span className="px-2 py-0.5 rounded inline-flex w-fit items-center gap-1"
-                    style={{ background: op.dir === "CALL" ? GD : RD, color: op.dir === "CALL" ? G : RED, fontSize: "0.6875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
-                    {op.dir === "CALL" ? "▲" : "▼"} {op.dir}
+                    style={{ background: op.dir === "COMPRA" ? GD : RD, color: op.dir === "COMPRA" ? G : RED, fontSize: "0.6875rem", fontWeight: 800, letterSpacing: "0.04em" }}>
+                    {op.dir === "COMPRA" ? "▲" : "▼"} {op.dir}
                   </span>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.875rem", fontWeight: 700, color: op.win ? G : RED }}>{op.result}</span>
                   <span className="px-2.5 py-0.5 rounded-full inline-flex w-fit"
@@ -714,8 +734,8 @@ function LiveOps() {
 
 // ── Education ─────────────────────────────────────────────────────────────────
 const MODS = [
-  { title: "Fundamentos das Opções Binárias", level: "Iniciante",     lessons: 14, img: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&h=400&fit=crop" },
-  { title: "Estratégias de CALL e PUT",       level: "Intermediário", lessons: 18, img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop" },
+  { title: "Fundamentos de Cripto e Forex",   level: "Iniciante",     lessons: 14, img: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&h=400&fit=crop" },
+  { title: "Estratégias de Compra e Venda",   level: "Intermediário", lessons: 18, img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop" },
   { title: "Gestão de Banca Profissional",    level: "Fundamental",   lessons: 10, img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=400&fit=crop" },
   { title: "Bitcoin e Altcoins na Prática",   level: "Intermediário", lessons: 20, img: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=400&fit=crop" },
   { title: "Price Action & Padrões de Vela",  level: "Avançado",      lessons: 22, img: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=600&h=400&fit=crop" },
@@ -734,7 +754,7 @@ function Education() {
           center
           badge="Trilha Completa"
           heading="Aprenda do zero ao avançado"
-          sub="6 módulos estruturados para transformar qualquer pessoa em um trader consistente de binárias e cripto."
+          sub="6 módulos estruturados para transformar qualquer pessoa em um trader consistente de cripto e forex."
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {MODS.map((m) => (
@@ -767,25 +787,41 @@ function Education() {
 }
 
 // ── Profit Calculator ─────────────────────────────────────────────────────────
-function Calculator() {
-  const [banca, setBanca] = useState(1000);
-  const [entrada, setEntrada] = useState(2);
-  const [payout, setPayout] = useState(87);
-  const [acerto, setAcerto] = useState(70);
-  const [ops, setOps] = useState(20);
+function Calculator({ onNavigate }: { onNavigate: (v: LandingView) => void }) {
+  const [inicial, setInicial] = useState(10000);
+  const [aporte, setAporte] = useState(500);
+  const [retornoAnual, setRetornoAnual] = useState(12);
+  const [periodo, setPeriodo] = useState(60);
 
-  const entradaVal = (banca * entrada) / 100;
-  const wins = Math.round((ops * acerto) / 100);
-  const losses = ops - wins;
-  const lucro = wins * entradaVal * (payout / 100) - losses * entradaVal;
-  const roi = ((lucro / banca) * 100).toFixed(1);
+  const taxaMensal = retornoAnual / 100 / 12;
+  const valorFinal =
+    inicial * Math.pow(1 + taxaMensal, periodo) +
+    (taxaMensal > 0 ? aporte * ((Math.pow(1 + taxaMensal, periodo) - 1) / taxaMensal) : aporte * periodo);
+  const totalInvestido = inicial + aporte * periodo;
+  const rendimento = valorFinal - totalInvestido;
+  const roiTotal = totalInvestido > 0 ? (rendimento / totalInvestido) * 100 : 0;
+
+  const points = 6;
+  const chart = Array.from({ length: points + 1 }, (_, i) => {
+    const m = Math.round((periodo / points) * i);
+    const investido = inicial + aporte * m;
+    const projetado =
+      inicial * Math.pow(1 + taxaMensal, m) +
+      (taxaMensal > 0 ? aporte * ((Math.pow(1 + taxaMensal, m) - 1) / taxaMensal) : aporte * m);
+    return { m, investido, projetado };
+  });
+  const maxV = Math.max(...chart.map((p) => p.projetado), 1);
+  const toXY = (m: number, v: number) => ({ x: (m / periodo) * 300, y: 110 - (v / maxV) * 100 });
+  const pathOf = (key: "investido" | "projetado") =>
+    chart.map((p, i) => `${i === 0 ? "M" : "L"}${toXY(p.m, p[key]).x.toFixed(1)} ${toXY(p.m, p[key]).y.toFixed(1)}`).join(" ");
+
+  const brl = (v: number) => v.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 
   const controls = [
-    { label: "Banca inicial",    value: banca,   min: 100,  max: 50000, step: 100,  set: setBanca,   fmt: (v: number) => `R$ ${v.toLocaleString("pt-BR")}` },
-    { label: "Entrada (%banca)", value: entrada, min: 1,    max: 10,    step: 0.5,  set: setEntrada, fmt: (v: number) => `${v}%` },
-    { label: "Payout médio",     value: payout,  min: 70,   max: 95,    step: 1,    set: setPayout,  fmt: (v: number) => `+${v}%` },
-    { label: "Taxa de acerto",   value: acerto,  min: 50,   max: 90,    step: 1,    set: setAcerto,  fmt: (v: number) => `${v}%` },
-    { label: "Operações/dia",    value: ops,     min: 5,    max: 50,    step: 1,    set: setOps,     fmt: (v: number) => `${v} ops` },
+    { label: "Valor inicial",  value: inicial,      min: 1000, max: 500000, step: 500,  set: setInicial,      fmt: (v: number) => `R$ ${v.toLocaleString("pt-BR")}` },
+    { label: "Aporte mensal",  value: aporte,       min: 0,    max: 10000,  step: 100,  set: setAporte,       fmt: (v: number) => `R$ ${v.toLocaleString("pt-BR")}` },
+    { label: "Retorno anual",  value: retornoAnual, min: 1,    max: 50,     step: 1,    set: setRetornoAnual, fmt: (v: number) => `${v}% a.a.` },
+    { label: "Período",       value: periodo,      min: 6,    max: 360,    step: 6,    set: setPeriodo,      fmt: (v: number) => `${v} meses` },
   ];
 
   return (
@@ -793,9 +829,9 @@ function Calculator() {
       <div className="max-w-5xl mx-auto px-6">
         <SectionHeader
           center
-          badge="Calculadora"
-          heading="Calcule seu lucro em binárias"
-          sub="Simule seus resultados com base em taxa de acerto, payout e gestão de banca real."
+          badge="Simulação de Investimento"
+          heading="Calculadora de Investimentos"
+          sub="Simule o crescimento do seu patrimônio e descubra o poder dos juros compostos."
         />
         <div className="grid lg:grid-cols-2 gap-10">
           <div className="space-y-8">
@@ -813,15 +849,13 @@ function Calculator() {
 
           <div>
             <div className="bento-card p-6 mb-4">
-              <p className="card-label mb-5">Resultado estimado por dia</p>
-              <div className="grid grid-cols-2 gap-3 mb-4">
+              <p className="card-label mb-5">Projeção ao final do período</p>
+              <div className="grid grid-cols-2 gap-3 mb-5">
                 {[
-                  { label: "Entrada por op.",   value: `R$ ${entradaVal.toFixed(2)}`,                            color: FG  },
-                  { label: "Wins",              value: `${wins} ops`,                                             color: G   },
-                  { label: "Losses",            value: `${losses} ops`,                                           color: RED },
-                  { label: "Lucro líquido",     value: `${lucro >= 0 ? "+" : ""}R$ ${lucro.toFixed(2)}`,         color: lucro >= 0 ? G : RED },
-                  { label: "ROI diário",        value: `${lucro >= 0 ? "+" : ""}${roi}%`,                        color: lucro >= 0 ? B : RED },
-                  { label: "ROI mensal est.",   value: `${(Number(roi) * 22).toFixed(1)}%`,                      color: B   },
+                  { label: "Total investido", value: `R$ ${brl(totalInvestido)}`,        color: FG },
+                  { label: "Rendimento",      value: `+R$ ${brl(rendimento)}`,            color: G  },
+                  { label: "Valor final",     value: `R$ ${brl(valorFinal)}`,             color: B  },
+                  { label: "ROI total",       value: `+${roiTotal.toFixed(1)}%`,          color: B  },
                 ].map((item) => (
                   <div key={item.label} className="p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}>
                     <p className="card-label mb-2">{item.label}</p>
@@ -829,26 +863,27 @@ function Calculator() {
                   </div>
                 ))}
               </div>
+
               <div className="p-3.5 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${BORDER}` }}>
-                <div className="flex justify-between mb-2">
-                  <span style={{ fontSize: "0.75rem", fontWeight: 600, color: MFG }}>Taxa de acerto</span>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 700, color: acerto >= 60 ? G : RED }}>{acerto}%</span>
+                <div className="flex items-center gap-4 mb-2 text-[0.6875rem] font-semibold" style={{ color: MFG }}>
+                  <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full" style={{ background: BORDER }} />Investido</span>
+                  <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full" style={{ background: B }} />Projetado</span>
                 </div>
-                <div className="h-1.5 rounded-full overflow-hidden" style={{ background: BORDER }}>
-                  <div className="h-full rounded-full transition-all duration-500"
-                    style={{ width: `${acerto}%`, background: acerto >= 60 ? G : RED }} />
-                </div>
+                <svg viewBox="0 0 300 115" className="w-full h-28" preserveAspectRatio="none">
+                  <path d={pathOf("investido")} fill="none" stroke={BORDER} strokeWidth="2" strokeDasharray="4,3" />
+                  <path d={pathOf("projetado")} fill="none" stroke={B} strokeWidth="2.5" strokeLinecap="round" />
+                </svg>
               </div>
             </div>
 
-            <button className="w-full py-4 rounded-xl hover:opacity-90"
+            <button onClick={() => onNavigate("planos")} className="w-full py-4 rounded-xl hover:opacity-90"
               style={{ background: B, color: "#fff", fontSize: "0.9375rem", fontWeight: 700, boxShadow: "0 0 30px var(--primary-glow)" }}>
-              Quero esses resultados →
+              Pronto para investir? Ver planos →
             </button>
             <div className="flex items-start gap-2 mt-3">
               <AlertTriangle className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: MFG }} />
               <p style={{ fontSize: "0.75rem", fontWeight: 500, color: MFG, lineHeight: 1.6 }}>
-                Simulação com fins educacionais. Resultados passados não garantem resultados futuros. Operações binárias envolvem risco de perda.
+                Simulação com fins educacionais baseada em juros compostos. Resultados passados não garantem resultados futuros. Investimentos envolvem risco de perda.
               </p>
             </div>
           </div>
@@ -865,7 +900,7 @@ const TESTS = [
     text: "Comecei com R$500 e hoje opero com banca de R$8.000. A metodologia de gestão da Veritas mudou tudo — parei de quebrar e comecei a lucrar consistentemente." },
   { name: "Fernanda Costa", role: "Médica + Trader — Rio",  gain: "R$ 3.200/mês", plan: "Pro",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-    text: "Em 4 meses aprendi a operar BTC e binárias enquanto trabalhava. Os sinais do grupo são precisos e a sala ao vivo me ensinou a pensar como trader." },
+    text: "Em 4 meses aprendi a operar cripto e forex enquanto trabalhava. Os sinais do grupo são precisos e a sala ao vivo me ensinou a pensar como trader." },
   { name: "Rafael Souza", role: "Engenheiro + Trader — BH", gain: "78% acerto",    plan: "Starter",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
     text: "Tentei várias plataformas sozinho e só perdia. Com a Veritas aprendi gestão de banca e análise técnica — hoje tenho 78% de acerto consistente." },
@@ -978,16 +1013,16 @@ function LeadCapture() {
 
 // ── FAQ ───────────────────────────────────────────────────────────────────────
 const FAQS = [
-  { q: "Opções binárias são legais no Brasil?",
-    a: "Sim. A operação com opções binárias é legal para residentes brasileiros em plataformas internacionais. O trader é responsável por declarar os ganhos à Receita Federal conforme a legislação vigente." },
+  { q: "Operar cripto e forex é legal no Brasil?",
+    a: "Sim. A operação em cripto e forex é legal para residentes brasileiros em plataformas internacionais regulamentadas. O investidor é responsável por declarar os ganhos à Receita Federal conforme a legislação vigente." },
   { q: "Preciso de experiência para começar?",
-    a: "Não. Nosso Módulo 1 começa do absoluto zero — explicamos o que é uma opção binária, como funciona o payout, como escolher ativos e como fazer sua primeira operação com segurança." },
+    a: "Não. Nosso Módulo 1 começa do absoluto zero — explicamos os fundamentos do mercado financeiro, como escolher ativos e como fazer sua primeira operação com segurança." },
   { q: "Qual o valor mínimo para começar a operar?",
-    a: "A maioria das plataformas aceita depósito mínimo de R$50 a R$200. Recomendamos começar com pelo menos R$500 para conseguir aplicar a gestão de banca de forma eficiente." },
+    a: "A maioria das corretoras aceita depósito mínimo de R$50 a R$200. Recomendamos começar com pelo menos R$500 para conseguir aplicar a gestão de banca de forma eficiente." },
   { q: "Como funcionam os sinais de operação?",
-    a: "Enviamos sinais diários no grupo exclusivo contendo: ativo, direção (CALL ou PUT), horário de entrada e tempo de expiração. Você executa na sua plataforma e acompanha o resultado." },
-  { q: "Posso operar cripto e binárias ao mesmo tempo?",
-    a: "Sim, e ensinamos as duas modalidades. Muitos alunos usam cripto para investimento de médio/longo prazo e binárias para geração de renda mensal — estratégias complementares." },
+    a: "Enviamos sinais diários no grupo exclusivo contendo: ativo, direção (compra ou venda), horário de entrada e retorno esperado. Você executa na sua corretora e acompanha o resultado." },
+  { q: "Posso operar cripto e forex ao mesmo tempo?",
+    a: "Sim, e ensinamos as duas modalidades. Muitos alunos usam cripto para investimento de médio/longo prazo e forex para geração de renda mensal — estratégias complementares." },
 ];
 
 function FAQ() {
@@ -1018,7 +1053,6 @@ function FAQ() {
   );
 }
 
-// ── Footer ────────────────────────────────────────────────────────────────────
 
 // ── Missão e Visão ────────────────────────────────────────────────────────────
 function MissionVision() {
@@ -1055,7 +1089,7 @@ function MissionVision() {
               <p className="card-body leading-relaxed mx-auto" style={{ maxWidth: "52ch" }}>
                 Desenvolver traders estratégicos por meio de conhecimento estruturado, acompanhamento profissional
                 e integração com os melhores mercados financeiros — promovendo uma atuação consciente, disciplinada
-                e lucrativa em opções binárias e cripto.
+                e lucrativa em cripto e forex.
               </p>
             </div>
             <div className="pt-4 mt-auto border-t flex justify-center" style={{ borderColor: BORDER }}>
@@ -1112,7 +1146,7 @@ const PILLARS = [
   {
     icon: <BookOpen className="w-6 h-6" />,
     title: "Conhecimento Estratégico",
-    desc: "Formação estruturada para compreensão profunda dos mercados financeiros — análise técnica, price action e padrões de binárias.",
+    desc: "Formação estruturada para compreensão profunda dos mercados financeiros — análise técnica, price action e padrões gráficos.",
   },
   {
     icon: <Target className="w-6 h-6" />,
@@ -1127,7 +1161,7 @@ const PILLARS = [
   {
     icon: <Globe className="w-6 h-6" />,
     title: "Integração Global",
-    desc: "Acesso e conexão com as principais plataformas internacionais de binárias e exchanges de cripto do mundo.",
+    desc: "Acesso e conexão com as principais corretoras internacionais de forex e exchanges de cripto do mundo.",
   },
 ];
 
@@ -1214,7 +1248,7 @@ function Methodology() {
                 <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#22c55e" }} />
               </div>
               <div className="p-4 space-y-3">
-                {["IQ Option", "Binance", "Quotex"].map((platform) => (
+                {["Binance", "Kraken", "XM"].map((platform) => (
                   <div key={platform} className="flex items-center gap-2.5">
                     <div className="w-2 h-2 rounded-full" style={{ background: G }} />
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.75rem", fontWeight: 600, color: FG }}>{platform}</span>
@@ -1242,13 +1276,13 @@ function Methodology() {
               </div>
               <div className="p-3 space-y-2">
                 {[
-                  { asset: "BTC/USD", dir: "CALL", pay: "+87%", win: true },
-                  { asset: "EUR/USD", dir: "PUT",  pay: "+83%", win: true },
-                  { asset: "SOL/USD", dir: "CALL", pay: "+85%", win: false },
+                  { asset: "BTC/USD", dir: "COMPRA", pay: "+87%", win: true },
+                  { asset: "EUR/USD", dir: "VENDA",  pay: "+83%", win: true },
+                  { asset: "SOL/USD", dir: "COMPRA", pay: "+85%", win: false },
                 ].map((s, idx) => (
                   <div key={idx} className="flex items-center gap-2 p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}>
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: FG, flex: 1 }}>{s.asset}</span>
-                    <span style={{ fontSize: "0.6rem", fontWeight: 800, color: s.dir === "CALL" ? G : RED }}>{s.dir}</span>
+                    <span style={{ fontSize: "0.6rem", fontWeight: 800, color: s.dir === "COMPRA" ? G : RED }}>{s.dir}</span>
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6875rem", fontWeight: 700, color: s.win ? G : RED }}>{s.pay}</span>
                   </div>
                 ))}
@@ -1267,7 +1301,7 @@ const VALUES = [
   {
     icon: <Lightbulb className="w-6 h-6" />,
     title: "Inovação",
-    desc: "Tecnologia de ponta e estratégias modernas aplicadas ao mercado de binárias e cripto.",
+    desc: "Tecnologia de ponta e estratégias modernas aplicadas ao mercado de cripto e forex.",
     accent: "rgba(139,92,246,0.15)",
     accentBorder: "rgba(139,92,246,0.25)",
     accentText: "#a78bfa",
@@ -1460,10 +1494,10 @@ function ValuesSection() {
   );
 }
 
-// ── Brokers por categoria ─────────────────────────────────────────────────────
+
 
 // ── Home ──────────────────────────────────────────────────────────────────────
-function Home({ onAccessPlatform }: { onAccessPlatform: () => void }) {
+function Home({ onAccessPlatform, onNavigate }: { onAccessPlatform: () => void; onNavigate: (v: LandingView) => void }) {
   return (
     <>
       <Hero onAccessPlatform={onAccessPlatform} />
@@ -1474,7 +1508,7 @@ function Home({ onAccessPlatform }: { onAccessPlatform: () => void }) {
       <Methodology />
       <BrokersSection />
       <Education />
-      <Calculator />
+      <Calculator onNavigate={onNavigate} />
       <ValuesSection />
       <Testimonials />
       <LeadCapture />
@@ -1492,7 +1526,7 @@ export function LandingPage({ onAccessPlatform }: { onAccessPlatform: () => void
       <NoiseOverlay />
       <Ticker />
       <Navbar view={view} onNavigate={setView} onAccessPlatform={onAccessPlatform} />
-      {view === "home" && <Home onAccessPlatform={onAccessPlatform} />}
+      {view === "home" && <Home onAccessPlatform={onAccessPlatform} onNavigate={setView} />}
       {view === "mercados" && <Mercados onNavigate={setView} />}
       {view === "educacao" && <Educacao onNavigate={setView} />}
       {view === "planos" && <Planos onAccessPlatform={onAccessPlatform} />}

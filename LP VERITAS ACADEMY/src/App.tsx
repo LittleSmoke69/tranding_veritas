@@ -126,7 +126,37 @@ function LivePanel() {
   );
 }
 
+const HERO_SLIDES = [
+  {
+    icon: <Globe className="w-3 h-3" />,
+    plain: "Desenvolvimento estratégico para o",
+    gradient: "mercado financeiro global",
+    sub: "A Veritas Global foi estruturada com o propósito de desenvolver investidores que desejam compreender os mercados financeiros internacionais com uma visão mais estratégica e disciplinada.",
+  },
+  {
+    icon: <ShieldCheck className="w-3 h-3" />,
+    plain: "Conhecimento e estrutura para",
+    gradient: "mercados globais",
+    sub: "Nosso trabalho está focado na construção de conhecimento, estrutura de acompanhamento e integração com plataformas internacionais utilizadas por investidores ao redor do mundo.",
+  },
+  {
+    icon: <Zap className="w-3 h-3" />,
+    plain: "Mais de 10 anos no",
+    gradient: "mercado financeiro",
+    sub: "Experiência consolidada no desenvolvimento de investidores e integração com infraestrutura global de mercados financeiros.",
+  },
+];
+
 function Hero() {
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setSlide((s) => (s + 1) % HERO_SLIDES.length), 5000);
+    return () => window.clearTimeout(id);
+  }, [slide]);
+
+  const s = HERO_SLIDES[slide];
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden grid-bg">
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
@@ -140,27 +170,25 @@ function Hero() {
             {/* Eyebrow */}
             <div className="mb-8">
               <Badge color="blue">
-                <Globe className="w-3 h-3" />
-                Veritas Global — Mercados Internacionais
+                {s.icon}
+                Investimentos Globais
               </Badge>
             </div>
 
             {/* Headline */}
-            <h1 className="mb-7"
-              style={{ fontFamily: "'Manrope', sans-serif", fontSize: "clamp(2.75rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em" }}>
-              <span style={{ color: FG }}>Desenvolvimento</span><br />
-              <span className="blue-gradient">estratégico para o</span><br />
-              <span style={{ color: FG }}>mercado financeiro global</span>
+            <h1 className="mb-7" key={slide}
+              style={{ fontFamily: "'Manrope', sans-serif", fontSize: "clamp(2.75rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em", minHeight: "3.2em", animation: "hero-fade 500ms ease" }}>
+              <span style={{ color: FG }}>{s.plain} </span>
+              <span className="blue-gradient">{s.gradient}</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="mb-10" style={{ fontSize: "1.0625rem", fontWeight: 500, lineHeight: 1.75, color: MFG, maxWidth: "46ch" }}>
-              A Veritas Global foi estruturada com o propósito de desenvolver investidores que desejam
-              compreender os mercados financeiros internacionais com uma visão mais estratégica e disciplinada.
+            <p className="mb-10" key={`sub-${slide}`} style={{ fontSize: "1.0625rem", fontWeight: 500, lineHeight: 1.75, color: MFG, maxWidth: "46ch", minHeight: "3.5em", animation: "hero-fade 500ms ease" }}>
+              {s.sub}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 mb-12">
+            <div className="flex flex-wrap items-center gap-4 mb-8">
               <a href={PLATFORM_URL} className="flex items-center gap-2.5 px-7 py-4 rounded-xl hover:opacity-90 transition-all hover:scale-105"
                 style={{ background: B, color: "#fff", fontSize: "0.9375rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 40px var(--primary-glow)" }}>
                 Acessar Plataforma <ArrowRight className="w-4 h-4" />
@@ -170,6 +198,17 @@ function Hero() {
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 Como funciona
               </button>
+            </div>
+
+            {/* Carousel indicator */}
+            <div className="flex items-center gap-2 mb-8">
+              {HERO_SLIDES.map((_, i) => (
+                <button key={i} onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`}
+                  className="h-1 rounded-full overflow-hidden transition-all duration-300"
+                  style={{ width: i === slide ? 32 : 16, background: BORDER }}>
+                  {i === slide && <span className="block h-full rounded-full" style={{ background: B, transformOrigin: "left", animation: "hero-progress 5s linear" }} />}
+                </button>
+              ))}
             </div>
 
             {/* Proof pills */}
