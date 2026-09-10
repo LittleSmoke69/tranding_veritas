@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useLenis } from "./hooks/useLenis";
+import { useLenis, scrollToId } from "./hooks/useLenis";
 import ScrollRevealText from "./components/ScrollRevealText";
 import {
   Bitcoin, Target, Zap, BarChart3, Users,
@@ -13,6 +13,9 @@ import Planos from "./pages/Planos";
 import QuemSomos from "./pages/QuemSomos";
 import NossaEquipe from "./pages/NossaEquipe";
 import Carreiras from "./pages/Carreiras";
+import CopyTrading from "./pages/CopyTrading";
+import Consultoria from "./pages/Consultoria";
+import Automacao from "./pages/Automacao";
 import {
   B, BD, BB, G, GD, RED, RD, RB, GOLD, CARD, MFG, FG, BORDER,
   IBox, Badge, SectionHeader, Ticker, PLATFORM_URL, usePath, navigate,
@@ -193,7 +196,7 @@ function Hero() {
                 style={{ background: B, color: "#fff", fontSize: "0.9375rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 40px var(--primary-glow)" }}>
                 Acessar Plataforma <ArrowRight className="w-4 h-4" />
               </a>
-              <button className="flex items-center gap-2.5 px-7 py-4 rounded-xl border transition-all hover:border-white/20"
+              <button onClick={() => scrollToId("metodologia")} className="flex items-center gap-2.5 px-7 py-4 rounded-xl border transition-all hover:border-white/20"
                 style={{ borderColor: BORDER, color: FG, background: "rgba(255,255,255,0.03)", fontSize: "0.9375rem", fontWeight: 600 }}>
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 Como funciona
@@ -995,7 +998,7 @@ function Methodology() {
   const consistRate = useCountUp(95);
 
   return (
-    <section className="py-24" style={{ background: "var(--muted)" }}>
+    <section id="metodologia" className="py-24" style={{ background: "var(--muted)" }}>
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeader
           center
@@ -1352,6 +1355,9 @@ export default function App() {
     : path === "/quem-somos" ? QuemSomos
     : path === "/nossa-equipe" ? NossaEquipe
     : path === "/carreiras" ? Carreiras
+    : path === "/copy-trading" ? CopyTrading
+    : path === "/consultoria" ? Consultoria
+    : path === "/automacao" ? Automacao
     : Home;
 
   return (
