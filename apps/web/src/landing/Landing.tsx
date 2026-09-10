@@ -85,7 +85,6 @@ function Navbar({
           </div>
         </div>
         <div className="hidden md:flex items-center gap-3">
-          <button onClick={onAccessPlatform} style={{ color: MFG, fontSize: "0.8125rem", fontWeight: 600 }} className="px-4 py-2 rounded-lg">Entrar</button>
           <button onClick={onAccessPlatform} className="px-5 py-2.5 rounded-xl hover:opacity-90 animate-pulse-blue"
             style={{ background: B, color: "#fff", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 24px var(--primary-glow)" }}>
             Acessar Plataforma
