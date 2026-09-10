@@ -69,7 +69,7 @@ function Navbar({
       style={{ background: scrolled ? "rgba(4,5,12,0.95)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? `1px solid ${BORDER}` : "none" }}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
         <button onClick={() => go("home")} className="shrink-0">
-          <img src={logo1} alt="Veritas" className="h-9 w-auto object-contain"
+          <img src={logo1} alt="Veritas" className="h-12 w-auto object-contain"
             style={{ filter: "drop-shadow(0 0 8px rgba(25,172,254,0.3))" }} />
         </button>
         <div className="hidden md:flex items-center gap-5">
