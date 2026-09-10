@@ -242,8 +242,8 @@ export function Navbar({ path }: { path: string }) {
             className="transition-colors hover:text-white">Contato</button>
         </div>
         <div className="hidden md:flex items-center gap-3">
-          <a href={PLATFORM_URL} className="px-5 py-2.5 rounded-xl hover:opacity-90 animate-pulse-blue"
-            style={{ background: B, color: "#fff", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 24px var(--primary-glow)" }}>
+          <a href={PLATFORM_URL} className="px-5 py-2.5 rounded-xl hover:opacity-90"
+            style={{ backgroundImage: "linear-gradient(to right, #2e64ff, #1f4ee6)", color: "#fff", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 24px rgba(46,100,255,0.35)" }}>
             Acesso à Plataforma
           </a>
         </div>
@@ -293,7 +293,7 @@ export function Navbar({ path }: { path: string }) {
           <button onClick={() => { scrollToId("contato"); setOpen(false); }} className="block w-full py-3 text-left border-b"
             style={{ color: MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>Contato</button>
           <a href={PLATFORM_URL} className="mt-4 block w-full py-3 rounded-xl text-center"
-            style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acesso à Plataforma</a>
+            style={{ backgroundImage: "linear-gradient(to right, #2e64ff, #1f4ee6)", color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acesso à Plataforma</a>
         </div>
       )}
     </nav>
