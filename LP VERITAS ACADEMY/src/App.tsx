@@ -123,6 +123,9 @@ function Ticker() {
   );
 }
 
+// ── Link para a plataforma (demo.investirbot.online) ───────────────────────────
+const PLATFORM_URL = "https://demo.investirbot.online";
+
 // ── Navbar ────────────────────────────────────────────────────────────────────
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -147,11 +150,11 @@ function Navbar() {
           ))}
         </div>
         <div className="hidden md:flex items-center gap-3">
-          <button style={{ color: MFG, fontSize: "0.8125rem", fontWeight: 600 }} className="px-4 py-2 rounded-lg">Entrar</button>
-          <button className="px-5 py-2.5 rounded-xl hover:opacity-90 animate-pulse-blue"
+          <a href={PLATFORM_URL} style={{ color: MFG, fontSize: "0.8125rem", fontWeight: 600 }} className="px-4 py-2 rounded-lg">Entrar</a>
+          <a href={PLATFORM_URL} className="px-5 py-2.5 rounded-xl hover:opacity-90 animate-pulse-blue"
             style={{ background: B, color: "#fff", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 24px var(--primary-glow)" }}>
-            Começar a Operar
-          </button>
+            Acessar Plataforma
+          </a>
         </div>
         <button className="md:hidden" onClick={() => setOpen(!open)} style={{ color: FG }}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,8 +169,8 @@ function Navbar() {
             <a key={l} href="#" className="block py-3 border-b"
               style={{ color: MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>{l}</a>
           ))}
-          <button className="mt-4 w-full py-3 rounded-xl"
-            style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Começar a Operar</button>
+          <a href={PLATFORM_URL} className="mt-4 block w-full py-3 rounded-xl text-center"
+            style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acessar Plataforma</a>
         </div>
       )}
     </nav>
@@ -335,10 +338,10 @@ function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-12">
-              <button className="flex items-center gap-2.5 px-7 py-4 rounded-xl hover:opacity-90 transition-all hover:scale-105"
+              <a href={PLATFORM_URL} className="flex items-center gap-2.5 px-7 py-4 rounded-xl hover:opacity-90 transition-all hover:scale-105"
                 style={{ background: B, color: "#fff", fontSize: "0.9375rem", fontWeight: 700, letterSpacing: "0.01em", boxShadow: "0 0 40px var(--primary-glow)" }}>
-                Conhecer a Veritas <ArrowRight className="w-4 h-4" />
-              </button>
+                Acessar Plataforma <ArrowRight className="w-4 h-4" />
+              </a>
               <button className="flex items-center gap-2.5 px-7 py-4 rounded-xl border transition-all hover:border-white/20"
                 style={{ borderColor: BORDER, color: FG, background: "rgba(255,255,255,0.03)", fontSize: "0.9375rem", fontWeight: 600 }}>
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>

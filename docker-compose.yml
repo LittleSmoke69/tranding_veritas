@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      VERITAS_WEB_ORIGIN: https://trading.capdosucesso.co.uk
+      VERITAS_WEB_ORIGIN: https://demo.investirbot.online
     networks: [veritas]
 
   worker:
@@ -33,12 +33,26 @@ services:
       - api
     networks: [veritas]
 
+  # Site institucional (LP Veritas Academy), publicado em investirbot.online.
+  # O CTA "Acessar Plataforma" já linka para https://demo.investirbot.online.
+  landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: landing
+    restart: unless-stopped
+    networks: [veritas]
+
+  # Um único túnel ("investidor") atende os dois domínios: as regras de
+  # Public Hostname (configuradas no painel Cloudflare) apontam
+  # investirbot.online -> landing:80 e demo.investirbot.online -> web:80.
   cloudflared:
     image: cloudflare/cloudflared:latest
     restart: unless-stopped
     command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
     depends_on:
       - web
+      - landing
     networks: [veritas]
 
 networks:

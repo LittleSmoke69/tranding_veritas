@@ -47,3 +47,18 @@ FROM nginx:alpine AS web
 COPY --from=build /app/apps/web/dist /usr/share/nginx/html
 COPY infra/nginx.web.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
+
+# ── Landing institucional (investirbot.online) ───────────────────────────────
+# Projeto à parte (Vite + pnpm), fora do workspace npm — build isolado.
+FROM node:22-alpine AS landing-build
+WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@10.34.3 --activate
+COPY "LP VERITAS ACADEMY/package.json" "LP VERITAS ACADEMY/pnpm-lock.yaml" ./
+RUN pnpm install --frozen-lockfile
+COPY "LP VERITAS ACADEMY/" .
+RUN pnpm run build
+
+FROM nginx:alpine AS landing
+COPY --from=landing-build /app/dist /usr/share/nginx/html
+COPY infra/nginx.spa.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
