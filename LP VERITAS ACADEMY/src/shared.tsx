@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { ChevronDown } from "lucide-react";
 import ScrollRevealText from "./components/ScrollRevealText";
 import logo1 from "./imports/logo_1.png";
 import imgBinance    from "./imports/image-7.png";
@@ -149,16 +150,25 @@ const NAV_LINKS = [
   { label: "Planos", path: "/planos" },
 ];
 
+const VERITAS_LINKS = [
+  { label: "Quem Somos", path: "/quem-somos" },
+  { label: "Nossa Equipe", path: "/nossa-equipe" },
+  { label: "Carreiras", path: "/carreiras" },
+];
+
 // ── Navbar ────────────────────────────────────────────────────────────────────
 export function Navbar({ path }: { path: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [veritasOpen, setVeritasOpen] = useState(false);
+  const [mobileVeritasOpen, setMobileVeritasOpen] = useState(false);
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", h);
     return () => window.removeEventListener("scroll", h);
   }, []);
-  const go = (p: string) => { navigate(p); setOpen(false); };
+  const go = (p: string) => { navigate(p); setOpen(false); setVeritasOpen(false); };
+  const veritasActive = VERITAS_LINKS.some((l) => l.path === path);
   return (
     <nav className="sticky top-0 z-50 transition-all duration-300"
       style={{ background: scrolled ? "rgba(4,5,12,0.95)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? `1px solid ${BORDER}` : "none" }}>
@@ -173,6 +183,27 @@ export function Navbar({ path }: { path: string }) {
               style={{ color: path === l.path ? FG : MFG, fontSize: "0.8125rem", fontWeight: 600, letterSpacing: "0.01em" }}
               className="transition-colors hover:text-white">{l.label}</button>
           ))}
+          <div className="relative" onMouseEnter={() => setVeritasOpen(true)} onMouseLeave={() => setVeritasOpen(false)}>
+            <button
+              style={{ color: veritasActive || veritasOpen ? FG : MFG, fontSize: "0.8125rem", fontWeight: 600, letterSpacing: "0.01em" }}
+              className="flex items-center gap-1.5 transition-colors hover:text-white">
+              A Veritas
+              <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200" style={{ transform: veritasOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
+            </button>
+            {veritasOpen && (
+              <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3">
+                <div className="w-52 rounded-xl overflow-hidden" style={{ background: "rgba(8,12,24,0.98)", border: `1px solid ${BORDER}`, boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
+                  {VERITAS_LINKS.map((l) => (
+                    <button key={l.path} onClick={() => go(l.path)}
+                      className="block w-full px-4 py-3 text-left transition-colors hover:bg-white/5"
+                      style={{ color: path === l.path ? B : MFG, fontSize: "0.8125rem", fontWeight: 600 }}>
+                      {l.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <a href={PLATFORM_URL} style={{ color: MFG, fontSize: "0.8125rem", fontWeight: 600 }} className="px-4 py-2 rounded-lg">Entrar</a>
@@ -194,6 +225,20 @@ export function Navbar({ path }: { path: string }) {
             <button key={l.path} onClick={() => go(l.path)} className="block w-full py-3 text-left border-b"
               style={{ color: path === l.path ? FG : MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>{l.label}</button>
           ))}
+          <button onClick={() => setMobileVeritasOpen((v) => !v)}
+            className="flex w-full items-center justify-between py-3 border-b"
+            style={{ color: veritasActive ? FG : MFG, fontSize: "0.875rem", fontWeight: 600, borderColor: BORDER }}>
+            A Veritas
+            <ChevronDown className="w-4 h-4 transition-transform duration-200" style={{ transform: mobileVeritasOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
+          </button>
+          {mobileVeritasOpen && (
+            <div className="pl-4">
+              {VERITAS_LINKS.map((l) => (
+                <button key={l.path} onClick={() => go(l.path)} className="block w-full py-2.5 text-left border-b"
+                  style={{ color: path === l.path ? B : MFG, fontSize: "0.8125rem", fontWeight: 600, borderColor: BORDER }}>{l.label}</button>
+              ))}
+            </div>
+          )}
           <a href={PLATFORM_URL} className="mt-4 block w-full py-3 rounded-xl text-center"
             style={{ background: B, color: "#fff", fontSize: "0.875rem", fontWeight: 700 }}>Acessar Plataforma</a>
         </div>

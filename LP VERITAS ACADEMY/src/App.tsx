@@ -10,6 +10,9 @@ import {
 import Mercados from "./pages/Mercados";
 import Educacao from "./pages/Educacao";
 import Planos from "./pages/Planos";
+import QuemSomos from "./pages/QuemSomos";
+import NossaEquipe from "./pages/NossaEquipe";
+import Carreiras from "./pages/Carreiras";
 import {
   B, BD, BB, G, GD, RED, RD, RB, GOLD, CARD, MFG, FG, BORDER,
   IBox, Badge, SectionHeader, Ticker, PLATFORM_URL, usePath, navigate,
@@ -1374,6 +1377,9 @@ export default function App() {
   const Page = path === "/mercados" ? Mercados
     : path === "/educacao" ? Educacao
     : path === "/planos" ? Planos
+    : path === "/quem-somos" ? QuemSomos
+    : path === "/nossa-equipe" ? NossaEquipe
+    : path === "/carreiras" ? Carreiras
     : Home;
 
   return (
