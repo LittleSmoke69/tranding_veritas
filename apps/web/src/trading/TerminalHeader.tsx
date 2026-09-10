@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { AssetMark } from '../components/AssetMark';
 import { Icon } from '../components/Icon';
 import { categoryLabel, type TradingAsset } from '../data/assets';
@@ -31,6 +32,34 @@ export function TerminalHeader({
   onSetBalance,
   onAdmin,
 }: TerminalHeaderProps) {
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  useEffect(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    const updateFades = () => {
+      setCanScrollLeft(el.scrollLeft > 4);
+      setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+    };
+    updateFades();
+    el.addEventListener('scroll', updateFades, { passive: true });
+    const observer = new ResizeObserver(updateFades);
+    observer.observe(el);
+    return () => {
+      el.removeEventListener('scroll', updateFades);
+      observer.disconnect();
+    };
+  }, [openAssets.length]);
+
+  useEffect(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    const activeTab = el.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]');
+    activeTab?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }, [activeSymbol]);
+
   return (
     <header
       className="flex h-full items-stretch gap-2 border-b border-line bg-app pr-2 sm:gap-3 sm:pr-3"
@@ -48,11 +77,19 @@ export function TerminalHeader({
       <div className="mx-0.5 my-3 hidden w-px shrink-0 bg-line lg:block" aria-hidden="true" />
 
       {/* Abas de ativos */}
-      <div
-        role="tablist"
-        aria-label="Ativos abertos"
-        className="u-scroll flex min-w-0 flex-1 items-end gap-1 overflow-x-auto pb-0"
-      >
+      <div className="relative flex min-w-0 flex-1 items-stretch">
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-app to-transparent transition-opacity duration-200 ${
+            canScrollLeft ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+        <div
+          ref={tabsRef}
+          role="tablist"
+          aria-label="Ativos abertos"
+          className="u-scroll flex min-w-0 flex-1 items-end gap-1 overflow-x-auto pb-0"
+        >
         {openAssets.map((a) => {
           const isActive = a.symbol === activeSymbol;
           return (
@@ -105,6 +142,13 @@ export function TerminalHeader({
         >
           <Icon name="plus" size={18} />
         </button>
+        </div>
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-gradient-to-l from-app to-transparent transition-opacity duration-200 ${
+            canScrollRight ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
       </div>
 
       {/* Conta, saldo e depósito */}
