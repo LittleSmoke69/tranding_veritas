@@ -161,6 +161,7 @@ const SERVICOS_LINKS = [
   { label: "Cursos", path: "/educacao" },
   { label: "Consultoria", path: "/consultoria" },
   { label: "Automação", path: "/automacao" },
+  { label: "Análises", path: "/analises" },
 ];
 
 // ── Navbar ────────────────────────────────────────────────────────────────────

@@ -1,0 +1,249 @@
+{
+  "url": "https://veritasacademy.base44.app/Carreiras",
+  "height": 2091,
+  "text": [
+    {
+      "tag": "A",
+      "text": "Página Inicial",
+      "y": 1252
+    },
+    {
+      "tag": "A",
+      "text": "Mercados",
+      "y": 1252
+    },
+    {
+      "tag": "A",
+      "text": "Trading Lab",
+      "y": 1252
+    },
+    {
+      "tag": "A",
+      "text": "Educação",
+      "y": 1252
+    },
+    {
+      "tag": "A",
+      "text": "Planos",
+      "y": 1252
+    },
+    {
+      "tag": "A",
+      "text": "Contato",
+      "y": 1252
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Acesso à Plataforma",
+      "y": 1252
+    },
+    {
+      "tag": "SPAN",
+      "text": "Trabalhe Conosco",
+      "y": 192
+    },
+    {
+      "tag": "SPAN",
+      "text": "mercado global",
+      "y": 224
+    },
+    {
+      "tag": "P",
+      "text": "Na Veritas Global, você trabalhará com profissionais de alto nível, tecnologia de ponta e um ambiente que valoriza resultado, transparência e crescimento contínuo.",
+      "y": 344
+    },
+    {
+      "tag": "H2",
+      "text": "O que oferecemos",
+      "y": 547
+    },
+    {
+      "tag": "P",
+      "text": "Participação nos resultados",
+      "y": 696
+    },
+    {
+      "tag": "P",
+      "text": "Acesso a mercados globais",
+      "y": 696
+    },
+    {
+      "tag": "P",
+      "text": "Ambiente inovador e dinâmico",
+      "y": 696
+    },
+    {
+      "tag": "P",
+      "text": "Plano de saúde completo",
+      "y": 696
+    },
+    {
+      "tag": "P",
+      "text": "Cultura de colaboração",
+      "y": 696
+    },
+    {
+      "tag": "P",
+      "text": "Desenvolvimento contínuo",
+      "y": 696
+    },
+    {
+      "tag": "H2",
+      "text": "Vagas abertas",
+      "y": 861
+    },
+    {
+      "tag": "SPAN",
+      "text": "Investimentos",
+      "y": 958
+    },
+    {
+      "tag": "H3",
+      "text": "Analista de Mercados Financeiros",
+      "y": 988
+    },
+    {
+      "tag": "SPAN",
+      "text": "Tecnologia",
+      "y": 1082
+    },
+    {
+      "tag": "H3",
+      "text": "Desenvolvedor FinTech (Full Stack)",
+      "y": 1112
+    },
+    {
+      "tag": "SPAN",
+      "text": "Relacionamento",
+      "y": 1206
+    },
+    {
+      "tag": "H3",
+      "text": "Consultor de Investimentos",
+      "y": 1236
+    },
+    {
+      "tag": "P",
+      "text": "Não encontrou a vaga ideal?",
+      "y": 1354
+    },
+    {
+      "tag": "A",
+      "text": "carreiras@veritasglobal.com",
+      "y": 1383
+    },
+    {
+      "tag": "P",
+      "text": "Seu portal de acesso a investimentos internacionais com tecnologia de ponta e suporte especializado.",
+      "y": 1706
+    },
+    {
+      "tag": "SPAN",
+      "text": "contato@academyveritas.net",
+      "y": 1782
+    },
+    {
+      "tag": "SPAN",
+      "text": "Rua Gomes de Carvalho, 1507 — Conj. 92 · Vila Olímpia · São Paulo/SP · 04547-005",
+      "y": 1814
+    },
+    {
+      "tag": "H4",
+      "text": "Empresa",
+      "y": 1624
+    },
+    {
+      "tag": "A",
+      "text": "Quem Somos",
+      "y": 1668
+    },
+    {
+      "tag": "A",
+      "text": "Nossa Equipe",
+      "y": 1704
+    },
+    {
+      "tag": "A",
+      "text": "Carreiras",
+      "y": 1740
+    },
+    {
+      "tag": "A",
+      "text": "Imprensa",
+      "y": 1776
+    },
+    {
+      "tag": "H4",
+      "text": "Serviços",
+      "y": 1624
+    },
+    {
+      "tag": "A",
+      "text": "Cursos",
+      "y": 1668
+    },
+    {
+      "tag": "A",
+      "text": "Análises",
+      "y": 1704
+    },
+    {
+      "tag": "A",
+      "text": "Automação",
+      "y": 1740
+    },
+    {
+      "tag": "A",
+      "text": "Consultoria",
+      "y": 1776
+    },
+    {
+      "tag": "H4",
+      "text": "Suporte",
+      "y": 1624
+    },
+    {
+      "tag": "A",
+      "text": "Central de Ajuda",
+      "y": 1668
+    },
+    {
+      "tag": "A",
+      "text": "Termos de Uso",
+      "y": 1704
+    },
+    {
+      "tag": "A",
+      "text": "Política de Privacidade",
+      "y": 1740
+    },
+    {
+      "tag": "P",
+      "text": "© 2026 Veritas Finance Academy. Todos os direitos reservados.",
+      "y": 2037
+    },
+    {
+      "tag": "SPAN",
+      "text": "Edit with",
+      "y": 2045
+    }
+  ],
+  "images": [
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "base44",
+      "src": "https://media.base44.com/images/public/builder-assets/symbol-orange.png"
+    },
+    {
+      "alt": "Base44",
+      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAABECAMAAAB+vJpyAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAEVQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////Up1zwgAAABZ0Uk5TABAgMEBQX2BvcH+Aj5CfoK+wv8/f741pbhwAAAVHSURBVHja7ZvtbuwoDECNQ5ZNSZgsAd7/Ufeq6i0Ex3Y6I1WJNOdv3RlyGvAHKrx58+bNmzdvfg0v4OwAN8P5BnH16FsM/KUoxNnCffi3tDgQCKUFqxCd5OAmYCFCdHVUiE5CuAXptBDMohCdD7gBczktJBVVyP2NuNLhBHWaEB0LFwcTESKoe11IMnBtYulxvDpdiI6HS/NRCE5UpwvJqaX05ItnXIoT1elCPOwY3HqfU8QkTQhVpwtRNtsE1yUUTQhVpwtR6pdwi5I9KUJCeUUI+FKJcFUwVx+eCOHULVETomy4dIOSPSMRwqqDZ4QAEXLtjDuBLCQ1Dp4TkoQtg25ev/Jziqu30EAD81fcZIHFjDVwdginsO0xR4Rw6jw8JySXb/6DFvORSs/qgEIDU7CHNlzsAyf8UcmeUBYytn/d54QYJu1iODk7MXMuB8SBHneHgQF/kHFHIEJYdU8KsaUyCIuvzAYabBbjKsNWTimWd4EsZO1+pAqR9ad2EQKbOReYEFTD+uQB2wUSIZy6BX4shD6Q0x6THr5O6Z9PfmI4V7IjEcKqM88JMfNh0h2KwlSTvkjQfOjvyEyWT4Rw6nQhwba4OZaGjMz4bQuLDzHvYs1BlZw+42i7SA3nLcat7Bj1Sc8KVAirThWiM7a5q/J9oeESedewlT0cxcWDdusrJaNLRLGccRkhVF2E14Vke9wdWag8+u3lDncjbqVi+gFnsjVwUadTkTw8FUJLdnxdSESoZG6ZW/f5ayuoYvJ+ydhlqIonr4iQNmQhpAc+LUQtjpCdoTk2zQdo8XujgZ/bRuKeTRusEKruJSFUiWWbG9N968YEDumbpeu3+N40itMrBFGIJerOC9EzH35j2M44dN9nz7ZmfG1phJrRAyuEqntJCNneEtj1ges+dzAsjLY+ozl+0hOBF0LV6UJeN4LjFLbc59OptOQ4j4OYKbLoeOEnPcgJEdXpQrawY41Zr6CNneaYS0+sm0Gz0k7/KN1Lx6QNUQgWRt0TvYx9lBZLhzlCO1O/kFqx5B1QSVzGDSAKMaw6XYh265daG1Hv72xhSQGBjdGFjCRtsEJmou5pIbSutqRbF4WA1/OWLWdhGzVRiCPqXhBCVrzU6lsVohvZ8FkhWE7hyAo0BCGV3L+2Qy5nhYBLYt66pZC1VAzrI62LOxAC+BD0zbcU8igV/D5mK3kLkzXwh+N8b9yaCoMFvLmQbroVlxHhCyqkMox+3QplAUN+ieOSWwb3N1cWGtRnM3Z6dFZy+3npJkJSqRgYSc6R+2Cl2MPWN95CiN3/wsKvP+yFYMWwxZ6FSVoAVsxVhHQz0JV9C3AfCCv7Lk3MqZqN8JH2GkJM2J+BEFkhWyek2Rob+5x2Vy/O/IwwQwvyLHshBnmaFVv8RBNiPnLf3a1ctx5KJ2Ri20K7ux4d2QuY4dRllVS6S+ile/Q7wpoO+qsHc/m9kUrV0GtL6q5uSmrkn0yU/pqQ83tyOlr9MOeD0j0eX1mbWZib1EAbySzmakISuWXLq3duCunMgGibLP5hnDO5L166cUnwYe0M41WE0Nc+ChFkQKSQajcvM8H1hORBm+gkR+8oZbBWJiIeriOEHosLa8xWIcKDkgWrgR6uJ2Qx9VDcGB9AhIgPmh1UzEOKu5YQ2sUtzPUvFQLgtftibZS0IlxLSI6TASCLp8aOhQA+EqtYVZKDBfhdIVFgDd4NBo5wTV5Mi4VPhviXuWtwt04xwiF2aQNTcAZ+jIvfaDKXGmrgdYZx8t670ZyMdv4Pk7MIEsaO02fcYN7/Zf7mzfX5H+WZeZXgxfH6AAAAAElFTkSuQmCC"
+    }
+  ]
+}

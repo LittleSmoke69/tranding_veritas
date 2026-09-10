@@ -16,6 +16,7 @@ import Carreiras from "./pages/Carreiras";
 import CopyTrading from "./pages/CopyTrading";
 import Consultoria from "./pages/Consultoria";
 import Automacao from "./pages/Automacao";
+import Analises from "./pages/Analises";
 import HomeOriginal from "./pages/HomeOriginal";
 import {
   B, BD, BB, G, GD, RED, RD, RB, GOLD, CARD, MFG, FG, BORDER,
@@ -1359,6 +1360,7 @@ export default function App() {
     : path === "/copy-trading" ? CopyTrading
     : path === "/consultoria" ? Consultoria
     : path === "/automacao" ? Automacao
+    : path === "/analises" ? Analises
     : HomeOriginal;
 
   return (

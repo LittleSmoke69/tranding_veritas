@@ -1,0 +1,424 @@
+{
+  "url": "https://veritasacademy.base44.app/CopyTrading",
+  "height": 5289,
+  "text": [
+    {
+      "tag": "A",
+      "text": "Página Inicial",
+      "y": 4450
+    },
+    {
+      "tag": "A",
+      "text": "Mercados",
+      "y": 4450
+    },
+    {
+      "tag": "A",
+      "text": "Trading Lab",
+      "y": 4450
+    },
+    {
+      "tag": "A",
+      "text": "Educação",
+      "y": 4450
+    },
+    {
+      "tag": "A",
+      "text": "Planos",
+      "y": 4450
+    },
+    {
+      "tag": "A",
+      "text": "Contato",
+      "y": 4450
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Acesso à Plataforma",
+      "y": 4450
+    },
+    {
+      "tag": "SPAN",
+      "text": "Copy Trading",
+      "y": 168
+    },
+    {
+      "tag": "P",
+      "text": "Execute operações automaticamente ao replicar estratégias de traders experientes, com total transparência e controle da sua conta.",
+      "y": 378
+    },
+    {
+      "tag": "SPAN",
+      "text": "Conceito",
+      "y": 702
+    },
+    {
+      "tag": "H2",
+      "text": "O que é Copy Trading?",
+      "y": 730
+    },
+    {
+      "tag": "P",
+      "text": "O Copy Trading é uma tecnologia que permite que investidores repliquem, em tempo real, as operações realizadas por traders profissionais. Ao invés de tomar decisões sozinho, você acompanha estratégias já testadas no mercado, com base em dados e consistência operacional.",
+      "y": 859
+    },
+    {
+      "tag": "SPAN",
+      "text": "Processo",
+      "y": 1241
+    },
+    {
+      "tag": "H2",
+      "text": "Como funciona na prática",
+      "y": 1269
+    },
+    {
+      "tag": "SPAN",
+      "text": "1",
+      "y": 1350
+    },
+    {
+      "tag": "P",
+      "text": "Você seleciona um trader ou estratégia disponível",
+      "y": 1450
+    },
+    {
+      "tag": "SPAN",
+      "text": "2",
+      "y": 1350
+    },
+    {
+      "tag": "P",
+      "text": "Analisa métricas como desempenho, risco e consistência",
+      "y": 1450
+    },
+    {
+      "tag": "SPAN",
+      "text": "3",
+      "y": 1350
+    },
+    {
+      "tag": "P",
+      "text": "Define o valor que deseja alocar",
+      "y": 1450
+    },
+    {
+      "tag": "SPAN",
+      "text": "4",
+      "y": 1350
+    },
+    {
+      "tag": "P",
+      "text": "As operações são replicadas automaticamente na sua conta",
+      "y": 1450
+    },
+    {
+      "tag": "SPAN",
+      "text": "5",
+      "y": 1350
+    },
+    {
+      "tag": "P",
+      "text": "Acompanhe tudo em tempo real",
+      "y": 1450
+    },
+    {
+      "tag": "SPAN",
+      "text": "Transparência",
+      "y": 1804
+    },
+    {
+      "tag": "H2",
+      "text": "Métricas disponíveis",
+      "y": 1800
+    },
+    {
+      "tag": "P",
+      "text": "Histórico de performance",
+      "y": 1977
+    },
+    {
+      "tag": "P",
+      "text": "Taxa de acerto",
+      "y": 1977
+    },
+    {
+      "tag": "P",
+      "text": "Drawdown (nível de risco)",
+      "y": 1977
+    },
+    {
+      "tag": "P",
+      "text": "Frequência de operações",
+      "y": 1977
+    },
+    {
+      "tag": "P",
+      "text": "Tempo médio por operação",
+      "y": 1977
+    },
+    {
+      "tag": "SPAN",
+      "text": "Vantagens",
+      "y": 2266
+    },
+    {
+      "tag": "H2",
+      "text": "Benefícios",
+      "y": 2294
+    },
+    {
+      "tag": "H4",
+      "text": "Automação estratégica",
+      "y": 2471
+    },
+    {
+      "tag": "P",
+      "text": "Operações automatizadas baseadas em estratégias reais e testadas no mercado.",
+      "y": 2519
+    },
+    {
+      "tag": "H4",
+      "text": "Redução emocional",
+      "y": 2471
+    },
+    {
+      "tag": "P",
+      "text": "Elimine decisões impulsivas. A estratégia guia cada operação.",
+      "y": 2499
+    },
+    {
+      "tag": "H4",
+      "text": "Traders experientes",
+      "y": 2471
+    },
+    {
+      "tag": "P",
+      "text": "Acesso direto a profissionais com histórico comprovado de resultados.",
+      "y": 2499
+    },
+    {
+      "tag": "H4",
+      "text": "Diversificação",
+      "y": 2471
+    },
+    {
+      "tag": "P",
+      "text": "Copie múltiplas estratégias simultâneas para equilibrar o risco.",
+      "y": 2499
+    },
+    {
+      "tag": "H4",
+      "text": "Ideal para iniciantes",
+      "y": 2471
+    },
+    {
+      "tag": "P",
+      "text": "Aprenda na prática acompanhando operações reais de especialistas.",
+      "y": 2499
+    },
+    {
+      "tag": "SPAN",
+      "text": "Segurança",
+      "y": 2846
+    },
+    {
+      "tag": "H2",
+      "text": "Você mantém o controle total",
+      "y": 2874
+    },
+    {
+      "tag": "P",
+      "text": "Você mantém controle total da sua conta em todos os momentos. O Copy Trading não realiza saques e pode ser pausado ou interrompido a qualquer momento.",
+      "y": 2938
+    },
+    {
+      "tag": "P",
+      "text": "Limite de perda configurável",
+      "y": 2868
+    },
+    {
+      "tag": "P",
+      "text": "Controle de exposição",
+      "y": 2868
+    },
+    {
+      "tag": "P",
+      "text": "Ajuste proporcional de capital",
+      "y": 2965
+    },
+    {
+      "tag": "P",
+      "text": "Interrupção automática em cenários de risco",
+      "y": 2965
+    },
+    {
+      "tag": "SPAN",
+      "text": "Perfil",
+      "y": 3250
+    },
+    {
+      "tag": "H2",
+      "text": "Para quem é indicado",
+      "y": 3278
+    },
+    {
+      "tag": "P",
+      "text": "Iniciantes no mercado financeiro",
+      "y": 3391
+    },
+    {
+      "tag": "P",
+      "text": "Pessoas sem tempo para operar",
+      "y": 3391
+    },
+    {
+      "tag": "P",
+      "text": "Investidores que buscam diversificação",
+      "y": 3391
+    },
+    {
+      "tag": "P",
+      "text": "Usuários que desejam aprender na prática",
+      "y": 3391
+    },
+    {
+      "tag": "H3",
+      "text": "Transparência e responsabilidade",
+      "y": 3771
+    },
+    {
+      "tag": "P",
+      "text": "O desempenho passado não garante resultados futuros. O mercado financeiro envolve riscos, e os resultados podem variar. A Veritas Global oferece estrutura, acompanhamento e educação — não gestão de recursos de terceiros.",
+      "y": 3815
+    },
+    {
+      "tag": "H2",
+      "text": "Ative o Copy Trading com suporte estratégico",
+      "y": 4273
+    },
+    {
+      "tag": "P",
+      "text": "Disponível a partir do Plano Estratégico. Você não opera sozinho — conta com acompanhamento especializado em cada etapa.",
+      "y": 4401
+    },
+    {
+      "tag": "P",
+      "text": "Ativação imediata após confirmação. Investimentos envolvem riscos.",
+      "y": 4548
+    },
+    {
+      "tag": "P",
+      "text": "Seu portal de acesso a investimentos internacionais com tecnologia de ponta e suporte especializado.",
+      "y": 4904
+    },
+    {
+      "tag": "SPAN",
+      "text": "contato@academyveritas.net",
+      "y": 4980
+    },
+    {
+      "tag": "SPAN",
+      "text": "Rua Gomes de Carvalho, 1507 — Conj. 92 · Vila Olímpia · São Paulo/SP · 04547-005",
+      "y": 5012
+    },
+    {
+      "tag": "H4",
+      "text": "Empresa",
+      "y": 4822
+    },
+    {
+      "tag": "A",
+      "text": "Quem Somos",
+      "y": 4866
+    },
+    {
+      "tag": "A",
+      "text": "Nossa Equipe",
+      "y": 4902
+    },
+    {
+      "tag": "A",
+      "text": "Carreiras",
+      "y": 4938
+    },
+    {
+      "tag": "A",
+      "text": "Imprensa",
+      "y": 4974
+    },
+    {
+      "tag": "H4",
+      "text": "Serviços",
+      "y": 4822
+    },
+    {
+      "tag": "A",
+      "text": "Cursos",
+      "y": 4866
+    },
+    {
+      "tag": "A",
+      "text": "Análises",
+      "y": 4902
+    },
+    {
+      "tag": "A",
+      "text": "Automação",
+      "y": 4938
+    },
+    {
+      "tag": "A",
+      "text": "Consultoria",
+      "y": 4974
+    },
+    {
+      "tag": "H4",
+      "text": "Suporte",
+      "y": 4822
+    },
+    {
+      "tag": "A",
+      "text": "Central de Ajuda",
+      "y": 4866
+    },
+    {
+      "tag": "A",
+      "text": "Termos de Uso",
+      "y": 4902
+    },
+    {
+      "tag": "A",
+      "text": "Política de Privacidade",
+      "y": 4938
+    },
+    {
+      "tag": "P",
+      "text": "© 2026 Veritas Finance Academy. Todos os direitos reservados.",
+      "y": 5235
+    },
+    {
+      "tag": "SPAN",
+      "text": "Edit with",
+      "y": 5243
+    }
+  ],
+  "images": [
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "base44",
+      "src": "https://media.base44.com/images/public/builder-assets/symbol-orange.png"
+    },
+    {
+      "alt": "Base44",
+      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAABECAMAAAB+vJpyAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAEVQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////Up1zwgAAABZ0Uk5TABAgMEBQX2BvcH+Aj5CfoK+wv8/f741pbhwAAAVHSURBVHja7ZvtbuwoDECNQ5ZNSZgsAd7/Ufeq6i0Ex3Y6I1WJNOdv3RlyGvAHKrx58+bNmzdvfg0v4OwAN8P5BnH16FsM/KUoxNnCffi3tDgQCKUFqxCd5OAmYCFCdHVUiE5CuAXptBDMohCdD7gBczktJBVVyP2NuNLhBHWaEB0LFwcTESKoe11IMnBtYulxvDpdiI6HS/NRCE5UpwvJqaX05ItnXIoT1elCPOwY3HqfU8QkTQhVpwtRNtsE1yUUTQhVpwtR6pdwi5I9KUJCeUUI+FKJcFUwVx+eCOHULVETomy4dIOSPSMRwqqDZ4QAEXLtjDuBLCQ1Dp4TkoQtg25ev/Jziqu30EAD81fcZIHFjDVwdginsO0xR4Rw6jw8JySXb/6DFvORSs/qgEIDU7CHNlzsAyf8UcmeUBYytn/d54QYJu1iODk7MXMuB8SBHneHgQF/kHFHIEJYdU8KsaUyCIuvzAYabBbjKsNWTimWd4EsZO1+pAqR9ad2EQKbOReYEFTD+uQB2wUSIZy6BX4shD6Q0x6THr5O6Z9PfmI4V7IjEcKqM88JMfNh0h2KwlSTvkjQfOjvyEyWT4Rw6nQhwba4OZaGjMz4bQuLDzHvYs1BlZw+42i7SA3nLcat7Bj1Sc8KVAirThWiM7a5q/J9oeESedewlT0cxcWDdusrJaNLRLGccRkhVF2E14Vke9wdWag8+u3lDncjbqVi+gFnsjVwUadTkTw8FUJLdnxdSESoZG6ZW/f5ayuoYvJ+ydhlqIonr4iQNmQhpAc+LUQtjpCdoTk2zQdo8XujgZ/bRuKeTRusEKruJSFUiWWbG9N968YEDumbpeu3+N40itMrBFGIJerOC9EzH35j2M44dN9nz7ZmfG1phJrRAyuEqntJCNneEtj1ges+dzAsjLY+ozl+0hOBF0LV6UJeN4LjFLbc59OptOQ4j4OYKbLoeOEnPcgJEdXpQrawY41Zr6CNneaYS0+sm0Gz0k7/KN1Lx6QNUQgWRt0TvYx9lBZLhzlCO1O/kFqx5B1QSVzGDSAKMaw6XYh265daG1Hv72xhSQGBjdGFjCRtsEJmou5pIbSutqRbF4WA1/OWLWdhGzVRiCPqXhBCVrzU6lsVohvZ8FkhWE7hyAo0BCGV3L+2Qy5nhYBLYt66pZC1VAzrI62LOxAC+BD0zbcU8igV/D5mK3kLkzXwh+N8b9yaCoMFvLmQbroVlxHhCyqkMox+3QplAUN+ieOSWwb3N1cWGtRnM3Z6dFZy+3npJkJSqRgYSc6R+2Cl2MPWN95CiN3/wsKvP+yFYMWwxZ6FSVoAVsxVhHQz0JV9C3AfCCv7Lk3MqZqN8JH2GkJM2J+BEFkhWyek2Rob+5x2Vy/O/IwwQwvyLHshBnmaFVv8RBNiPnLf3a1ctx5KJ2Ri20K7ux4d2QuY4dRllVS6S+ile/Q7wpoO+qsHc/m9kUrV0GtL6q5uSmrkn0yU/pqQ83tyOlr9MOeD0j0eX1mbWZib1EAbySzmakISuWXLq3duCunMgGibLP5hnDO5L166cUnwYe0M41WE0Nc+ChFkQKSQajcvM8H1hORBm+gkR+8oZbBWJiIeriOEHosLa8xWIcKDkgWrgR6uJ2Qx9VDcGB9AhIgPmh1UzEOKu5YQ2sUtzPUvFQLgtftibZS0IlxLSI6TASCLp8aOhQA+EqtYVZKDBfhdIVFgDd4NBo5wTV5Mi4VPhviXuWtwt04xwiF2aQNTcAZ+jIvfaDKXGmrgdYZx8t670ZyMdv4Pk7MIEsaO02fcYN7/Zf7mzfX5H+WZeZXgxfH6AAAAAElFTkSuQmCC"
+    }
+  ]
+}

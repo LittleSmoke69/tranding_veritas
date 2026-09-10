@@ -1,0 +1,369 @@
+{
+  "url": "https://veritasacademy.base44.app/Consultoria",
+  "height": 2620,
+  "text": [
+    {
+      "tag": "A",
+      "text": "Página Inicial",
+      "y": 1781
+    },
+    {
+      "tag": "A",
+      "text": "Mercados",
+      "y": 1781
+    },
+    {
+      "tag": "A",
+      "text": "Trading Lab",
+      "y": 1781
+    },
+    {
+      "tag": "A",
+      "text": "Educação",
+      "y": 1781
+    },
+    {
+      "tag": "A",
+      "text": "Planos",
+      "y": 1781
+    },
+    {
+      "tag": "A",
+      "text": "Contato",
+      "y": 1781
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Acesso à Plataforma",
+      "y": 1781
+    },
+    {
+      "tag": "SPAN",
+      "text": "Consultoria Especializada",
+      "y": 192
+    },
+    {
+      "tag": "SPAN",
+      "text": "seu perfil",
+      "y": 224
+    },
+    {
+      "tag": "P",
+      "text": "Nossa consultoria vai além da execução de operações. Construímos com você uma estratégia financeira completa, personalizada e orientada para o seu crescimento de longo prazo.",
+      "y": 344
+    },
+    {
+      "tag": "H2",
+      "text": "Serviços de consultoria",
+      "y": 547
+    },
+    {
+      "tag": "H3",
+      "text": "Diagnóstico Financeiro",
+      "y": 716
+    },
+    {
+      "tag": "P",
+      "text": "Mapeamos sua situação financeira atual, objetivos de curto, médio e longo prazo, tolerância ao risco e horizonte de investimento para construir uma estratégia sob medida.",
+      "y": 756
+    },
+    {
+      "tag": "SPAN",
+      "text": "Entrevista detalhada de perfil",
+      "y": 840
+    },
+    {
+      "tag": "SPAN",
+      "text": "Análise do portfólio atual",
+      "y": 864
+    },
+    {
+      "tag": "SPAN",
+      "text": "Definição de metas e horizonte temporal",
+      "y": 888
+    },
+    {
+      "tag": "SPAN",
+      "text": "Relatório diagnóstico completo",
+      "y": 912
+    },
+    {
+      "tag": "H3",
+      "text": "Planejamento de Portfólio",
+      "y": 716
+    },
+    {
+      "tag": "P",
+      "text": "Desenvolvemos uma alocação estratégica de ativos diversificada, combinando mercados nacionais e internacionais conforme seu perfil e objetivos.",
+      "y": 756
+    },
+    {
+      "tag": "SPAN",
+      "text": "Alocação estratégica entre classes de ativos",
+      "y": 817
+    },
+    {
+      "tag": "SPAN",
+      "text": "Seleção de ativos internacionais",
+      "y": 841
+    },
+    {
+      "tag": "SPAN",
+      "text": "Definição de proporções e exposição cambial",
+      "y": 865
+    },
+    {
+      "tag": "SPAN",
+      "text": "Estratégia de rebalanceamento periódico",
+      "y": 889
+    },
+    {
+      "tag": "H3",
+      "text": "Gestão de Risco Personalizada",
+      "y": 1078
+    },
+    {
+      "tag": "P",
+      "text": "Implementamos e monitoramos os mecanismos de proteção do seu capital, garantindo que nenhuma posição coloque em risco sua estratégia de longo prazo.",
+      "y": 1118
+    },
+    {
+      "tag": "SPAN",
+      "text": "Definição de stop loss por posição",
+      "y": 1179
+    },
+    {
+      "tag": "SPAN",
+      "text": "Monitoramento de correlação de ativos",
+      "y": 1203
+    },
+    {
+      "tag": "SPAN",
+      "text": "Hedging estratégico quando necessário",
+      "y": 1227
+    },
+    {
+      "tag": "SPAN",
+      "text": "Relatórios de risco periódicos",
+      "y": 1251
+    },
+    {
+      "tag": "H3",
+      "text": "Acompanhamento Contínuo",
+      "y": 1078
+    },
+    {
+      "tag": "P",
+      "text": "Reuniões regulares com sua equipe dedicada para revisar performance, ajustar estratégias e manter você informado sobre o que acontece com seu capital.",
+      "y": 1118
+    },
+    {
+      "tag": "SPAN",
+      "text": "Reuniões estratégicas conforme o plano",
+      "y": 1179
+    },
+    {
+      "tag": "SPAN",
+      "text": "Relatórios de performance periódicos",
+      "y": 1203
+    },
+    {
+      "tag": "SPAN",
+      "text": "Canal de comunicação direta com analistas",
+      "y": 1227
+    },
+    {
+      "tag": "SPAN",
+      "text": "Ajustes táticos em tempo real",
+      "y": 1251
+    },
+    {
+      "tag": "H2",
+      "text": "Como funciona",
+      "y": 1392
+    },
+    {
+      "tag": "SPAN",
+      "text": "01",
+      "y": 1480
+    },
+    {
+      "tag": "H4",
+      "text": "Contato Inicial",
+      "y": 1536
+    },
+    {
+      "tag": "P",
+      "text": "Você nos contata e agendamos uma conversa de apresentação sem custo e sem compromisso.",
+      "y": 1568
+    },
+    {
+      "tag": "SPAN",
+      "text": "02",
+      "y": 1480
+    },
+    {
+      "tag": "H4",
+      "text": "Diagnóstico",
+      "y": 1536
+    },
+    {
+      "tag": "P",
+      "text": "Realizamos uma análise completa do seu perfil financeiro, objetivos e situação atual.",
+      "y": 1568
+    },
+    {
+      "tag": "SPAN",
+      "text": "03",
+      "y": 1480
+    },
+    {
+      "tag": "H4",
+      "text": "Proposta Estratégica",
+      "y": 1536
+    },
+    {
+      "tag": "P",
+      "text": "Apresentamos um plano personalizado com estratégias, alocações e projeções de resultado.",
+      "y": 1568
+    },
+    {
+      "tag": "SPAN",
+      "text": "04",
+      "y": 1480
+    },
+    {
+      "tag": "H4",
+      "text": "Implementação",
+      "y": 1536
+    },
+    {
+      "tag": "P",
+      "text": "Com a sua aprovação, iniciamos as operações e o acompanhamento contínuo.",
+      "y": 1568
+    },
+    {
+      "tag": "H3",
+      "text": "Pronto para começar?",
+      "y": 1777
+    },
+    {
+      "tag": "P",
+      "text": "Agende uma conversa sem compromisso com nossa equipe e descubra qual estratégia faz mais sentido para o seu perfil.",
+      "y": 1821
+    },
+    {
+      "tag": "P",
+      "text": "Seu portal de acesso a investimentos internacionais com tecnologia de ponta e suporte especializado.",
+      "y": 2235
+    },
+    {
+      "tag": "SPAN",
+      "text": "contato@academyveritas.net",
+      "y": 2311
+    },
+    {
+      "tag": "SPAN",
+      "text": "Rua Gomes de Carvalho, 1507 — Conj. 92 · Vila Olímpia · São Paulo/SP · 04547-005",
+      "y": 2343
+    },
+    {
+      "tag": "H4",
+      "text": "Empresa",
+      "y": 2153
+    },
+    {
+      "tag": "A",
+      "text": "Quem Somos",
+      "y": 2197
+    },
+    {
+      "tag": "A",
+      "text": "Nossa Equipe",
+      "y": 2233
+    },
+    {
+      "tag": "A",
+      "text": "Carreiras",
+      "y": 2269
+    },
+    {
+      "tag": "A",
+      "text": "Imprensa",
+      "y": 2305
+    },
+    {
+      "tag": "H4",
+      "text": "Serviços",
+      "y": 2153
+    },
+    {
+      "tag": "A",
+      "text": "Cursos",
+      "y": 2197
+    },
+    {
+      "tag": "A",
+      "text": "Análises",
+      "y": 2233
+    },
+    {
+      "tag": "A",
+      "text": "Automação",
+      "y": 2269
+    },
+    {
+      "tag": "A",
+      "text": "Consultoria",
+      "y": 2305
+    },
+    {
+      "tag": "H4",
+      "text": "Suporte",
+      "y": 2153
+    },
+    {
+      "tag": "A",
+      "text": "Central de Ajuda",
+      "y": 2197
+    },
+    {
+      "tag": "A",
+      "text": "Termos de Uso",
+      "y": 2233
+    },
+    {
+      "tag": "A",
+      "text": "Política de Privacidade",
+      "y": 2269
+    },
+    {
+      "tag": "P",
+      "text": "© 2026 Veritas Finance Academy. Todos os direitos reservados.",
+      "y": 2566
+    },
+    {
+      "tag": "SPAN",
+      "text": "Edit with",
+      "y": 2574
+    }
+  ],
+  "images": [
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "base44",
+      "src": "https://media.base44.com/images/public/builder-assets/symbol-orange.png"
+    },
+    {
+      "alt": "Base44",
+      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAABECAMAAAB+vJpyAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAEVQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////Up1zwgAAABZ0Uk5TABAgMEBQX2BvcH+Aj5CfoK+wv8/f741pbhwAAAVHSURBVHja7ZvtbuwoDECNQ5ZNSZgsAd7/Ufeq6i0Ex3Y6I1WJNOdv3RlyGvAHKrx58+bNmzdvfg0v4OwAN8P5BnH16FsM/KUoxNnCffi3tDgQCKUFqxCd5OAmYCFCdHVUiE5CuAXptBDMohCdD7gBczktJBVVyP2NuNLhBHWaEB0LFwcTESKoe11IMnBtYulxvDpdiI6HS/NRCE5UpwvJqaX05ItnXIoT1elCPOwY3HqfU8QkTQhVpwtRNtsE1yUUTQhVpwtR6pdwi5I9KUJCeUUI+FKJcFUwVx+eCOHULVETomy4dIOSPSMRwqqDZ4QAEXLtjDuBLCQ1Dp4TkoQtg25ev/Jziqu30EAD81fcZIHFjDVwdginsO0xR4Rw6jw8JySXb/6DFvORSs/qgEIDU7CHNlzsAyf8UcmeUBYytn/d54QYJu1iODk7MXMuB8SBHneHgQF/kHFHIEJYdU8KsaUyCIuvzAYabBbjKsNWTimWd4EsZO1+pAqR9ad2EQKbOReYEFTD+uQB2wUSIZy6BX4shD6Q0x6THr5O6Z9PfmI4V7IjEcKqM88JMfNh0h2KwlSTvkjQfOjvyEyWT4Rw6nQhwba4OZaGjMz4bQuLDzHvYs1BlZw+42i7SA3nLcat7Bj1Sc8KVAirThWiM7a5q/J9oeESedewlT0cxcWDdusrJaNLRLGccRkhVF2E14Vke9wdWag8+u3lDncjbqVi+gFnsjVwUadTkTw8FUJLdnxdSESoZG6ZW/f5ayuoYvJ+ydhlqIonr4iQNmQhpAc+LUQtjpCdoTk2zQdo8XujgZ/bRuKeTRusEKruJSFUiWWbG9N968YEDumbpeu3+N40itMrBFGIJerOC9EzH35j2M44dN9nz7ZmfG1phJrRAyuEqntJCNneEtj1ges+dzAsjLY+ozl+0hOBF0LV6UJeN4LjFLbc59OptOQ4j4OYKbLoeOEnPcgJEdXpQrawY41Zr6CNneaYS0+sm0Gz0k7/KN1Lx6QNUQgWRt0TvYx9lBZLhzlCO1O/kFqx5B1QSVzGDSAKMaw6XYh265daG1Hv72xhSQGBjdGFjCRtsEJmou5pIbSutqRbF4WA1/OWLWdhGzVRiCPqXhBCVrzU6lsVohvZ8FkhWE7hyAo0BCGV3L+2Qy5nhYBLYt66pZC1VAzrI62LOxAC+BD0zbcU8igV/D5mK3kLkzXwh+N8b9yaCoMFvLmQbroVlxHhCyqkMox+3QplAUN+ieOSWwb3N1cWGtRnM3Z6dFZy+3npJkJSqRgYSc6R+2Cl2MPWN95CiN3/wsKvP+yFYMWwxZ6FSVoAVsxVhHQz0JV9C3AfCCv7Lk3MqZqN8JH2GkJM2J+BEFkhWyek2Rob+5x2Vy/O/IwwQwvyLHshBnmaFVv8RBNiPnLf3a1ctx5KJ2Ri20K7ux4d2QuY4dRllVS6S+ile/Q7wpoO+qsHc/m9kUrV0GtL6q5uSmrkn0yU/pqQ83tyOlr9MOeD0j0eX1mbWZib1EAbySzmakISuWXLq3duCunMgGibLP5hnDO5L166cUnwYe0M41WE0Nc+ChFkQKSQajcvM8H1hORBm+gkR+8oZbBWJiIeriOEHosLa8xWIcKDkgWrgR6uJ2Qx9VDcGB9AhIgPmh1UzEOKu5YQ2sUtzPUvFQLgtftibZS0IlxLSI6TASCLp8aOhQA+EqtYVZKDBfhdIVFgDd4NBo5wTV5Mi4VPhviXuWtwt04xwiF2aQNTcAZ+jIvfaDKXGmrgdYZx8t670ZyMdv4Pk7MIEsaO02fcYN7/Zf7mzfX5H+WZeZXgxfH6AAAAAElFTkSuQmCC"
+    }
+  ]
+}

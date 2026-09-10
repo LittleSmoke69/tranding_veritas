@@ -1,0 +1,939 @@
+{
+  "url": "https://veritasacademy.base44.app/Mercados",
+  "height": 6982,
+  "text": [
+    {
+      "tag": "A",
+      "text": "Página Inicial",
+      "y": 6318
+    },
+    {
+      "tag": "A",
+      "text": "Mercados",
+      "y": 6318
+    },
+    {
+      "tag": "A",
+      "text": "Trading Lab",
+      "y": 6318
+    },
+    {
+      "tag": "A",
+      "text": "Educação",
+      "y": 6318
+    },
+    {
+      "tag": "A",
+      "text": "Planos",
+      "y": 6318
+    },
+    {
+      "tag": "A",
+      "text": "Contato",
+      "y": 6318
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Acesso à Plataforma",
+      "y": 6318
+    },
+    {
+      "tag": "SPAN",
+      "text": "Mercados Financeiros Internacionais",
+      "y": 166
+    },
+    {
+      "tag": "SPAN",
+      "text": "mercados do mundo",
+      "y": 209
+    },
+    {
+      "tag": "P",
+      "text": "Opere nos mercados financeiros globais com formação completa, acompanhamento profissional e gestão de risco estruturada.",
+      "y": 392
+    },
+    {
+      "tag": "P",
+      "text": "Múltiplos Mercados",
+      "y": 498
+    },
+    {
+      "tag": "P",
+      "text": "Diversificação global",
+      "y": 522
+    },
+    {
+      "tag": "P",
+      "text": "Formação Premium",
+      "y": 498
+    },
+    {
+      "tag": "P",
+      "text": "Educação estruturada",
+      "y": 522
+    },
+    {
+      "tag": "SPAN",
+      "text": "Mercados Disponíveis",
+      "y": 800
+    },
+    {
+      "tag": "SPAN",
+      "text": "mercados globais",
+      "y": 832
+    },
+    {
+      "tag": "P",
+      "text": "Entenda o funcionamento, características e oportunidades de cada mercado financeiro internacional",
+      "y": 908
+    },
+    {
+      "tag": "H3",
+      "text": "Mercado Forex (Câmbio)",
+      "y": 1141
+    },
+    {
+      "tag": "P",
+      "text": "O mercado global de moedas é o maior e mais líquido do mundo, operando 24 horas por dia. Permite negociar pares de moedas como EUR/USD, GBP/USD e USD/JPY através de análise técnica e fundamental. Requer disciplina, gestão de risco rigorosa e compreensão dos fatores macroeconômicos que movimentam as moedas internacionais.",
+      "y": 1185
+    },
+    {
+      "tag": "H3",
+      "text": "Mercado de Criptomoedas",
+      "y": 1141
+    },
+    {
+      "tag": "P",
+      "text": "Ativos digitais baseados em tecnologia blockchain, como Bitcoin, Ethereum e outras altcoins. Caracterizado por alta volatilidade e oportunidades de diversificação. Exige conhecimento técnico da tecnologia, disciplina operacional e gestão de risco apropriada para navegar em um mercado 24/7 descentralizado e em constante evolução.",
+      "y": 1185
+    },
+    {
+      "tag": "H3",
+      "text": "Mercado de Índices Internacionais",
+      "y": 1141
+    },
+    {
+      "tag": "P",
+      "text": "Índices como S&P 500, Nasdaq, Dow Jones e FTSE 100 funcionam como termômetros das principais economias mundiais. Representam a performance de grupos de empresas líderes e permitem exposição diversificada às maiores economias globais, refletindo tendências de crescimento e ciclos econômicos internacionais.",
+      "y": 1213
+    },
+    {
+      "tag": "H3",
+      "text": "Mercado de Commodities",
+      "y": 1550
+    },
+    {
+      "tag": "P",
+      "text": "Inclui ativos reais como ouro, petróleo, prata, cobre e commodities agrícolas. São utilizados para diversificação de portfólio e proteção contra inflação. O ouro, por exemplo, é considerado ativo de reserva em momentos de incerteza, enquanto o petróleo reflete a dinâmica da economia global.",
+      "y": 1594
+    },
+    {
+      "tag": "H3",
+      "text": "Mercado de Ações Internacionais",
+      "y": 1550
+    },
+    {
+      "tag": "P",
+      "text": "Acesso a empresas líderes globais listadas nas principais bolsas mundiais como NYSE, Nasdaq e LSE. Permite investir em gigantes tecnológicas, industriais e de serviços. A diversificação internacional reduz riscos regionais e oferece exposição a diferentes setores e ciclos econômicos globais.",
+      "y": 1594
+    },
+    {
+      "tag": "H3",
+      "text": "Estratégias Assistidas e Automatizadas",
+      "y": 1550
+    },
+    {
+      "tag": "P",
+      "text": "Uso de tecnologia avançada com algoritmos e inteligência artificial, sempre sob supervisão humana. As estratégias combinam automação com controle de risco profissional, análise de mercado em tempo real e ajustes baseados em condições de mercado, mantendo a disciplina operacional e gestão responsável.",
+      "y": 1622
+    },
+    {
+      "tag": "SPAN",
+      "text": "Cotações em Tempo Real",
+      "y": 2071
+    },
+    {
+      "tag": "SPAN",
+      "text": "dos mercados",
+      "y": 2103
+    },
+    {
+      "tag": "P",
+      "text": "Acompanhe as cotações dos ativos mais negociados nos mercados globais",
+      "y": 2179
+    },
+    {
+      "tag": "P",
+      "text": "Bitcoin",
+      "y": 2344
+    },
+    {
+      "tag": "P",
+      "text": "BTC/USD",
+      "y": 2364
+    },
+    {
+      "tag": "P",
+      "text": "$77,164.00",
+      "y": 2388
+    },
+    {
+      "tag": "P",
+      "text": "Ethereum",
+      "y": 2344
+    },
+    {
+      "tag": "P",
+      "text": "ETH/USD",
+      "y": 2364
+    },
+    {
+      "tag": "P",
+      "text": "$2,464.03",
+      "y": 2388
+    },
+    {
+      "tag": "P",
+      "text": "BNB",
+      "y": 2344
+    },
+    {
+      "tag": "P",
+      "text": "BNB/USD",
+      "y": 2364
+    },
+    {
+      "tag": "P",
+      "text": "$713.54",
+      "y": 2388
+    },
+    {
+      "tag": "P",
+      "text": "Solana",
+      "y": 2344
+    },
+    {
+      "tag": "P",
+      "text": "SOL/USD",
+      "y": 2364
+    },
+    {
+      "tag": "P",
+      "text": "$99.78",
+      "y": 2388
+    },
+    {
+      "tag": "P",
+      "text": "Cardano",
+      "y": 2344
+    },
+    {
+      "tag": "P",
+      "text": "ADA/USD",
+      "y": 2364
+    },
+    {
+      "tag": "P",
+      "text": "$0.2098",
+      "y": 2388
+    },
+    {
+      "tag": "P",
+      "text": "XRP",
+      "y": 2526
+    },
+    {
+      "tag": "P",
+      "text": "XRP/USD",
+      "y": 2546
+    },
+    {
+      "tag": "P",
+      "text": "$1.35",
+      "y": 2570
+    },
+    {
+      "tag": "P",
+      "text": "Euro/Dólar",
+      "y": 2526
+    },
+    {
+      "tag": "P",
+      "text": "EUR/USD",
+      "y": 2546
+    },
+    {
+      "tag": "P",
+      "text": "$1.0895",
+      "y": 2570
+    },
+    {
+      "tag": "P",
+      "text": "S&P 500",
+      "y": 2526
+    },
+    {
+      "tag": "P",
+      "text": "SPX",
+      "y": 2546
+    },
+    {
+      "tag": "P",
+      "text": "$5,856.25",
+      "y": 2570
+    },
+    {
+      "tag": "P",
+      "text": "Nasdaq",
+      "y": 2526
+    },
+    {
+      "tag": "P",
+      "text": "NDX",
+      "y": 2546
+    },
+    {
+      "tag": "P",
+      "text": "$21,180.50",
+      "y": 2570
+    },
+    {
+      "tag": "P",
+      "text": "Ouro",
+      "y": 2526
+    },
+    {
+      "tag": "P",
+      "text": "XAU/USD",
+      "y": 2546
+    },
+    {
+      "tag": "P",
+      "text": "$4,323.80",
+      "y": 2570
+    },
+    {
+      "tag": "P",
+      "text": "⚡ Cotações atualizadas automaticamente a cada minuto",
+      "y": 2651
+    },
+    {
+      "tag": "SPAN",
+      "text": "Análise Técnica Avançada",
+      "y": 2923
+    },
+    {
+      "tag": "SPAN",
+      "text": "análise de mercado",
+      "y": 2955
+    },
+    {
+      "tag": "P",
+      "text": "Gráficos avançados com indicadores técnicos e notícias em tempo real",
+      "y": 3031
+    },
+    {
+      "tag": "SPAN",
+      "text": "Bitcoin - BTC/USD",
+      "y": 3115
+    },
+    {
+      "tag": "H3",
+      "text": "Bitcoin",
+      "y": 3200
+    },
+    {
+      "tag": "BUTTON",
+      "text": "1D",
+      "y": 3208
+    },
+    {
+      "tag": "BUTTON",
+      "text": "1W",
+      "y": 3208
+    },
+    {
+      "tag": "BUTTON",
+      "text": "1M",
+      "y": 3208
+    },
+    {
+      "tag": "BUTTON",
+      "text": "3M",
+      "y": 3208
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Preço",
+      "y": 3332
+    },
+    {
+      "tag": "BUTTON",
+      "text": "RSI",
+      "y": 3332
+    },
+    {
+      "tag": "BUTTON",
+      "text": "MACD",
+      "y": 3332
+    },
+    {
+      "tag": "tspan",
+      "text": "0h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "1h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "2h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "3h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "4h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "5h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "6h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "7h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "8h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "9h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "10h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "11h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "12h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "13h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "14h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "15h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "16h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "17h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "18h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "19h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "20h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "21h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "22h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "23h",
+      "y": 3733
+    },
+    {
+      "tag": "tspan",
+      "text": "0",
+      "y": 3719
+    },
+    {
+      "tag": "tspan",
+      "text": "20000",
+      "y": 3635
+    },
+    {
+      "tag": "tspan",
+      "text": "40000",
+      "y": 3551
+    },
+    {
+      "tag": "tspan",
+      "text": "60000",
+      "y": 3467
+    },
+    {
+      "tag": "tspan",
+      "text": "80000",
+      "y": 3390
+    },
+    {
+      "tag": "SPAN",
+      "text": "Preço",
+      "y": 3762
+    },
+    {
+      "tag": "P",
+      "text": "Preço Atual",
+      "y": 3837
+    },
+    {
+      "tag": "P",
+      "text": "$77.164",
+      "y": 3857
+    },
+    {
+      "tag": "P",
+      "text": "24h Variação",
+      "y": 3837
+    },
+    {
+      "tag": "P",
+      "text": "-1.58%",
+      "y": 3857
+    },
+    {
+      "tag": "P",
+      "text": "Máxima 24h",
+      "y": 3837
+    },
+    {
+      "tag": "P",
+      "text": "$81.022,2",
+      "y": 3857
+    },
+    {
+      "tag": "P",
+      "text": "Mínima 24h",
+      "y": 3837
+    },
+    {
+      "tag": "P",
+      "text": "$73.305,8",
+      "y": 3857
+    },
+    {
+      "tag": "H3",
+      "text": "Notícias do Mercado",
+      "y": 3963
+    },
+    {
+      "tag": "P",
+      "text": "Atualizações em tempo real",
+      "y": 3995
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Cripto",
+      "y": 4043
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Forex",
+      "y": 4043
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Commodities",
+      "y": 4043
+    },
+    {
+      "tag": "DIV",
+      "text": "📊",
+      "y": 4120
+    },
+    {
+      "tag": "H4",
+      "text": "USDC Quantum Shift Lags Across 37 Chains",
+      "y": 4120
+    },
+    {
+      "tag": "P",
+      "text": "Circle's USD Coin (USDC) is facing a fragmented transition process as it works toward achieving quantum resistance across 37 different blockchain networks.",
+      "y": 4152
+    },
+    {
+      "tag": "SPAN",
+      "text": "Neutro",
+      "y": 4186
+    },
+    {
+      "tag": "DIV",
+      "text": "📈",
+      "y": 4270
+    },
+    {
+      "tag": "H4",
+      "text": "Duksan Neolux Increases Stake in Subsidiary",
+      "y": 4270
+    },
+    {
+      "tag": "P",
+      "text": "South Korean electronic materials maker Duksan Neolux is investing 71.5 billion won to acquire additional shares in its subsidiary, Canopus Holdings, maintaining full ownership.",
+      "y": 4302
+    },
+    {
+      "tag": "SPAN",
+      "text": "Alta",
+      "y": 4360
+    },
+    {
+      "tag": "H4",
+      "text": "Bitcoin and Ethereum Edge Higher Amid Altcoin Rotation Watch",
+      "y": 4444
+    },
+    {
+      "tag": "P",
+      "text": "Bitcoin and Ethereum saw modest gains as market participants monitored a slight shift in dominance, suggesting potential capital rotation toward major altcoins.",
+      "y": 4476
+    },
+    {
+      "tag": "H4",
+      "text": "Bitcoin Near $63K as Inflation Data Fails to Ease Pressure",
+      "y": 4595
+    },
+    {
+      "tag": "P",
+      "text": "Despite softer-than-expected US inflation data, Bitcoin and Ethereum remained under pressure as traders awaited further economic cues from US PPI data.",
+      "y": 4627
+    },
+    {
+      "tag": "H4",
+      "text": "Bullski Stage 1 Presale Opens",
+      "y": 4745
+    },
+    {
+      "tag": "P",
+      "text": "The Bullski project has officially opened its first presale stage at a price of $0.00001, drawing attention alongside major assets like Bitcoin, Ethereum, XRP, and Dogecoin.",
+      "y": 4777
+    },
+    {
+      "tag": "SPAN",
+      "text": "Acesso Internacional",
+      "y": 5220
+    },
+    {
+      "tag": "SPAN",
+      "text": "acompanhamento profissional",
+      "y": 5300
+    },
+    {
+      "tag": "P",
+      "text": "Todos os mercados operam no ambiente internacional através de corretoras regulamentadas e com estratégias globais desenvolvidas por profissionais experientes.",
+      "y": 5424
+    },
+    {
+      "tag": "P",
+      "text": "Você terá acompanhamento contínuo de analistas seniores que monitoram os mercados globalmente, aplicando gestão de risco rigorosa e disciplina operacional em todas as estratégias.",
+      "y": 5544
+    },
+    {
+      "tag": "P",
+      "text": "⚠️ Aviso Importante",
+      "y": 5688
+    },
+    {
+      "tag": "P",
+      "text": "Operações em mercados financeiros envolvem riscos. Não há garantia de lucros. Todo investimento deve ser feito com capital que você pode dedicar ao mercado e com conhecimento adequado dos riscos envolvidos.",
+      "y": 5720
+    },
+    {
+      "tag": "H3",
+      "text": "Operação Global",
+      "y": 5251
+    },
+    {
+      "tag": "P",
+      "text": "Todos os mercados operam no ambiente internacional através de corretoras regulamentadas",
+      "y": 5283
+    },
+    {
+      "tag": "H3",
+      "text": "Gestão de Risco",
+      "y": 5402
+    },
+    {
+      "tag": "P",
+      "text": "Estratégias globais com controle de risco profissional e disciplina operacional",
+      "y": 5434
+    },
+    {
+      "tag": "H3",
+      "text": "Acompanhamento Contínuo",
+      "y": 5554
+    },
+    {
+      "tag": "P",
+      "text": "Suporte de analistas seniores com experiência internacional em múltiplos mercados",
+      "y": 5586
+    },
+    {
+      "tag": "H3",
+      "text": "Diversificação Estratégica",
+      "y": 5705
+    },
+    {
+      "tag": "P",
+      "text": "Acesso simultâneo a diferentes classes de ativos para reduzir riscos regionais",
+      "y": 5737
+    },
+    {
+      "tag": "SPAN",
+      "text": "Diferencial Exclusivo",
+      "y": 6085
+    },
+    {
+      "tag": "SPAN",
+      "text": "Investidor Premium",
+      "y": 6140
+    },
+    {
+      "tag": "P",
+      "text": "Todos os participantes recebem acesso a um curso completo e estruturado, com objetivo de desenvolver autonomia, disciplina e visão estratégica no mercado financeiro internacional.",
+      "y": 6216
+    },
+    {
+      "tag": "P",
+      "text": "📚 Formação Progressiva e Estruturada",
+      "y": 6321
+    },
+    {
+      "tag": "P",
+      "text": "O curso é progressivo e acompanha o investidor durante os 6 meses do programa, com conteúdo teórico e aplicação prática em mercados reais sob supervisão profissional.",
+      "y": 6353
+    },
+    {
+      "tag": "H3",
+      "text": "Fundamentos do mercado financeiro internacional",
+      "y": 6584
+    },
+    {
+      "tag": "P",
+      "text": "Entenda como funcionam os mercados globais, principais ativos e dinâmicas econômicas",
+      "y": 6640
+    },
+    {
+      "tag": "H3",
+      "text": "Análise técnica e leitura de gráficos",
+      "y": 6597
+    },
+    {
+      "tag": "P",
+      "text": "Aprenda a identificar padrões, tendências e pontos estratégicos de entrada e saída",
+      "y": 6629
+    },
+    {
+      "tag": "H3",
+      "text": "Gestão de risco e capital",
+      "y": 6605
+    },
+    {
+      "tag": "P",
+      "text": "Técnicas profissionais para proteger seu capital e operar com disciplina",
+      "y": 6637
+    },
+    {
+      "tag": "H3",
+      "text": "Psicologia do investidor",
+      "y": 6845
+    },
+    {
+      "tag": "P",
+      "text": "Desenvolva controle emocional e mentalidade adequada para o mercado financeiro",
+      "y": 6877
+    },
+    {
+      "tag": "H3",
+      "text": "Estratégias práticas aplicadas",
+      "y": 6845
+    },
+    {
+      "tag": "P",
+      "text": "Metodologias testadas e aplicáveis aos principais mercados globais",
+      "y": 6877
+    },
+    {
+      "tag": "H3",
+      "text": "Boas práticas e ética no mercado",
+      "y": 6845
+    },
+    {
+      "tag": "P",
+      "text": "Condutas profissionais, compliance e responsabilidade operacional",
+      "y": 6877
+    },
+    {
+      "tag": "SPAN",
+      "text": "Incluído em todos os planos de participação",
+      "y": 6982
+    },
+    {
+      "tag": "P",
+      "text": "Seu portal de acesso a investimentos internacionais com tecnologia de ponta e suporte especializado.",
+      "y": 7301
+    },
+    {
+      "tag": "SPAN",
+      "text": "contato@academyveritas.net",
+      "y": 7377
+    },
+    {
+      "tag": "SPAN",
+      "text": "Rua Gomes de Carvalho, 1507 — Conj. 92 · Vila Olímpia · São Paulo/SP · 04547-005",
+      "y": 7409
+    },
+    {
+      "tag": "H4",
+      "text": "Empresa",
+      "y": 7219
+    },
+    {
+      "tag": "A",
+      "text": "Quem Somos",
+      "y": 7263
+    },
+    {
+      "tag": "A",
+      "text": "Nossa Equipe",
+      "y": 7299
+    },
+    {
+      "tag": "A",
+      "text": "Carreiras",
+      "y": 7335
+    },
+    {
+      "tag": "A",
+      "text": "Imprensa",
+      "y": 7371
+    },
+    {
+      "tag": "H4",
+      "text": "Serviços",
+      "y": 7219
+    },
+    {
+      "tag": "A",
+      "text": "Cursos",
+      "y": 7263
+    },
+    {
+      "tag": "A",
+      "text": "Análises",
+      "y": 7299
+    },
+    {
+      "tag": "A",
+      "text": "Automação",
+      "y": 7335
+    },
+    {
+      "tag": "A",
+      "text": "Consultoria",
+      "y": 7371
+    },
+    {
+      "tag": "H4",
+      "text": "Suporte",
+      "y": 7219
+    },
+    {
+      "tag": "A",
+      "text": "Central de Ajuda",
+      "y": 7263
+    },
+    {
+      "tag": "A",
+      "text": "Termos de Uso",
+      "y": 7299
+    },
+    {
+      "tag": "A",
+      "text": "Política de Privacidade",
+      "y": 7335
+    },
+    {
+      "tag": "P",
+      "text": "© 2026 Veritas Finance Academy. Todos os direitos reservados.",
+      "y": 7632
+    },
+    {
+      "tag": "SPAN",
+      "text": "Edit with",
+      "y": 7111
+    }
+  ],
+  "images": [
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "base44",
+      "src": "https://media.base44.com/images/public/builder-assets/symbol-orange.png"
+    },
+    {
+      "alt": "Base44",
+      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAABECAMAAAB+vJpyAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAEVQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////Up1zwgAAABZ0Uk5TABAgMEBQX2BvcH+Aj5CfoK+wv8/f741pbhwAAAVHSURBVHja7ZvtbuwoDECNQ5ZNSZgsAd7/Ufeq6i0Ex3Y6I1WJNOdv3RlyGvAHKrx58+bNmzdvfg0v4OwAN8P5BnH16FsM/KUoxNnCffi3tDgQCKUFqxCd5OAmYCFCdHVUiE5CuAXptBDMohCdD7gBczktJBVVyP2NuNLhBHWaEB0LFwcTESKoe11IMnBtYulxvDpdiI6HS/NRCE5UpwvJqaX05ItnXIoT1elCPOwY3HqfU8QkTQhVpwtRNtsE1yUUTQhVpwtR6pdwi5I9KUJCeUUI+FKJcFUwVx+eCOHULVETomy4dIOSPSMRwqqDZ4QAEXLtjDuBLCQ1Dp4TkoQtg25ev/Jziqu30EAD81fcZIHFjDVwdginsO0xR4Rw6jw8JySXb/6DFvORSs/qgEIDU7CHNlzsAyf8UcmeUBYytn/d54QYJu1iODk7MXMuB8SBHneHgQF/kHFHIEJYdU8KsaUyCIuvzAYabBbjKsNWTimWd4EsZO1+pAqR9ad2EQKbOReYEFTD+uQB2wUSIZy6BX4shD6Q0x6THr5O6Z9PfmI4V7IjEcKqM88JMfNh0h2KwlSTvkjQfOjvyEyWT4Rw6nQhwba4OZaGjMz4bQuLDzHvYs1BlZw+42i7SA3nLcat7Bj1Sc8KVAirThWiM7a5q/J9oeESedewlT0cxcWDdusrJaNLRLGccRkhVF2E14Vke9wdWag8+u3lDncjbqVi+gFnsjVwUadTkTw8FUJLdnxdSESoZG6ZW/f5ayuoYvJ+ydhlqIonr4iQNmQhpAc+LUQtjpCdoTk2zQdo8XujgZ/bRuKeTRusEKruJSFUiWWbG9N968YEDumbpeu3+N40itMrBFGIJerOC9EzH35j2M44dN9nz7ZmfG1phJrRAyuEqntJCNneEtj1ges+dzAsjLY+ozl+0hOBF0LV6UJeN4LjFLbc59OptOQ4j4OYKbLoeOEnPcgJEdXpQrawY41Zr6CNneaYS0+sm0Gz0k7/KN1Lx6QNUQgWRt0TvYx9lBZLhzlCO1O/kFqx5B1QSVzGDSAKMaw6XYh265daG1Hv72xhSQGBjdGFjCRtsEJmou5pIbSutqRbF4WA1/OWLWdhGzVRiCPqXhBCVrzU6lsVohvZ8FkhWE7hyAo0BCGV3L+2Qy5nhYBLYt66pZC1VAzrI62LOxAC+BD0zbcU8igV/D5mK3kLkzXwh+N8b9yaCoMFvLmQbroVlxHhCyqkMox+3QplAUN+ieOSWwb3N1cWGtRnM3Z6dFZy+3npJkJSqRgYSc6R+2Cl2MPWN95CiN3/wsKvP+yFYMWwxZ6FSVoAVsxVhHQz0JV9C3AfCCv7Lk3MqZqN8JH2GkJM2J+BEFkhWyek2Rob+5x2Vy/O/IwwQwvyLHshBnmaFVv8RBNiPnLf3a1ctx5KJ2Ri20K7ux4d2QuY4dRllVS6S+ile/Q7wpoO+qsHc/m9kUrV0GtL6q5uSmrkn0yU/pqQ83tyOlr9MOeD0j0eX1mbWZib1EAbySzmakISuWXLq3duCunMgGibLP5hnDO5L166cUnwYe0M41WE0Nc+ChFkQKSQajcvM8H1hORBm+gkR+8oZbBWJiIeriOEHosLa8xWIcKDkgWrgR6uJ2Qx9VDcGB9AhIgPmh1UzEOKu5YQ2sUtzPUvFQLgtftibZS0IlxLSI6TASCLp8aOhQA+EqtYVZKDBfhdIVFgDd4NBo5wTV5Mi4VPhviXuWtwt04xwiF2aQNTcAZ+jIvfaDKXGmrgdYZx8t670ZyMdv4Pk7MIEsaO02fcYN7/Zf7mzfX5H+WZeZXgxfH6AAAAAElFTkSuQmCC"
+    }
+  ]
+}

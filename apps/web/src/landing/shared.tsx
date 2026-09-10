@@ -21,7 +21,7 @@ import imgAvenue     from "./assets/image-16.png";
 
 export type LandingView =
   | "home" | "mercados" | "educacao" | "planos" | "quemsomos" | "nossaequipe" | "carreiras"
-  | "copytrading" | "consultoria" | "automacao";
+  | "copytrading" | "consultoria" | "automacao" | "analises";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 export const B      = "var(--primary)";

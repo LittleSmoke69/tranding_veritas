@@ -18,6 +18,7 @@ import Carreiras from "./pages/Carreiras";
 import CopyTrading from "./pages/CopyTrading";
 import Consultoria from "./pages/Consultoria";
 import Automacao from "./pages/Automacao";
+import Analises from "./pages/Analises";
 import HomeOriginal from "./pages/HomeOriginal";
 import {
   B, BD, BB, G, GD, RED, RD, RB, GOLD, CARD, MFG, FG, BORDER,
@@ -37,6 +38,7 @@ const SERVICOS_LINKS: { label: string; view: LandingView }[] = [
   { label: "Cursos", view: "educacao" },
   { label: "Consultoria", view: "consultoria" },
   { label: "Automação", view: "automacao" },
+  { label: "Análises", view: "analises" },
 ];
 
 function Navbar({
@@ -1519,6 +1521,7 @@ export function LandingPage({ onAccessPlatform }: { onAccessPlatform: () => void
       {view === "copytrading" && <CopyTrading onNavigate={setView} />}
       {view === "consultoria" && <Consultoria onNavigate={setView} />}
       {view === "automacao" && <Automacao onNavigate={setView} />}
+      {view === "analises" && <Analises onNavigate={setView} />}
       <Footer />
     </div>
   );

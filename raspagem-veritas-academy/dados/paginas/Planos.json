@@ -1,0 +1,1109 @@
+{
+  "url": "https://veritasacademy.base44.app/Planos",
+  "height": 9214,
+  "text": [
+    {
+      "tag": "A",
+      "text": "Página Inicial",
+      "y": 8375
+    },
+    {
+      "tag": "A",
+      "text": "Mercados",
+      "y": 8375
+    },
+    {
+      "tag": "A",
+      "text": "Trading Lab",
+      "y": 8375
+    },
+    {
+      "tag": "A",
+      "text": "Educação",
+      "y": 8375
+    },
+    {
+      "tag": "A",
+      "text": "Planos",
+      "y": 8375
+    },
+    {
+      "tag": "A",
+      "text": "Contato",
+      "y": 8375
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Acesso à Plataforma",
+      "y": 8375
+    },
+    {
+      "tag": "SPAN",
+      "text": "Planos de Inclusão",
+      "y": 166
+    },
+    {
+      "tag": "SPAN",
+      "text": "inclusão internacional",
+      "y": 209
+    },
+    {
+      "tag": "P",
+      "text": "Acesso ao mercado internacional com formação completa, atendimento VIP e acompanhamento profissional por 6 meses.",
+      "y": 392
+    },
+    {
+      "tag": "P",
+      "text": "Formação Premium",
+      "y": 498
+    },
+    {
+      "tag": "P",
+      "text": "Curso completo incluído",
+      "y": 522
+    },
+    {
+      "tag": "P",
+      "text": "Atendimento VIP",
+      "y": 498
+    },
+    {
+      "tag": "P",
+      "text": "2x por semana",
+      "y": 522
+    },
+    {
+      "tag": "SPAN",
+      "text": "Desenvolvimento Estratégico",
+      "y": 734
+    },
+    {
+      "tag": "P",
+      "text": "Os programas da Veritas Global foram estruturados para oferecer diferentes níveis de aprofundamento no desenvolvimento estratégico do investidor.",
+      "y": 800
+    },
+    {
+      "tag": "P",
+      "text": "Cada plano amplia o acesso a conteúdos, estrutura de acompanhamento e integração com plataformas internacionais.",
+      "y": 883
+    },
+    {
+      "tag": "SPAN",
+      "text": "Conhecimento estratégico estruturado",
+      "y": 992
+    },
+    {
+      "tag": "SPAN",
+      "text": "Acompanhamento profissional contínuo",
+      "y": 992
+    },
+    {
+      "tag": "SPAN",
+      "text": "Integração com mercados globais",
+      "y": 992
+    },
+    {
+      "tag": "SPAN",
+      "text": "Planos de Investimento",
+      "y": 1249
+    },
+    {
+      "tag": "SPAN",
+      "text": "Margem Operacional + Acompanhamento",
+      "y": 1281
+    },
+    {
+      "tag": "P",
+      "text": "Escolha o plano ideal e comece a operar com capital real na corretora internacional",
+      "y": 1357
+    },
+    {
+      "tag": "H3",
+      "text": "Plano Essencial",
+      "y": 1534
+    },
+    {
+      "tag": "DIV",
+      "text": "R$ 250",
+      "y": 1570
+    },
+    {
+      "tag": "P",
+      "text": "Margem Operacional",
+      "y": 1661
+    },
+    {
+      "tag": "P",
+      "text": "USD 100 na corretora",
+      "y": 1691
+    },
+    {
+      "tag": "P",
+      "text": "Acompanhamento",
+      "y": 1765
+    },
+    {
+      "tag": "P",
+      "text": "3 encontros mensais",
+      "y": 1780
+    },
+    {
+      "tag": "P",
+      "text": "Ideal para quem está dando os primeiros passos no mercado internacional com suporte estratégico.",
+      "y": 1864
+    },
+    {
+      "tag": "SPAN",
+      "text": "3 encontros estratégicos por mês",
+      "y": 1975
+    },
+    {
+      "tag": "SPAN",
+      "text": "Direcionamento para corretoras parceiras",
+      "y": 2025
+    },
+    {
+      "tag": "SPAN",
+      "text": "Acompanhamento estratégico inicial",
+      "y": 2075
+    },
+    {
+      "tag": "SPAN",
+      "text": "Curso de introdução ao mercado financeiro",
+      "y": 2125
+    },
+    {
+      "tag": "SPAN",
+      "text": "Acesso à estrutura internacional",
+      "y": 2175
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Iniciar minha conta internacional",
+      "y": 2381
+    },
+    {
+      "tag": "P",
+      "text": "Ativação imediata após confirmação",
+      "y": 2429
+    },
+    {
+      "tag": "H3",
+      "text": "Plano Estratégico",
+      "y": 1534
+    },
+    {
+      "tag": "DIV",
+      "text": "R$ 500",
+      "y": 1570
+    },
+    {
+      "tag": "P",
+      "text": "USD 200 na corretora",
+      "y": 1691
+    },
+    {
+      "tag": "P",
+      "text": "2 encontros semanais",
+      "y": 1780
+    },
+    {
+      "tag": "P",
+      "text": "Para quem quer evoluir com estratégias práticas e acompanhamento próximo e consistente.",
+      "y": 1864
+    },
+    {
+      "tag": "SPAN",
+      "text": "2 encontros estratégicos por semana",
+      "y": 1975
+    },
+    {
+      "tag": "SPAN",
+      "text": "Estratégias práticas de operação",
+      "y": 2045
+    },
+    {
+      "tag": "SPAN",
+      "text": "Acompanhamento contínuo personalizado",
+      "y": 2095
+    },
+    {
+      "tag": "SPAN",
+      "text": "Acesso ao CopyTrade com suporte",
+      "y": 2165
+    },
+    {
+      "tag": "SPAN",
+      "text": "Curso completo de mercado financeiro",
+      "y": 2215
+    },
+    {
+      "tag": "SPAN",
+      "text": "MAIS ESCOLHIDO PELOS INVESTIDORES",
+      "y": 1433
+    },
+    {
+      "tag": "H3",
+      "text": "Plano Performance",
+      "y": 1534
+    },
+    {
+      "tag": "DIV",
+      "text": "R$ 1.000",
+      "y": 1570
+    },
+    {
+      "tag": "P",
+      "text": "USD 400 na corretora",
+      "y": 1691
+    },
+    {
+      "tag": "P",
+      "text": "3–4 encontros semanais",
+      "y": 1780
+    },
+    {
+      "tag": "P",
+      "text": "Evolução acelerada com gestão estratégica ativa para quem quer resultados consistentes.",
+      "y": 1864
+    },
+    {
+      "tag": "SPAN",
+      "text": "3 a 4 encontros estratégicos por semana",
+      "y": 1975
+    },
+    {
+      "tag": "SPAN",
+      "text": "Gestão estratégica ativa e personalizada",
+      "y": 2045
+    },
+    {
+      "tag": "SPAN",
+      "text": "Evolução acelerada de conhecimento",
+      "y": 2095
+    },
+    {
+      "tag": "SPAN",
+      "text": "CopyTrade com acompanhamento especializado",
+      "y": 2145
+    },
+    {
+      "tag": "SPAN",
+      "text": "Análises e relatórios periódicos",
+      "y": 2215
+    },
+    {
+      "tag": "SPAN",
+      "text": "Suporte prioritário",
+      "y": 2265
+    },
+    {
+      "tag": "H3",
+      "text": "Plano Elite",
+      "y": 1534
+    },
+    {
+      "tag": "DIV",
+      "text": "R$ 2.200",
+      "y": 1570
+    },
+    {
+      "tag": "P",
+      "text": "USD 600 na corretora",
+      "y": 1691
+    },
+    {
+      "tag": "P",
+      "text": "4 a 5 encontros semanais",
+      "y": 1780
+    },
+    {
+      "tag": "P",
+      "text": "Para investidores em transição entre performance e gestão patrimonial, com acompanhamento próximo e dedicado.",
+      "y": 1864
+    },
+    {
+      "tag": "SPAN",
+      "text": "4 a 5 encontros estratégicos por semana",
+      "y": 2020
+    },
+    {
+      "tag": "SPAN",
+      "text": "Acompanhamento próximo e dedicado",
+      "y": 2090
+    },
+    {
+      "tag": "SPAN",
+      "text": "Gestão estratégica avançada",
+      "y": 2140
+    },
+    {
+      "tag": "SPAN",
+      "text": "CopyTrade com supervisão especializada",
+      "y": 2190
+    },
+    {
+      "tag": "H3",
+      "text": "Plano Expansão",
+      "y": 1534
+    },
+    {
+      "tag": "DIV",
+      "text": "R$ 4.000",
+      "y": 1570
+    },
+    {
+      "tag": "P",
+      "text": "USD 1.000 na corretora",
+      "y": 1691
+    },
+    {
+      "tag": "P",
+      "text": "Encontros diários",
+      "y": 1780
+    },
+    {
+      "tag": "P",
+      "text": "Acompanhamento intensivo para investidores que buscam gestão patrimonial e visão de longo prazo.",
+      "y": 1864
+    },
+    {
+      "tag": "SPAN",
+      "text": "Encontros diários com especialistas",
+      "y": 1997
+    },
+    {
+      "tag": "SPAN",
+      "text": "Acompanhamento intensivo e dedicado",
+      "y": 2047
+    },
+    {
+      "tag": "SPAN",
+      "text": "Gestão ativa de portfólio",
+      "y": 2097
+    },
+    {
+      "tag": "SPAN",
+      "text": "Visão patrimonial de longo prazo",
+      "y": 2147
+    },
+    {
+      "tag": "SPAN",
+      "text": "CopyTrade com gestão completa",
+      "y": 2197
+    },
+    {
+      "tag": "SPAN",
+      "text": "Relatórios detalhados e estratégias exclusivas",
+      "y": 2247
+    },
+    {
+      "tag": "SPAN",
+      "text": "Atendimento VIP prioritário",
+      "y": 2317
+    },
+    {
+      "tag": "STRONG",
+      "text": "⚠️ Aviso Legal:",
+      "y": 2569
+    },
+    {
+      "tag": "P",
+      "text": "Recomenda-se operar apenas com capital que você pode dedicar ao mercado e após compreender plenamente os riscos envolvidos em operações financeiras internacionais.",
+      "y": 2652
+    },
+    {
+      "tag": "SPAN",
+      "text": "Tecnologia Exclusiva",
+      "y": 2947
+    },
+    {
+      "tag": "SPAN",
+      "text": "CopyTrade?",
+      "y": 2992
+    },
+    {
+      "tag": "STRONG",
+      "text": "replicar automaticamente",
+      "y": 3068
+    },
+    {
+      "tag": "H3",
+      "text": "Como funciona",
+      "y": 3179
+    },
+    {
+      "tag": "DIV",
+      "text": "1",
+      "y": 3328
+    },
+    {
+      "tag": "H4",
+      "text": "Conexão com corretora",
+      "y": 3368
+    },
+    {
+      "tag": "P",
+      "text": "Vincule sua conta em uma das corretoras parceiras da Veritas.",
+      "y": 3400
+    },
+    {
+      "tag": "DIV",
+      "text": "2",
+      "y": 3328
+    },
+    {
+      "tag": "H4",
+      "text": "Escolha de estratégia",
+      "y": 3368
+    },
+    {
+      "tag": "P",
+      "text": "Selecione traders experientes com histórico comprovado de performance.",
+      "y": 3400
+    },
+    {
+      "tag": "DIV",
+      "text": "3",
+      "y": 3328
+    },
+    {
+      "tag": "H4",
+      "text": "Execução automática",
+      "y": 3368
+    },
+    {
+      "tag": "P",
+      "text": "Suas operações são replicadas automaticamente em tempo real.",
+      "y": 3400
+    },
+    {
+      "tag": "H3",
+      "text": "Benefícios",
+      "y": 3526
+    },
+    {
+      "tag": "P",
+      "text": "Acesso a especialistas",
+      "y": 3659
+    },
+    {
+      "tag": "P",
+      "text": "Opere junto com traders profissionais",
+      "y": 3683
+    },
+    {
+      "tag": "P",
+      "text": "Economia de tempo",
+      "y": 3659
+    },
+    {
+      "tag": "P",
+      "text": "Sem necessidade de monitorar o mercado 24h",
+      "y": 3683
+    },
+    {
+      "tag": "P",
+      "text": "Redução emocional",
+      "y": 3659
+    },
+    {
+      "tag": "P",
+      "text": "Decisões baseadas em estratégia, não emoção",
+      "y": 3683
+    },
+    {
+      "tag": "P",
+      "text": "Diversificação",
+      "y": 3659
+    },
+    {
+      "tag": "P",
+      "text": "Copie múltiplas estratégias simultâneas",
+      "y": 3683
+    },
+    {
+      "tag": "P",
+      "text": "Aviso Importante",
+      "y": 3816
+    },
+    {
+      "tag": "STRONG",
+      "text": "não garante lucros",
+      "y": 3846
+    },
+    {
+      "tag": "P",
+      "text": "Comece agora",
+      "y": 3816
+    },
+    {
+      "tag": "P",
+      "text": "Acesso ao CopyTrade com acompanhamento estratégico",
+      "y": 3844
+    },
+    {
+      "tag": "P",
+      "text": "Disponível a partir do Plano Estratégico. Você não opera sozinho.",
+      "y": 3880
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Ver planos disponíveis",
+      "y": 3920
+    },
+    {
+      "tag": "H2",
+      "text": "Garantia de 7 Dias",
+      "y": 4298
+    },
+    {
+      "tag": "STRONG",
+      "text": "Veritas Global",
+      "y": 4373
+    },
+    {
+      "tag": "STRONG",
+      "text": "7 dias",
+      "y": 4373
+    },
+    {
+      "tag": "P",
+      "text": "Após a ativação do plano, você terá o primeiro contato com um de nossos especialistas, que apresentará toda a estrutura da plataforma, o funcionamento do sistema e o acompanhamento inicial.",
+      "y": 4418
+    },
+    {
+      "tag": "SPAN",
+      "text": "estorno integral do valor pago",
+      "y": 4553
+    },
+    {
+      "tag": "H3",
+      "text": "Seu início no mercado internacional acontece com segurança, transparência e suporte profissional.",
+      "y": 4643
+    },
+    {
+      "tag": "SPAN",
+      "text": "Estorno integral",
+      "y": 4748
+    },
+    {
+      "tag": "SPAN",
+      "text": "Sem burocracia",
+      "y": 4748
+    },
+    {
+      "tag": "SPAN",
+      "text": "Suporte dedicado",
+      "y": 4748
+    },
+    {
+      "tag": "SPAN",
+      "text": "Educação Inclusa",
+      "y": 5004
+    },
+    {
+      "tag": "SPAN",
+      "text": "Mercado Financeiro",
+      "y": 5042
+    },
+    {
+      "tag": "P",
+      "text": "Após a ativação do plano, o cliente recebe acesso a um curso estruturado com 7 módulos educacionais, desenvolvido para apresentar os principais fundamentos do mercado financeiro internacional.",
+      "y": 5118
+    },
+    {
+      "tag": "H3",
+      "text": "Conteúdo em Vídeo",
+      "y": 5303
+    },
+    {
+      "tag": "P",
+      "text": "Aulas práticas e objetivas com exemplos reais do mercado",
+      "y": 5339
+    },
+    {
+      "tag": "H3",
+      "text": "Material de Apoio",
+      "y": 5303
+    },
+    {
+      "tag": "P",
+      "text": "PDFs, planilhas e recursos para aplicação prática",
+      "y": 5339
+    },
+    {
+      "tag": "SPAN",
+      "text": "1",
+      "y": 5497
+    },
+    {
+      "tag": "SPAN",
+      "text": "Fundamentos do Mercado Financeiro",
+      "y": 5499
+    },
+    {
+      "tag": "SPAN",
+      "text": "2",
+      "y": 5497
+    },
+    {
+      "tag": "SPAN",
+      "text": "Análise Técnica e Fundamentalista",
+      "y": 5499
+    },
+    {
+      "tag": "SPAN",
+      "text": "3",
+      "y": 5559
+    },
+    {
+      "tag": "SPAN",
+      "text": "Gestão de Risco e Capital",
+      "y": 5561
+    },
+    {
+      "tag": "SPAN",
+      "text": "4",
+      "y": 5559
+    },
+    {
+      "tag": "SPAN",
+      "text": "Psicologia do Investidor",
+      "y": 5561
+    },
+    {
+      "tag": "SPAN",
+      "text": "5",
+      "y": 5621
+    },
+    {
+      "tag": "SPAN",
+      "text": "Estratégias de Operação",
+      "y": 5623
+    },
+    {
+      "tag": "SPAN",
+      "text": "6",
+      "y": 5621
+    },
+    {
+      "tag": "SPAN",
+      "text": "Mercados Internacionais",
+      "y": 5623
+    },
+    {
+      "tag": "SPAN",
+      "text": "7",
+      "y": 5683
+    },
+    {
+      "tag": "SPAN",
+      "text": "Plataformas e Ferramentas",
+      "y": 5685
+    },
+    {
+      "tag": "P",
+      "text": "O conteúdo tem como objetivo preparar o investidor para compreender melhor os movimentos de mercado e aproveitar de forma estratégica o acompanhamento oferecido pela Veritas Global.",
+      "y": 5777
+    },
+    {
+      "tag": "SPAN",
+      "text": "Onde você vai operar",
+      "y": 6049
+    },
+    {
+      "tag": "H3",
+      "text": "Corretoras Parceiras",
+      "y": 6079
+    },
+    {
+      "tag": "P",
+      "text": "Trabalhamos com corretoras internacionais reconhecidas, oferecendo acesso ao mercado global com tecnologia, segurança e estrutura profissional.",
+      "y": 6127
+    },
+    {
+      "tag": "SPAN",
+      "text": "Criptomoedas",
+      "y": 6220
+    },
+    {
+      "tag": "P",
+      "text": "Binance",
+      "y": 6371
+    },
+    {
+      "tag": "P",
+      "text": "Maior exchange de cripto do mundo",
+      "y": 6389
+    },
+    {
+      "tag": "P",
+      "text": "Coinbase",
+      "y": 6371
+    },
+    {
+      "tag": "P",
+      "text": "Exchange regulamentada nos EUA",
+      "y": 6389
+    },
+    {
+      "tag": "P",
+      "text": "Bybit",
+      "y": 6371
+    },
+    {
+      "tag": "P",
+      "text": "Plataforma de derivativos cripto",
+      "y": 6389
+    },
+    {
+      "tag": "P",
+      "text": "KuCoin",
+      "y": 6371
+    },
+    {
+      "tag": "P",
+      "text": "Exchange global de criptoativos",
+      "y": 6389
+    },
+    {
+      "tag": "SPAN",
+      "text": "Forex & CFDs",
+      "y": 6460
+    },
+    {
+      "tag": "P",
+      "text": "Titanium FX",
+      "y": 6596
+    },
+    {
+      "tag": "P",
+      "text": "Broker premium de Forex",
+      "y": 6614
+    },
+    {
+      "tag": "P",
+      "text": "Hantec Markets",
+      "y": 6598
+    },
+    {
+      "tag": "P",
+      "text": "Acesso a mercados globais",
+      "y": 6616
+    },
+    {
+      "tag": "P",
+      "text": "XM",
+      "y": 6604
+    },
+    {
+      "tag": "P",
+      "text": "Broker regulamentado globalmente",
+      "y": 6622
+    },
+    {
+      "tag": "P",
+      "text": "Pepperstone",
+      "y": 6606
+    },
+    {
+      "tag": "P",
+      "text": "Execução rápida, spreads baixos",
+      "y": 6624
+    },
+    {
+      "tag": "P",
+      "text": "BlackBull Markets",
+      "y": 6611
+    },
+    {
+      "tag": "P",
+      "text": "Broker ECN institucional",
+      "y": 6629
+    },
+    {
+      "tag": "SPAN",
+      "text": "Investimentos Internacionais",
+      "y": 6700
+    },
+    {
+      "tag": "P",
+      "text": "Avenue",
+      "y": 6851
+    },
+    {
+      "tag": "P",
+      "text": "Investimentos no mercado americano",
+      "y": 6869
+    },
+    {
+      "tag": "P",
+      "text": "As plataformas apresentadas são instituições independentes. A Veritas Global não oferece recomendações financeiras ou de investimento.",
+      "y": 6940
+    },
+    {
+      "tag": "SPAN",
+      "text": "Simulador",
+      "y": 7122
+    },
+    {
+      "tag": "SPAN",
+      "text": "Crescimento de Capital",
+      "y": 7160
+    },
+    {
+      "tag": "P",
+      "text": "Visualize o potencial de crescimento no mercado internacional",
+      "y": 7228
+    },
+    {
+      "tag": "LABEL",
+      "text": "Valor Inicial",
+      "y": 7353
+    },
+    {
+      "tag": "SPAN",
+      "text": "R$ 1.000",
+      "y": 7393
+    },
+    {
+      "tag": "LABEL",
+      "text": "Período (meses)",
+      "y": 7353
+    },
+    {
+      "tag": "SPAN",
+      "text": "12 meses",
+      "y": 7393
+    },
+    {
+      "tag": "P",
+      "text": "Capital Final Projetado",
+      "y": 7541
+    },
+    {
+      "tag": "P",
+      "text": "R$ 1.795,86",
+      "y": 7569
+    },
+    {
+      "tag": "P",
+      "text": "Lucro Estimado",
+      "y": 7541
+    },
+    {
+      "tag": "P",
+      "text": "R$ 795,86",
+      "y": 7569
+    },
+    {
+      "tag": "P",
+      "text": "Rentabilidade",
+      "y": 7541
+    },
+    {
+      "tag": "P",
+      "text": "+79.6%",
+      "y": 7569
+    },
+    {
+      "tag": "STRONG",
+      "text": "⚠️ Importante:",
+      "y": 7681
+    },
+    {
+      "tag": "SPAN",
+      "text": "Dúvidas Frequentes",
+      "y": 7950
+    },
+    {
+      "tag": "SPAN",
+      "text": "Frequentes",
+      "y": 7988
+    },
+    {
+      "tag": "P",
+      "text": "Tire suas dúvidas sobre os planos e serviços",
+      "y": 8056
+    },
+    {
+      "tag": "SPAN",
+      "text": "O valor fica na corretora?",
+      "y": 8157
+    },
+    {
+      "tag": "SPAN",
+      "text": "Como funciona o acompanhamento estratégico?",
+      "y": 8251
+    },
+    {
+      "tag": "SPAN",
+      "text": "Como funciona a garantia de 7 dias?",
+      "y": 8345
+    },
+    {
+      "tag": "SPAN",
+      "text": "Quando recebo acesso ao curso educacional?",
+      "y": 8439
+    },
+    {
+      "tag": "SPAN",
+      "text": "Como funciona a ativação da conta?",
+      "y": 8533
+    },
+    {
+      "tag": "P",
+      "text": "Seu portal de acesso a investimentos internacionais com tecnologia de ponta e suporte especializado.",
+      "y": 8829
+    },
+    {
+      "tag": "SPAN",
+      "text": "contato@academyveritas.net",
+      "y": 8905
+    },
+    {
+      "tag": "SPAN",
+      "text": "Rua Gomes de Carvalho, 1507 — Conj. 92 · Vila Olímpia · São Paulo/SP · 04547-005",
+      "y": 8937
+    },
+    {
+      "tag": "H4",
+      "text": "Empresa",
+      "y": 8747
+    },
+    {
+      "tag": "A",
+      "text": "Quem Somos",
+      "y": 8791
+    },
+    {
+      "tag": "A",
+      "text": "Nossa Equipe",
+      "y": 8827
+    },
+    {
+      "tag": "A",
+      "text": "Carreiras",
+      "y": 8863
+    },
+    {
+      "tag": "A",
+      "text": "Imprensa",
+      "y": 8899
+    },
+    {
+      "tag": "H4",
+      "text": "Serviços",
+      "y": 8747
+    },
+    {
+      "tag": "A",
+      "text": "Cursos",
+      "y": 8791
+    },
+    {
+      "tag": "A",
+      "text": "Análises",
+      "y": 8827
+    },
+    {
+      "tag": "A",
+      "text": "Automação",
+      "y": 8863
+    },
+    {
+      "tag": "A",
+      "text": "Consultoria",
+      "y": 8899
+    },
+    {
+      "tag": "H4",
+      "text": "Suporte",
+      "y": 8747
+    },
+    {
+      "tag": "A",
+      "text": "Central de Ajuda",
+      "y": 8791
+    },
+    {
+      "tag": "A",
+      "text": "Termos de Uso",
+      "y": 8827
+    },
+    {
+      "tag": "A",
+      "text": "Política de Privacidade",
+      "y": 8863
+    },
+    {
+      "tag": "P",
+      "text": "© 2026 Veritas Finance Academy. Todos os direitos reservados.",
+      "y": 9160
+    },
+    {
+      "tag": "SPAN",
+      "text": "Edit with",
+      "y": 9168
+    }
+  ],
+  "images": [
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "Binance",
+      "src": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6961b48bf42978d061dc3311/fc955edb2_OIP.jpg"
+    },
+    {
+      "alt": "Coinbase",
+      "src": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6961b48bf42978d061dc3311/a5c6f5fd5_OIP.jpg"
+    },
+    {
+      "alt": "Bybit",
+      "src": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6961b48bf42978d061dc3311/97585919a_OIP.jpg"
+    },
+    {
+      "alt": "KuCoin",
+      "src": "https://media.base44.com/images/public/6961b48bf42978d061dc3311/4d79530b1_kucoin-02.jpg"
+    },
+    {
+      "alt": "Titanium FX",
+      "src": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6961b48bf42978d061dc3311/0712f6d4f_image.png"
+    },
+    {
+      "alt": "Hantec Markets",
+      "src": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6961b48bf42978d061dc3311/9884efa03_image.png"
+    },
+    {
+      "alt": "XM",
+      "src": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6961b48bf42978d061dc3311/3c8ffa5d9_image.png"
+    },
+    {
+      "alt": "Pepperstone",
+      "src": "https://media.base44.com/images/public/6961b48bf42978d061dc3311/24ac72e8d_Pepperstone-banner.jpg"
+    },
+    {
+      "alt": "BlackBull Markets",
+      "src": "https://media.base44.com/images/public/6961b48bf42978d061dc3311/e5accf3e9_BLACK.jpeg"
+    },
+    {
+      "alt": "Avenue",
+      "src": "https://media.base44.com/images/public/6961b48bf42978d061dc3311/94cb3e3ea_AVENUE.jpg"
+    },
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "base44",
+      "src": "https://media.base44.com/images/public/builder-assets/symbol-orange.png"
+    },
+    {
+      "alt": "Base44",
+      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAABECAMAAAB+vJpyAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAEVQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////Up1zwgAAABZ0Uk5TABAgMEBQX2BvcH+Aj5CfoK+wv8/f741pbhwAAAVHSURBVHja7ZvtbuwoDECNQ5ZNSZgsAd7/Ufeq6i0Ex3Y6I1WJNOdv3RlyGvAHKrx58+bNmzdvfg0v4OwAN8P5BnH16FsM/KUoxNnCffi3tDgQCKUFqxCd5OAmYCFCdHVUiE5CuAXptBDMohCdD7gBczktJBVVyP2NuNLhBHWaEB0LFwcTESKoe11IMnBtYulxvDpdiI6HS/NRCE5UpwvJqaX05ItnXIoT1elCPOwY3HqfU8QkTQhVpwtRNtsE1yUUTQhVpwtR6pdwi5I9KUJCeUUI+FKJcFUwVx+eCOHULVETomy4dIOSPSMRwqqDZ4QAEXLtjDuBLCQ1Dp4TkoQtg25ev/Jziqu30EAD81fcZIHFjDVwdginsO0xR4Rw6jw8JySXb/6DFvORSs/qgEIDU7CHNlzsAyf8UcmeUBYytn/d54QYJu1iODk7MXMuB8SBHneHgQF/kHFHIEJYdU8KsaUyCIuvzAYabBbjKsNWTimWd4EsZO1+pAqR9ad2EQKbOReYEFTD+uQB2wUSIZy6BX4shD6Q0x6THr5O6Z9PfmI4V7IjEcKqM88JMfNh0h2KwlSTvkjQfOjvyEyWT4Rw6nQhwba4OZaGjMz4bQuLDzHvYs1BlZw+42i7SA3nLcat7Bj1Sc8KVAirThWiM7a5q/J9oeESedewlT0cxcWDdusrJaNLRLGccRkhVF2E14Vke9wdWag8+u3lDncjbqVi+gFnsjVwUadTkTw8FUJLdnxdSESoZG6ZW/f5ayuoYvJ+ydhlqIonr4iQNmQhpAc+LUQtjpCdoTk2zQdo8XujgZ/bRuKeTRusEKruJSFUiWWbG9N968YEDumbpeu3+N40itMrBFGIJerOC9EzH35j2M44dN9nz7ZmfG1phJrRAyuEqntJCNneEtj1ges+dzAsjLY+ozl+0hOBF0LV6UJeN4LjFLbc59OptOQ4j4OYKbLoeOEnPcgJEdXpQrawY41Zr6CNneaYS0+sm0Gz0k7/KN1Lx6QNUQgWRt0TvYx9lBZLhzlCO1O/kFqx5B1QSVzGDSAKMaw6XYh265daG1Hv72xhSQGBjdGFjCRtsEJmou5pIbSutqRbF4WA1/OWLWdhGzVRiCPqXhBCVrzU6lsVohvZ8FkhWE7hyAo0BCGV3L+2Qy5nhYBLYt66pZC1VAzrI62LOxAC+BD0zbcU8igV/D5mK3kLkzXwh+N8b9yaCoMFvLmQbroVlxHhCyqkMox+3QplAUN+ieOSWwb3N1cWGtRnM3Z6dFZy+3npJkJSqRgYSc6R+2Cl2MPWN95CiN3/wsKvP+yFYMWwxZ6FSVoAVsxVhHQz0JV9C3AfCCv7Lk3MqZqN8JH2GkJM2J+BEFkhWyek2Rob+5x2Vy/O/IwwQwvyLHshBnmaFVv8RBNiPnLf3a1ctx5KJ2Ri20K7ux4d2QuY4dRllVS6S+ile/Q7wpoO+qsHc/m9kUrV0GtL6q5uSmrkn0yU/pqQ83tyOlr9MOeD0j0eX1mbWZib1EAbySzmakISuWXLq3duCunMgGibLP5hnDO5L166cUnwYe0M41WE0Nc+ChFkQKSQajcvM8H1hORBm+gkR+8oZbBWJiIeriOEHosLa8xWIcKDkgWrgR6uJ2Qx9VDcGB9AhIgPmh1UzEOKu5YQ2sUtzPUvFQLgtftibZS0IlxLSI6TASCLp8aOhQA+EqtYVZKDBfhdIVFgDd4NBo5wTV5Mi4VPhviXuWtwt04xwiF2aQNTcAZ+jIvfaDKXGmrgdYZx8t670ZyMdv4Pk7MIEsaO02fcYN7/Zf7mzfX5H+WZeZXgxfH6AAAAAElFTkSuQmCC"
+    }
+  ]
+}

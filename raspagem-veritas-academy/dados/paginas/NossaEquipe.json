@@ -1,0 +1,304 @@
+{
+  "url": "https://veritasacademy.base44.app/NossaEquipe",
+  "height": 2145,
+  "text": [
+    {
+      "tag": "A",
+      "text": "Página Inicial",
+      "y": 1306
+    },
+    {
+      "tag": "A",
+      "text": "Mercados",
+      "y": 1306
+    },
+    {
+      "tag": "A",
+      "text": "Trading Lab",
+      "y": 1306
+    },
+    {
+      "tag": "A",
+      "text": "Educação",
+      "y": 1306
+    },
+    {
+      "tag": "A",
+      "text": "Planos",
+      "y": 1306
+    },
+    {
+      "tag": "A",
+      "text": "Contato",
+      "y": 1306
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Acesso à Plataforma",
+      "y": 1306
+    },
+    {
+      "tag": "SPAN",
+      "text": "Nossa Equipe",
+      "y": 192
+    },
+    {
+      "tag": "SPAN",
+      "text": "Veritas Global",
+      "y": 224
+    },
+    {
+      "tag": "P",
+      "text": "Uma equipe multidisciplinar com décadas de experiência combinada em mercados financeiros internacionais, tecnologia e gestão de risco.",
+      "y": 344
+    },
+    {
+      "tag": "H3",
+      "text": "Ricardo Almeida",
+      "y": 660
+    },
+    {
+      "tag": "P",
+      "text": "CEO & Fundador",
+      "y": 690
+    },
+    {
+      "tag": "P",
+      "text": "Estratégia Corporativa | Mercados Internacionais",
+      "y": 714
+    },
+    {
+      "tag": "P",
+      "text": "Mais de 15 anos de experiência em gestão de ativos nos mercados americano e europeu. Formado em Economia pela FGV com MBA em Finanças pela London Business School.",
+      "y": 746
+    },
+    {
+      "tag": "H3",
+      "text": "Camila Torres",
+      "y": 660
+    },
+    {
+      "tag": "P",
+      "text": "Chief Investment Officer",
+      "y": 690
+    },
+    {
+      "tag": "P",
+      "text": "Gestão de Portfólio | Derivativos",
+      "y": 714
+    },
+    {
+      "tag": "P",
+      "text": "Especialista em estratégias quantitativas e gestão de risco, com passagem por fundos de hedge em Nova York. Certificada CFA e com especialização em derivativos pelo MIT.",
+      "y": 746
+    },
+    {
+      "tag": "H3",
+      "text": "Gustavo Mendes",
+      "y": 660
+    },
+    {
+      "tag": "P",
+      "text": "Head de Tecnologia",
+      "y": 690
+    },
+    {
+      "tag": "P",
+      "text": "FinTech | Automação | IA Financeira",
+      "y": 714
+    },
+    {
+      "tag": "P",
+      "text": "Engenheiro de software com foco em sistemas financeiros de alta performance. Desenvolveu plataformas de trading algorítmico para bancos de investimento em São Paulo e Chicago.",
+      "y": 746
+    },
+    {
+      "tag": "H3",
+      "text": "Ana Beatriz Lopes",
+      "y": 1003
+    },
+    {
+      "tag": "P",
+      "text": "Head de Compliance e Risco",
+      "y": 1033
+    },
+    {
+      "tag": "P",
+      "text": "Gestão de Risco | Regulação Internacional",
+      "y": 1057
+    },
+    {
+      "tag": "P",
+      "text": "Advogada especializada em direito financeiro internacional, com expertise em compliance para corretoras regulamentadas. Atua há 12 anos em auditoria de operações de mercado.",
+      "y": 1089
+    },
+    {
+      "tag": "H3",
+      "text": "Felipe Rocha",
+      "y": 1003
+    },
+    {
+      "tag": "P",
+      "text": "Analista Sênior de Mercados",
+      "y": 1033
+    },
+    {
+      "tag": "P",
+      "text": "Análise Técnica | Macro Global",
+      "y": 1057
+    },
+    {
+      "tag": "P",
+      "text": "Analista com foco em mercados americanos e europeus, especializado em análise macro e técnica avançada. Com mais de 10 anos de experiência operacional em renda variável internacional.",
+      "y": 1089
+    },
+    {
+      "tag": "H3",
+      "text": "Mariana Vieira",
+      "y": 1003
+    },
+    {
+      "tag": "P",
+      "text": "Head de Relacionamento com Clientes",
+      "y": 1033
+    },
+    {
+      "tag": "P",
+      "text": "CX | Educação Financeira | Onboarding",
+      "y": 1057
+    },
+    {
+      "tag": "P",
+      "text": "Responsável pela jornada completa do investidor na Veritas Global, do primeiro contato ao acompanhamento estratégico. Especialista em educação financeira com mais de 8 anos de experiência.",
+      "y": 1089
+    },
+    {
+      "tag": "H3",
+      "text": "Quer fazer parte do nosso time?",
+      "y": 1328
+    },
+    {
+      "tag": "P",
+      "text": "Buscamos profissionais apaixonados por mercados financeiros e inovação.",
+      "y": 1372
+    },
+    {
+      "tag": "A",
+      "text": "Ver vagas abertas",
+      "y": 1420
+    },
+    {
+      "tag": "P",
+      "text": "Seu portal de acesso a investimentos internacionais com tecnologia de ponta e suporte especializado.",
+      "y": 1760
+    },
+    {
+      "tag": "SPAN",
+      "text": "contato@academyveritas.net",
+      "y": 1836
+    },
+    {
+      "tag": "SPAN",
+      "text": "Rua Gomes de Carvalho, 1507 — Conj. 92 · Vila Olímpia · São Paulo/SP · 04547-005",
+      "y": 1868
+    },
+    {
+      "tag": "H4",
+      "text": "Empresa",
+      "y": 1678
+    },
+    {
+      "tag": "A",
+      "text": "Quem Somos",
+      "y": 1722
+    },
+    {
+      "tag": "A",
+      "text": "Nossa Equipe",
+      "y": 1758
+    },
+    {
+      "tag": "A",
+      "text": "Carreiras",
+      "y": 1794
+    },
+    {
+      "tag": "A",
+      "text": "Imprensa",
+      "y": 1830
+    },
+    {
+      "tag": "H4",
+      "text": "Serviços",
+      "y": 1678
+    },
+    {
+      "tag": "A",
+      "text": "Cursos",
+      "y": 1722
+    },
+    {
+      "tag": "A",
+      "text": "Análises",
+      "y": 1758
+    },
+    {
+      "tag": "A",
+      "text": "Automação",
+      "y": 1794
+    },
+    {
+      "tag": "A",
+      "text": "Consultoria",
+      "y": 1830
+    },
+    {
+      "tag": "H4",
+      "text": "Suporte",
+      "y": 1678
+    },
+    {
+      "tag": "A",
+      "text": "Central de Ajuda",
+      "y": 1722
+    },
+    {
+      "tag": "A",
+      "text": "Termos de Uso",
+      "y": 1758
+    },
+    {
+      "tag": "A",
+      "text": "Política de Privacidade",
+      "y": 1794
+    },
+    {
+      "tag": "P",
+      "text": "© 2026 Veritas Finance Academy. Todos os direitos reservados.",
+      "y": 2091
+    },
+    {
+      "tag": "SPAN",
+      "text": "Edit with",
+      "y": 2099
+    }
+  ],
+  "images": [
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "Veritas Finance Academy",
+      "src": "https://www.academyveritas.net/logo.png"
+    },
+    {
+      "alt": "base44",
+      "src": "https://media.base44.com/images/public/builder-assets/symbol-orange.png"
+    },
+    {
+      "alt": "Base44",
+      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAABECAMAAAB+vJpyAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAEVQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////Up1zwgAAABZ0Uk5TABAgMEBQX2BvcH+Aj5CfoK+wv8/f741pbhwAAAVHSURBVHja7ZvtbuwoDECNQ5ZNSZgsAd7/Ufeq6i0Ex3Y6I1WJNOdv3RlyGvAHKrx58+bNmzdvfg0v4OwAN8P5BnH16FsM/KUoxNnCffi3tDgQCKUFqxCd5OAmYCFCdHVUiE5CuAXptBDMohCdD7gBczktJBVVyP2NuNLhBHWaEB0LFwcTESKoe11IMnBtYulxvDpdiI6HS/NRCE5UpwvJqaX05ItnXIoT1elCPOwY3HqfU8QkTQhVpwtRNtsE1yUUTQhVpwtR6pdwi5I9KUJCeUUI+FKJcFUwVx+eCOHULVETomy4dIOSPSMRwqqDZ4QAEXLtjDuBLCQ1Dp4TkoQtg25ev/Jziqu30EAD81fcZIHFjDVwdginsO0xR4Rw6jw8JySXb/6DFvORSs/qgEIDU7CHNlzsAyf8UcmeUBYytn/d54QYJu1iODk7MXMuB8SBHneHgQF/kHFHIEJYdU8KsaUyCIuvzAYabBbjKsNWTimWd4EsZO1+pAqR9ad2EQKbOReYEFTD+uQB2wUSIZy6BX4shD6Q0x6THr5O6Z9PfmI4V7IjEcKqM88JMfNh0h2KwlSTvkjQfOjvyEyWT4Rw6nQhwba4OZaGjMz4bQuLDzHvYs1BlZw+42i7SA3nLcat7Bj1Sc8KVAirThWiM7a5q/J9oeESedewlT0cxcWDdusrJaNLRLGccRkhVF2E14Vke9wdWag8+u3lDncjbqVi+gFnsjVwUadTkTw8FUJLdnxdSESoZG6ZW/f5ayuoYvJ+ydhlqIonr4iQNmQhpAc+LUQtjpCdoTk2zQdo8XujgZ/bRuKeTRusEKruJSFUiWWbG9N968YEDumbpeu3+N40itMrBFGIJerOC9EzH35j2M44dN9nz7ZmfG1phJrRAyuEqntJCNneEtj1ges+dzAsjLY+ozl+0hOBF0LV6UJeN4LjFLbc59OptOQ4j4OYKbLoeOEnPcgJEdXpQrawY41Zr6CNneaYS0+sm0Gz0k7/KN1Lx6QNUQgWRt0TvYx9lBZLhzlCO1O/kFqx5B1QSVzGDSAKMaw6XYh265daG1Hv72xhSQGBjdGFjCRtsEJmou5pIbSutqRbF4WA1/OWLWdhGzVRiCPqXhBCVrzU6lsVohvZ8FkhWE7hyAo0BCGV3L+2Qy5nhYBLYt66pZC1VAzrI62LOxAC+BD0zbcU8igV/D5mK3kLkzXwh+N8b9yaCoMFvLmQbroVlxHhCyqkMox+3QplAUN+ieOSWwb3N1cWGtRnM3Z6dFZy+3npJkJSqRgYSc6R+2Cl2MPWN95CiN3/wsKvP+yFYMWwxZ6FSVoAVsxVhHQz0JV9C3AfCCv7Lk3MqZqN8JH2GkJM2J+BEFkhWyek2Rob+5x2Vy/O/IwwQwvyLHshBnmaFVv8RBNiPnLf3a1ctx5KJ2Ri20K7ux4d2QuY4dRllVS6S+ile/Q7wpoO+qsHc/m9kUrV0GtL6q5uSmrkn0yU/pqQ83tyOlr9MOeD0j0eX1mbWZib1EAbySzmakISuWXLq3duCunMgGibLP5hnDO5L166cUnwYe0M41WE0Nc+ChFkQKSQajcvM8H1hORBm+gkR+8oZbBWJiIeriOEHosLa8xWIcKDkgWrgR6uJ2Qx9VDcGB9AhIgPmh1UzEOKu5YQ2sUtzPUvFQLgtftibZS0IlxLSI6TASCLp8aOhQA+EqtYVZKDBfhdIVFgDd4NBo5wTV5Mi4VPhviXuWtwt04xwiF2aQNTcAZ+jIvfaDKXGmrgdYZx8t670ZyMdv4Pk7MIEsaO02fcYN7/Zf7mzfX5H+WZeZXgxfH6AAAAAElFTkSuQmCC"
+    }
+  ]
+}
