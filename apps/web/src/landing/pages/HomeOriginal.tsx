@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Globe, ShieldCheck, Zap, TrendingUp, BarChart3, Users, Rocket, Eye,
   BookOpen, Target, Award, Clock, Building2, Handshake, Scale, Lightbulb,
   GraduationCap, UserPlus, CreditCard, Settings, ArrowRight, Check, Star,
-  PlayCircle,
+  ChevronLeft, ChevronRight,
 } from "lucide-react";
 import { useCountUp, BrokersSection, type LandingView } from "../shared";
 
@@ -94,6 +94,11 @@ function HeroOriginal({ onAccessPlatform }: { onAccessPlatform: () => void }) {
   const [slide, setSlide] = useState(0);
   const s = HERO_SLIDES[slide];
 
+  useEffect(() => {
+    const timer = window.setInterval(() => setSlide((v) => (v + 1) % HERO_SLIDES.length), 6000);
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden" style={{ background: BG }}>
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-24 w-full">
@@ -117,7 +122,7 @@ function HeroOriginal({ onAccessPlatform }: { onAccessPlatform: () => void }) {
 
             <div className="flex flex-wrap items-center gap-4 mb-10">
               <PrimaryButton onClick={onAccessPlatform}>Abrir Conta <ArrowRight className="w-4 h-4" /></PrimaryButton>
-              <SecondaryButton><PlayCircle className="w-4 h-4" /> Ver como funciona</SecondaryButton>
+              <SecondaryButton>Saiba Mais</SecondaryButton>
             </div>
 
             <div className="flex items-center gap-2">
@@ -381,12 +386,12 @@ function NossosValores() {
 
 // ── Educação Financeira (preview) ─────────────────────────────────────────────
 const MODULOS_PREVIEW = [
-  { title: "Mentalidade para Prosperar", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=450&fit=crop" },
-  { title: "Introdução aos Investimentos", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=450&fit=crop" },
-  { title: "Renda Fixa", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=450&fit=crop" },
-  { title: "Renda Variável", img: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&h=450&fit=crop" },
-  { title: "Investimento no Exterior", img: "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=600&h=450&fit=crop" },
-  { title: "O Novo Dinheiro", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=450&fit=crop" },
+  { title: "Mentalidade para Prosperar", desc: "Construa uma base sólida para seu sucesso financeiro.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=450&fit=crop" },
+  { title: "Introdução aos Investimentos", desc: "Aprenda os conceitos fundamentais do mercado.", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=450&fit=crop" },
+  { title: "Renda Fixa", desc: "Segurança e previsibilidade para sua carteira.", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=450&fit=crop" },
+  { title: "Renda Variável", desc: "Potencial de crescimento com gestão de risco.", img: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&h=450&fit=crop" },
+  { title: "Investimento no Exterior", desc: "Dolarize seu patrimônio e diversifique globalmente.", img: "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=600&h=450&fit=crop" },
+  { title: "O Novo Dinheiro", desc: "Novas fontes de renda através de ativos digitais.", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=450&fit=crop" },
 ];
 
 function EducacaoPreview({ onNavigate }: { onNavigate: (v: LandingView) => void }) {
@@ -403,6 +408,7 @@ function EducacaoPreview({ onNavigate }: { onNavigate: (v: LandingView) => void 
               <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.95) 20%, transparent 70%)" }} />
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: WHITE }}>{m.title}</h3>
+                <p className="mt-1" style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.75)" }}>{m.desc}</p>
               </div>
             </div>
           ))}
@@ -470,16 +476,28 @@ const DEPOIMENTOS = [
     text: "Como médica, tenho pouco tempo para acompanhar mercados. A equipe da Veritas cuida de tudo com um nível de profissionalismo que não esperava encontrar. Meu foco é minha clínica — sem preocupação com a parte financeira." },
   { name: "Rafael Souza", role: "Engenheiro de Software — Belo Horizonte / MG", plan: "Estratégico", initials: "RS",
     text: "Trabalho com tecnologia há 12 anos e sei a diferença entre um sistema bem estruturado e um fraco. A plataforma da Veritas é sólida, os dados são precisos e os analistas entendem o que fazem. Recomendo sem hesitar." },
+  { name: "Patrícia Lima", role: "Servidora Pública Federal — Brasília / DF", plan: "Essencial", initials: "PL",
+    text: "Sempre fui conservadora — tudo na poupança. Entrei com cautela e fui surpreendida pelo acompanhamento próximo. Hoje tenho parte do patrimônio dolarizado e me sinto muito mais protegida do que quando tudo estava em reais." },
+  { name: "André Santos", role: "Corretor de Imóveis — Curitiba / PR", plan: "Expansão", initials: "AS",
+    text: "Atuei anos no mercado imobiliário e aprendi que diversificação é fundamental. A Veritas me deu acesso a mercados que nunca imaginei operar — com clareza nos relatórios que qualquer leigo consegue entender." },
+  { name: "Juliana Ferreira", role: "Professora Universitária — Porto Alegre / RS", plan: "Estratégico", initials: "JF",
+    text: "Fiz cursos de investimento por anos mas nunca tive coragem de entrar sozinha nos mercados externos. A Veritas resolveu isso: além de operar, educam o cliente. Hoje entendo o que está sendo feito com o meu capital." },
 ];
 
+const DEPOIMENTOS_POR_PAGINA = 3;
+
 function Depoimentos() {
+  const [page, setPage] = useState(0);
+  const totalPages = Math.ceil(DEPOIMENTOS.length / DEPOIMENTOS_POR_PAGINA);
+  const visiveis = DEPOIMENTOS.slice(page * DEPOIMENTOS_POR_PAGINA, page * DEPOIMENTOS_POR_PAGINA + DEPOIMENTOS_POR_PAGINA);
+
   return (
     <section className="py-24" style={{ background: BG }}>
       <div className="max-w-6xl mx-auto px-6">
         <SectionHead eyebrow="Depoimentos Reais" title="O que dizem nossos" gradientPart="clientes"
           sub="Experiências reais de investidores que escolheram a Veritas Global." />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {DEPOIMENTOS.map((d) => (
+          {visiveis.map((d) => (
             <Card key={d.name} className="p-7 flex flex-col">
               <div className="flex gap-0.5 mb-4">
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4" fill="#facc15" style={{ color: "#facc15" }} />)}
@@ -500,6 +518,27 @@ function Depoimentos() {
               </div>
             </Card>
           ))}
+        </div>
+        <div className="flex items-center justify-center gap-4 mt-8">
+          <button onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0}
+            aria-label="Depoimentos anteriores"
+            className="w-9 h-9 rounded-full border flex items-center justify-center disabled:opacity-30 transition-opacity"
+            style={{ borderColor: BORDER, color: WHITE }}>
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button key={i} onClick={() => setPage(i)} aria-label={`Página ${i + 1}`}
+                className="h-2 rounded-full transition-all duration-300"
+                style={{ width: i === page ? 24 : 8, background: i === page ? BLUE_LIGHT : "#27272a" }} />
+            ))}
+          </div>
+          <button onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))} disabled={page === totalPages - 1}
+            aria-label="Próximos depoimentos"
+            className="w-9 h-9 rounded-full border flex items-center justify-center disabled:opacity-30 transition-opacity"
+            style={{ borderColor: BORDER, color: WHITE }}>
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </section>
@@ -545,7 +584,7 @@ function SimulacaoInvestimento({ onNavigate }: { onNavigate: (v: LandingView) =>
   return (
     <section className="py-24" style={{ background: BG }}>
       <div className="max-w-5xl mx-auto px-6">
-        <SectionHead eyebrow="Simulação de Investimento" title="Simule seus" gradientPart="Investimentos"
+        <SectionHead eyebrow="Simulação de Investimento" title="Calculadora de" gradientPart="Investimentos"
           sub="Simule o crescimento do seu patrimônio e descubra o poder dos juros compostos." />
         <div className="grid lg:grid-cols-2 gap-10">
           <div className="space-y-8">
