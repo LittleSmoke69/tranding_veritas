@@ -289,7 +289,12 @@ function QuemSomosIntro() {
 function MissaoVisao() {
   return (
     <section className="py-24" style={{ background: BG }}>
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-4">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-center mb-14" style={{ color: WHITE, fontWeight: 700, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", lineHeight: 1.1 }}>
+          Nossa Missão e{" "}
+          <span style={{ backgroundImage: TEXT_GRADIENT, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>Visão</span>
+        </h2>
+        <div className="grid md:grid-cols-2 gap-4">
         <Card className="p-9 flex flex-col items-center text-center gap-5">
           <div className="w-14 h-14 rounded-xl flex items-center justify-center" style={{ background: "rgba(94,144,255,0.1)", color: BLUE_LIGHT }}><Rocket className="w-6 h-6" /></div>
           <h3 style={{ color: WHITE, fontSize: "1.375rem", fontWeight: 700 }}>Missão</h3>
@@ -307,6 +312,7 @@ function MissaoVisao() {
             padrão de excelência na formação, acompanhamento e integração com mercados financeiros globais.
           </p>
         </Card>
+        </div>
       </div>
     </section>
   );
